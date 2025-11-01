@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../../medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Acne Information</title>
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --secondary: #7e22ce;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .search-input {
+      padding: 0.7rem 1.2rem;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      width: 300px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+    }
+
+    .search-button {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .search-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(14, 165, 233, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+      
+      .search-input {
+        width: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .search-container {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .search-input {
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search medical information...">
+        <button class="search-button">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+      <li class="menu-item"><a href="#">About Medicine</a></li>
+      <li class="menu-item"><a href="#">About Hospital</a></li>
+      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/MultiSite.html">Home</a></li>
+      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/Help%20and%20contact.html">Help and Contact</a></li>
+      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/Team%20Info.html">Team Info</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Acne Information</h2>
+      <div class="nav-points">
+        <a href="#about-acne" class="nav-point active">About Acne</a>
+        <a href="#causes-of-acne" class="nav-point">Causes of Acne</a>
+        <a href="#diagnosing-acne" class="nav-point">Diagnosing Acne</a>
+        <a href="#treating-acne" class="nav-point">Treating Acne</a>
+        <a href="#complications-of-acne" class="nav-point">Complications of Acne</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-acne" class="content-section">
+        <h1 class="content-title">About Acne</h1>
+        <p class="content-text">Acne is a common skin condition that affects most people at some point. It causes spots, oily skin and sometimes skin that's hot or painful to touch.</p>
+        
+        <p class="content-text">Acne most commonly develops on the:</p>
+        <ul class="content-list">
+          <li><strong>Face</strong> – this affects almost everyone with acne</li>
+          <li><strong>Back</strong> – this affects more than half of people with acne</li>
+          <li><strong>Chest</strong> – this affects about 15% of people with acne</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Types of Spots</h2>
+        <p class="content-text">There are 6 main types of spot caused by acne:</p>
+        <ul class="content-list">
+          <li><strong>Blackheads</strong> – small black or yellowish bumps that develop on the skin</li>
+          <li><strong>Whiteheads</strong> – have a similar appearance to blackheads, but may be firmer</li>
+          <li><strong>Papules</strong> – small red bumps that may feel tender or sore</li>
+          <li><strong>Pustules</strong> – similar to papules, but have a white tip in the centre</li>
+          <li><strong>Nodules</strong> – large hard lumps that build up beneath the surface of the skin</li>
+          <li><strong>Cysts</strong> – the most severe type of spot; large pus-filled lumps</li>
+        </ul>
+        
+        <div class="info-box">
+          <p><strong>Self-care tips:</strong> Don't wash affected areas more than twice daily, use mild cleansers, avoid squeezing spots, and choose non-comedogenic cosmetics.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-acne" class="content-section">
+        <h1 class="content-title">Causes of Acne</h1>
+        <p class="content-text">Acne is caused when tiny holes in the skin, known as hair follicles, become blocked.</p>
+        
+        <p class="content-text">Sebaceous glands are tiny glands found near the surface of your skin. The glands are attached to hair follicles, which are small holes in your skin that an individual hair grows out of.</p>
+        
+        <h2 class="content-subtitle">Testosterone</h2>
+        <p class="content-text">Teenage acne is thought to be triggered by increased levels of a hormone called testosterone, which occurs during puberty.</p>
+        
+        <h2 class="content-subtitle">Acne in Families</h2>
+        <p class="content-text">Acne can run in families. If your parents had acne, it's likely that you'll also develop it.</p>
+        
+        <h2 class="content-subtitle">Acne in Women</h2>
+        <p class="content-text">More than 80% of cases of adult acne occur in women. It's thought that many cases are caused by changes in hormone levels at certain times:</p>
+        <ul class="content-list">
+          <li>Periods – some women have a flare-up of acne just before their period</li>
+          <li>Pregnancy – many women have symptoms of acne during the first 3 months</li>
+          <li>Polycystic ovary syndrome – a common condition that can cause acne</li>
+        </ul>
+        
+        <div class="warning-box">
+          <p><strong>Myth busting:</strong> Acne is not caused by poor diet, dirty skin, or sexual activity. These are common misconceptions.</p>
+        </div>
+      </div>
+
+      <div id="diagnosing-acne" class="content-section">
+        <h1 class="content-title">Diagnosing Acne</h1>
+        <p class="content-text">Your pharmacist can diagnose acne by looking at your skin. This involves examining your face and possibly your chest and back for different types of spot.</p>
+        
+        <p class="content-text">How many spots you have and how painful and inflamed they are will help determine how severe your acne is.</p>
+        
+        <h2 class="content-subtitle">Severity Grades</h2>
+        <ul class="content-list">
+          <li><strong>Grade 1 (mild)</strong> – mostly whiteheads and blackheads</li>
+          <li><strong>Grade 2 (moderate)</strong> – multiple papules and pustules on face</li>
+          <li><strong>Grade 3 (moderately severe)</strong> – numerous inflamed spots, back and chest affected</li>
+          <li><strong>Grade 4 (severe)</strong> – large, painful pustules and nodules</li>
+        </ul>
+      </div>
+
+      <div id="treating-acne" class="content-section">
+        <h1 class="content-title">Treating Acne</h1>
+        <p class="content-text">Treatment for acne depends on how severe it is. It can take several months of treatment before acne symptoms improve.</p>
+        
+        <h2 class="content-subtitle">Treatments from your GP</h2>
+        <p class="content-text">See your GP if your acne is more widespread or over-the-counter medication hasn't worked.</p>
+        
+        <p class="content-text">Prescription medications include:</p>
+        <ul class="content-list">
+          <li>Topical retinoids</li>
+          <li>Topical antibiotics</li>
+          <li>Azelaic acid</li>
+          <li>Antibiotic tablets</li>
+          <li>Combined oral contraceptive pill (for women)</li>
+          <li>Isotretinoin tablets</li>
+        </ul>
+        
+        <div class="danger-box">
+          <p><strong>Important:</strong> Isotretinoin can cause birth defects and should not be used during pregnancy. Always consult with a healthcare professional before starting any treatment.</p>
+        </div>
+      </div>
+
+      <div id="complications-of-acne" class="content-section">
+        <h1 class="content-title">Complications of Acne</h1>
+        <p class="content-text">Acne scarring can sometimes develop as a complication of acne. Any type of acne spot can lead to scarring, but it's more common when the most serious types of spots burst and damage nearby skin.</p>
+        
+        <h2 class="content-subtitle">Types of Acne Scars</h2>
+        <ul class="content-list">
+          <li><strong>Ice pick scars</strong> – small, deep holes in the skin</li>
+          <li><strong>Rolling scars</strong> – bands of scar tissue under the skin</li>
+          <li><strong>Boxcar scars</strong> – round or oval depressions in the skin</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Treating Acne Scarring</h2>
+        <p class="content-text">Treatments for acne scarring are regarded as a type of cosmetic surgery. Options include:</p>
+        <ul class="content-list">
+          <li>Dermabrasion</li>
+          <li>Laser treatment</li>
+          <li>Punch techniques</li>
+          <li>Subcision</li>
+        </ul>
+        
+        <div class="success-box">
+          <p><strong>Note:</strong> While treatment can certainly improve the appearance of your scars, it can't get rid of them completely. Most people notice a 50-75% improvement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+        
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+        
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-input');
+    const searchButton = document.querySelector('.search-button');
+    
+    function performSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      if (searchTerm) {
+        // In a real implementation, this would search through content
+        // For now, we'll just show an alert
+        alert(`Searching for: ${searchTerm}`);
+        searchInput.value = '';
+      }
+    }
+    
+    searchButton.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+  </script>
+</body>
+</html>

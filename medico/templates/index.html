@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="/images/medico-bot.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medico-Bot - AI Medical Assistant</title>
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #7e22ce;
+            --dark-bg: #0f172a;
+            --darker-bg: #0a0f1c;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --user-msg: #1e40af;
+            --bot-msg: #374151;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .chat-container-wrapper {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 65vh;
+        }
+
+        .chat-header {
+            padding: 1.2rem 1.5rem;
+            background: rgba(30, 41, 59, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bot-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .bot-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .bot-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        #chat-container {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) rgba(255, 255, 255, 0.1);
+        }
+
+        #chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        #chat-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .chat-entry {
+            display: flex;
+            gap: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-entry {
+            justify-content: flex-end;
+        }
+
+        .user-avatar, .bot-avatar-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .user-avatar {
+            background: var(--user-msg);
+            order: 2;
+        }
+
+        .bot-avatar-small {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-message {
+            background: var(--user-msg);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message {
+            background: var(--bot-msg);
+            color: var(--text-primary);
+            border-bottom-left-radius: 5px;
+        }
+
+        .message strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem 1.2rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-secondary);
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        .input-container {
+            padding: 1.5rem;
+            background: rgba(30, 41, 59, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        #user-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+        }
+
+        #user-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        #send-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
+        }
+
+        #send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        #send-button:active {
+            transform: translateY(0);
+        }
+
+        #scrollToBottomBtn {
+            position: absolute;
+            bottom: 100px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        #scrollToBottomBtn.show {
+            opacity: 1;
+        }
+
+        #scrollToBottomBtn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .disclaimer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border-left: 4px solid var(--warning);
+        }
+
+        .disclaimer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .message {
+                max-width: 85%;
+            }
+            
+            .chat-container-wrapper {
+                height: 70vh;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-icon">M</div>
+                <div>
+                    <div class="logo-text">Medico-Bot</div>
+                    <div class="tagline">Your AI-powered medical assistant</div>
+                </div>
+            </div>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Online & Ready to Help</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <h1 class="page-title">Chat with Medico-Bot</h1>
+            <p class="page-subtitle">Get instant answers to your medical questions. Remember, this is an AI assistant and not a substitute for professional medical advice.</p>
+        </div>
+
+        <div class="chat-container-wrapper">
+            <div class="chat-header">
+                <div class="bot-avatar">M</div>
+                <div class="bot-info">
+                    <h3>Medico-Bot</h3>
+                    <p>AI Medical Assistant</p>
+                </div>
+            </div>
+            
+            <div id="chat-container">
+                <div class="chat-entry">
+                    <div class="bot-avatar-small">M</div>
+                    <div class="message bot-message">
+                        <strong>Medico-Bot</strong>
+                        Hello! I'm Medico-Bot, your AI medical assistant. I can help answer general health questions, explain medical terms, and provide health information. How can I assist you today?
+                    </div>
+                </div>
+            </div>
+            
+            <button id="scrollToBottomBtn">↓</button>
+            
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Type your medical question here..." onkeydown="if(event.key==='Enter'){askQuestion()}">
+                <button id="send-button" onclick="askQuestion()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 11L12 6L17 11M12 18V7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">💊</div>
+                <h3>Medication Information</h3>
+                <p>Get details about medications, side effects, interactions, and proper usage.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🩺</div>
+                <h3>Symptom Checker</h3>
+                <p>Describe your symptoms and get possible explanations (not a diagnosis).</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Medical Knowledge</h3>
+                <p>Learn about conditions, treatments, and medical terminology.</p>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>Important:</strong> Medico-Bot is an AI assistant for informational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+        </div>
+    </div>
+
+    <script>
+        function askQuestion() {
+            var user_input = document.getElementById('user-input').value.trim();
+            
+            if (!user_input) return;
+            
+            // Add user message to chat
+            document.getElementById('chat-container').innerHTML +=
+                `<div class="chat-entry user-entry">
+                    <div class="message user-message">
+                        <strong>You</strong>
+                        ${user_input}
+                    </div>
+                    <div class="user-avatar">U</div>
+                </div>`;
+            
+            // Clear the input field
+            document.getElementById('user-input').value = '';
+            
+            // Scroll to the bottom of the chat container
+            scrollToBottom();
+            
+            // Show typing indicator
+            document.getElementById('chat-container').innerHTML +=
+                `<div class="chat-entry">
+                    <div class="bot-avatar-small">M</div>
+                    <div class="message bot-message typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>`;
+            
+            scrollToBottom();
+            
+            // Send user input to backend
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'user_input': user_input,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove typing indicator
+                var chatEntries = document.querySelectorAll('.chat-entry');
+                var lastEntry = chatEntries[chatEntries.length - 1];
+                if (lastEntry.querySelector('.typing-indicator')) {
+                    lastEntry.remove();
+                }
+                
+                // Add bot response
+                document.getElementById('chat-container').innerHTML +=
+                    `<div class="chat-entry">
+                        <div class="bot-avatar-small">M</div>
+                        <div class="message bot-message">
+                            <strong>Medico-Bot</strong>
+                            ${data.response}
+                        </div>
+                    </div>`;
+                
+                // Scroll to the bottom of the chat container
+                scrollToBottom();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Remove typing indicator
+                var chatEntries = document.querySelectorAll('.chat-entry');
+                var lastEntry = chatEntries[chatEntries.length - 1];
+                if (lastEntry.querySelector('.typing-indicator')) {
+                    lastEntry.remove();
+                }
+                
+                // Add error message
+                document.getElementById('chat-container').innerHTML +=
+                    `<div class="chat-entry">
+                        <div class="bot-avatar-small">M</div>
+                        <div class="message bot-message">
+                            <strong>Medico-Bot</strong>
+                            I'm having trouble connecting right now. Please check your internet connection and try again.
+                        </div>
+                    </div>`;
+                
+                scrollToBottom();
+            });
+        }
+
+        function scrollToBottom() {
+            var chatContainer = document.getElementById('chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Scroll to bottom button functionality
+        document.getElementById('chat-container').addEventListener('scroll', function() {
+            var scrollToBottomBtn = document.getElementById('scrollToBottomBtn');
+            if (this.scrollTop < this.scrollHeight - this.clientHeight - 50) {
+                scrollToBottomBtn.classList.add('show');
+            } else {
+                scrollToBottomBtn.classList.remove('show');
+            }
+        });
+
+        document.getElementById('scrollToBottomBtn').addEventListener('click', function() {
+            scrollToBottom();
+        });
+
+        // Initial scroll to bottom
+        window.addEventListener('load', function() {
+            scrollToBottom();
+        });
+
+        // Add some sample questions on click for demonstration
+        document.getElementById('user-input').addEventListener('focus', function() {
+            if(this.getAttribute('data-suggestions-shown')) return;
+            
+            setTimeout(() => {
+                if(this.value === '') {
+                    this.placeholder = "Try: What are the symptoms of flu?";
+                    this.setAttribute('data-suggestions-shown', 'true');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
