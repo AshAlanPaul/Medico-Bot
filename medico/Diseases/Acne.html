@@ -1,7 +1,9 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="shortcut icon" type="x-icon" href="../../medico-bot.png">
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,45 +88,6 @@
       font-size: 1rem;
       color: var(--text-secondary);
       margin-top: 0.2rem;
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .search-input {
-      padding: 0.7rem 1.2rem;
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      color: var(--text-primary);
-      font-size: 1rem;
-      width: 300px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    .search-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-    }
-
-    .search-button {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      border: none;
-      border-radius: 50px;
-      padding: 0.7rem 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .search-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3);
     }
 
     .main-container {
@@ -376,11 +339,6 @@
         width: 100%;
         position: static;
       }
-      
-      .search-input {
-        width: 200px;
-      }
-    }
 
     @media (max-width: 768px) {
       .header-content {
@@ -388,16 +346,8 @@
         gap: 1rem;
         text-align: center;
       }
-      
-      .search-container {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .search-input {
-        width: 70%;
-      }
     }
+  }
   </style>
 </head>
 <body>
@@ -409,10 +359,6 @@
           <div class="logo-text">Medico-Bot</div>
           <div class="tagline">Your AI-powered medical assistant</div>
         </div>
-      </div>
-      <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search medical information...">
-        <button class="search-button">Search</button>
       </div>
     </div>
   </div>
@@ -427,10 +373,8 @@
     <ul class="menu-items">
       <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
       <li class="menu-item"><a href="#">About Medicine</a></li>
-      <li class="menu-item"><a href="#">About Hospital</a></li>
-      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/MultiSite.html">Home</a></li>
-      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/Help%20and%20contact.html">Help and Contact</a></li>
-      <li class="menu-item"><a href="http://127.0.0.1:5500/MultiSite/Team%20Info.html">Team Info</a></li>
+      <li class="menu-item"><a href="../hospital.html">About Hospital</a></li>
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
     </ul>
   </div>
 
@@ -643,27 +587,6 @@
           hamburger.classList.remove('active');
         }
       });
-    });
-
-    // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    const searchButton = document.querySelector('.search-button');
-    
-    function performSearch() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      if (searchTerm) {
-        // In a real implementation, this would search through content
-        // For now, we'll just show an alert
-        alert(`Searching for: ${searchTerm}`);
-        searchInput.value = '';
-      }
-    }
-    
-    searchButton.addEventListener('click', performSearch);
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        performSearch();
-      }
     });
   </script>
 </body>
