@@ -1,0 +1,673 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Acute Myeloid Leukaemia in Children</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #3b82f6;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">AML in Children</h2>
+      <div class="nav-points">
+        <a href="#about-aml-children" class="nav-point active">About AML in Children</a>
+        <a href="#types-of-aml" class="nav-point">Types of AML</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#side-effects" class="nav-point">Side Effects</a>
+        <a href="#follow-up" class="nav-point">Follow-up Care</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-aml-children" class="content-section">
+        <h1 class="content-title">Acute Myeloid Leukaemia: Children</h1>
+
+        <p class="content-text">Acute myeloid leukaemia (AML) is a type of blood cancer. A third of all childhood
+          cancers are leukaemia. Less than a quarter of these are acute myeloid leukaemia (AML). AML can affect children
+          of any age. Girls and boys are equally affected.</p>
+
+        <p class="content-text">More children than ever are surviving childhood cancer. There are new and better drugs
+          and treatments, and we can now also work to reduce the after-effects of having had cancer in the past.</p>
+
+        <div class="info-box">
+          <p><strong>Support:</strong> It's devastating to hear that your child has cancer. At times it can feel
+            overwhelming but there are many healthcare professionals and support organisations to help you through this
+            difficult time.</p>
+        </div>
+
+        <h2 class="content-subtitle">Leukaemia</h2>
+        <p class="content-text">Leukaemia is a cancer of the white blood cells. All blood cells are produced in the bone
+          marrow, the spongy substance at the core of some of the bones in the body.</p>
+
+        <p class="content-text">Bone marrow contains:</p>
+        <ul class="content-list">
+          <li><strong>Red blood cells</strong> - which carry oxygen around the body</li>
+          <li><strong>Platelets</strong> - which help the blood to clot and control bleeding</li>
+          <li><strong>White blood cells</strong> - which help to fight infection</li>
+        </ul>
+
+        <p class="content-text">There are 2 different types of white blood cells: lymphocytes and myeloid cells
+          (including neutrophils). These white blood cells work together to fight infection.</p>
+      </div>
+
+      <div id="types-of-aml" class="content-section">
+        <h1 class="content-title">Types of AML</h1>
+
+        <p class="content-text">Acute myeloid leukaemia is an overproduction of immature myeloid white blood cells
+          (blast cells).</p>
+
+        <p class="content-text">There are different sub-types of AML, depending on exactly which type of cell has become
+          leukaemic, the stage of development (maturation) the cells are at, and whether the cells are differentiated.
+          Knowing the sub-type of AML is important, as it helps doctors decide on the best treatment.</p>
+
+        <h2 class="content-subtitle">FAB Classification of AML</h2>
+        <ul class="content-list">
+          <li><strong>M0</strong> – AML with minimal evidence of myeloid differentiation</li>
+          <li><strong>M1</strong> – AML without maturation</li>
+          <li><strong>M2</strong> – AML with maturation</li>
+          <li><strong>M3</strong> – Acute promyelocytic leukaemia (APL)</li>
+          <li><strong>M4</strong> – Acute myelomonocytic leukaemia</li>
+          <li><strong>M5</strong> – Acute monocytic/monoblastic leukaemia</li>
+          <li><strong>M6</strong> – Acute erythroleukaemia</li>
+          <li><strong>M7</strong> – Acute megakaryoblastic leukaemia</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> A newer system known as the WHO (World Health Organization) classification system is
+            also sometimes used.</p>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes</h1>
+
+        <p class="content-text">The exact cause of AML is unknown. Research into possible causes of this disease is
+          ongoing.</p>
+
+        <p class="content-text">Children with certain genetic disorders, such as Down's syndrome or Li-Fraumeni
+          syndrome, are known to have a higher risk of developing leukaemia. Brothers and sisters of a child with AML
+          have a slightly increased risk of developing it, although this risk is still small.</p>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> AML, like all types of cancer, is not infectious and cannot be passed on to
+            other people.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms</h1>
+
+        <p class="content-text">As the leukaemia cells multiply in the bone marrow, the production of normal blood cells
+          is reduced. Children may therefore become tired and lethargic because of anaemia, which is caused by a lack of
+          red blood cells.</p>
+
+        <p class="content-text">Children may develop bruises, and bleeding may take longer to stop because of the low
+          number of platelets present in their blood. Sometimes they may suffer from infections because of low numbers
+          of normal white blood cells.</p>
+
+        <p class="content-text">A child is likely to feel generally unwell and may complain of aches and pains in the
+          limbs or may have swollen lymph glands.</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> At first, the symptoms are just like those of a viral infection, but when they
+            continue for more than a week or two, the diagnosis usually becomes clear.</p>
+        </div>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosis</h1>
+
+        <p class="content-text">A blood test usually shows low numbers of normal white blood cells and the presence of
+          abnormal leukaemia cells. A sample of bone marrow is needed to confirm the diagnosis.</p>
+
+        <p class="content-text">The bone marrow sample is also examined to check for any abnormalities in the
+          chromosomes of the leukaemia cells.</p>
+
+        <p class="content-text">A test called a lumbar puncture is done to see if the spinal fluid contains any
+          leukaemia cells. A chest X-ray is also done, which will show if there are any enlarged glands in the chest.
+        </p>
+
+        <div class="info-box">
+          <p><strong>Purpose:</strong> These tests will help to identify the precise type of leukaemia, and help doctors
+            to decide on the best treatment.</p>
+        </div>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment</h1>
+
+        <p class="content-text">The aim of treatment for AML is to destroy the leukaemia cells and enable the bone
+          marrow to work normally again. Chemotherapy is the main treatment for AML. Usually a combination of
+          chemotherapy drugs is given, according to a treatment plan (often called a protocol or regimen).</p>
+
+        <h2 class="content-subtitle">Treatment Phases</h2>
+
+        <h3 class="content-subtitle">Induction</h3>
+        <p class="content-text">This phase involves intensive treatment, aimed at destroying as many leukaemia cells as
+          possible. It usually involves 2 courses (cycles) of a combination of chemotherapy drugs.</p>
+
+        <h3 class="content-subtitle">Post-remission Treatment</h3>
+        <p class="content-text">When there are no signs of the leukaemia in the blood or bone marrow, further treatment
+          is often given. This phase aims to destroy any leukaemia cells that may be left and to help stop the AML from
+          coming back.</p>
+
+        <h3 class="content-subtitle">Central Nervous System (CNS) Treatment</h3>
+        <p class="content-text">AML may sometimes develop in the brain and spinal cord. This can be prevented by
+          injecting chemotherapy drugs directly into the spinal fluid during a lumbar puncture (intrathecal
+          chemotherapy).</p>
+
+        <div class="warning-box">
+          <p><strong>Special cases:</strong> Bone marrow transplant is usually only used for children with AML that is
+            likely to come back or has come back (recurred) following standard chemotherapy.</p>
+        </div>
+      </div>
+
+      <div id="side-effects" class="content-section">
+        <h1 class="content-title">Side Effects</h1>
+
+        <p class="content-text">Many cancer treatments will cause side effects. This is because while the treatments are
+          killing the cancer cells, they can also damage some normal cells.</p>
+
+        <p class="content-text">Some of the main side effects are:</p>
+        <ul class="content-list">
+          <li>Hair loss</li>
+          <li>Reduction in blood cell production</li>
+          <li>Loss of appetite and weight</li>
+          <li>Nausea and vomiting</li>
+        </ul>
+
+        <h2 class="content-subtitle">Late Side Effects</h2>
+        <p class="content-text">A small number of children may develop late side effects, sometimes many years later.
+          These include possible problems with puberty and fertility, a change in the way the heart works, and a small
+          increase in the risk of developing a second cancer in later life.</p>
+
+        <div class="info-box">
+          <p><strong>Management:</strong> Most side effects are temporary, and there are ways of reducing them and
+            supporting your child through them. Your child's doctor or nurse will talk to you about side effects.</p>
+        </div>
+      </div>
+
+      <div id="follow-up" class="content-section">
+        <h1 class="content-title">Follow-up Care</h1>
+
+        <p class="content-text">Many children with AML are cured. If the leukaemia comes back after initial treatment,
+          it usually does so within the first 3 years. Most children with AML grow and develop normally.</p>
+
+        <div class="success-box">
+          <p><strong>Support:</strong> If you have specific concerns about your child's condition and treatment, it's
+            best to discuss them with your child's doctor, who knows the situation in detail.</p>
+        </div>
+
+        <h2 class="content-subtitle">Clinical Trials</h2>
+        <p class="content-text">Many children have their treatment as part of a clinical research trial. Trials aim to
+          improve our understanding of the best way to treat an illness, usually by comparing the standard treatment
+          with a new or modified version.</p>
+
+        <div class="info-box">
+          <p><strong>Voluntary participation:</strong> Taking part in a research trial is completely voluntary, and
+            you'll be given plenty of time to decide if it's right for your child.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

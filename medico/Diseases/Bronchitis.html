@@ -1,975 +1,606 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="shortcut icon" type="x-icon" href="../../multisite.png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiSite-Medical Segment</title>
-    <style>  
-        nav{
-         height: 75px;
-         width: 100%;
-       }
-       label.logo{
-         color: orange;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
-       }
-       nav ul{
-         float: right;
-         margin-right:20px ;
-         
-       }
-       nav ul li{
-         display: inline-block;
-         line-height: 50px;
-         margin:0 5px;
-       }
-       nav ul li a{
-         color: aliceblue;
-         font-size: 20px;
-         padding: 10px 15px;
-         border-radius: 10px;
-       }
-       a.home,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
-       a.contact,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
- 
-       a.fe,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
-       .h{
-         margin-left: 20px;
-         font-size: larger;
-         
-       }
-     
-      .Ashfaq{
-         background-color: aliceblue;
-         width: 200px;
-         margin-top: 10%;
-         margin-left: 9%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-         
-      }
-      .Evan{
-         background-color: aliceblue;
-         width: 210px;
-         margin-top: 19%;
-         margin-left: 22%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-     }
-     .Al-Raji{
-         width: 160px;
-         background-color: aliceblue;
-         margin-top: -125%;
-         margin-left: 74%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-     }
-     .Ashfaq.Evan.Al-Raji{
-         box-sizing: border-box;
-         
-     }
-      
-      .welcome{color: gold;
-         margin-left:30%;
-         font-size: xx-large;
-         font-weight: bolder;
-         margin-top: 7%;
-      }
-      .starting{
-         color: white;
-         margin-left: 1%;
-         font-size: xx-large;
-      }
-      .history{
-         color: gold;
-         margin-left: 1%;
-         margin-top: 8%;
-      }
-      .math{
-         color: gold;
-         margin-left: 1%;
-         margin-top: 12%;
-      }
-      .m{
-         color: white;
-         margin-left: 1%;
-         font-size: x-large;
-      }
-      .SCI{
-       color: gold;
-         margin-left: 1%;
-         margin-top: 12%;
-      }
-     .h{
-       font-size: xx-large;
-       margin-top: 150%;
-       margin-left: 40%;
-       color: rgb(92, 7, 73);
-     }
-    
-       label.logo{
-         color: orange;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
-       }
-       nav ul{
-         float: right;
-         margin-right:20px ;
-         
-       }
-       nav ul li{
-         display: inline-block;
-         line-height: 50px;
-         margin:0 5px;
-       }
-       nav ul li a{
-         color: aliceblue;
-         font-size: 20px;
-         padding: 10px 15px;
-         border-radius: 10px;
-       }
-       a.home,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       }
-       a.contact,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       }
-       a.fe,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       } a.fei,a:hover{
-        background-color: black;
-        transition: .5s;
-        text-decoration: none;
-       }
-      
- 
-       .I{
-         font-weight: bold;
-         font-size: xx-large;
-         margin-left: 4%;
-         color: brown;
-         margin-top: 6%;
-       }
-       .back{
-       background-image:url(../../s1.jpg);
-       background-size: cover;
-       background-repeat: repeat;
-       height: 30vh;
-       width: 100%;
-       border-bottom-left-radius: 15% 40%;
-       border-bottom-right-radius: 15% 40%;
-       overflow: hidden;
-     }
-     .bac{
-       background-image:url(../../S2.png);
-       background-size: cover;
-       background-repeat: repeat;
-       height: 50vh;
-       width: 100%;
-       border-bottom-left-radius: 40% 40%;
-       border-top-right-radius: 40% 40%;
-       overflow: hidden;
-     }nav ul li.abc{
-         display: inline-block;
-         line-height: 425px;
-         margin:0 5px;
-       }
-       label.log{color: black;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
- 
-       }
-       .NO{
-         font-size: xx-large;
-         color: aliceblue;
-       }
-       .backgroundofdivv{
-         width: 100%;
-         background-image: url(../../a2.jpeg);
-         background-size: cover;
-         margin-top: -2%
-       }
-       .from{
-         margin-left: 440px;
-       }
-       .i1{
-         font-size: 30px;
-         border: 5px solid black;
-         border-top-left-radius: 25px;
-         border-bottom-left-radius: 25px;
-         border-top-right-radius: 25px;
-         border-bottom-right-radius: 25px;
-         background-image: url(../../home.jpg);
-         background-size: cover;
-         color: rgb(255, 255, 255);
-       }
-       .i2{
-         font-size: 30px;
-         border-top: 5px solid black;
-         border-bottom: 5px solid black;
-         border-left: 5px solid black;
-         margin-left: -115px;
-         border-top-right-radius: 25px;
-         border-bottom-right-radius: 25px;
-         background-color: black;
-         color: aliceblue;
-       }
-       #body{
-         background-image: url(../home.jpg);
-         background-size: cover;
-       }
-       #login{
-         margin-left: 93%;
-         border-radius: 10px;
-         font-size: x-large;
-         background-color: rgb(0, 0, 255);
-         color: white;
-         border: 5px solid black;
-         cursor: pointer;
-       }
-       .logo{
-         margin-top: -5%;
-       }
-       body {
-        margin: 0;
-        }
-
-      .menu {
-          position: fixed;
-          top: 0;
-          left: -250px;
-          width: 250px;
-          height: 100%;
-          background:linear-gradient(#000000,#252525,rgba(24, 24, 29, 0.486),#000000);
-          transition: left 0.3s ease;
-          margin-top: 57px;
-      }
-
-        .menu-items {
-            list-style: none;
-            padding: 0;
-            margin: 50px 20px;
-        }
-
-        .menu-items li {
-            color: #ece8e8;
-            font-size: 18px;
-            padding: 10px;
-        }
-
-        .hamburger {
-            width: 30px;
-            height: 25px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            z-index: 1;
-            margin-top: 45px;
-            margin-left: 6px;
-        }
-
-        .bar {
-            width: 100%;
-            height: 4px;
-            background:linear-gradient(rgb(226, 29, 29), rgb(61, 2, 2));
-            margin-bottom: 5px;
-        }
-
-        .menu-open {
-            left: 0;
-        }
-        .medic:hover {
-        border-bottom: 1px solid cornsilk;
-        cursor: pointer;
-        background: linear-gradient(rgb(51, 42, 73), rgb(37, 73, 121));
-        transition: background .5s, transform .5s;
-        transform: scale(1.1); /* Increase the scale factor for a larger effect */
-      }
-        .medic{
-          border-bottom: 1px solid cornsilk;
-          margin-left: 6px;
-        }
-
-        .points:hover {
-        border-bottom: 1px solid cornsilk;
-        cursor: pointer;
-        background: linear-gradient(rgb(88, 71, 131), rgb(37, 73, 121));
-        transition: background .5s, transform .5s;
-        transform: scale(1.1); /* Increase the scale factor for a larger effect */
-      }
-        .points{
-          border-bottom: 1px solid cornsilk;
-          margin-left: 6px;
-          padding: 10px;
-          display: inline-grid;
-          border-bottom: 2px solid black;
-
-        }
-        .points-a{
-          text-decoration: none;
-          color: #000000;
-          display: block;
-          cursor: pointer;
-          scroll-margin-top: 150px;
-        }
-        .points-a:hover{
-          background: none;
-        }
-        .everylist::-webkit-scrollbar {
-      width: 10px; /* Adjust width as needed */
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Bronchitis Information</title>
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --secondary: #7e22ce;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
     }
-    .upward{
-        margin-left: 15%;
-        border-radius: 50%;
-        background: transparent;
-        border: none;
-        cursor: pointer;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
-      .upward-icon{
-        width: 50px;
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(14, 165, 233, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
       }
-    
-      .upward-div {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+      
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
 
-#scroll-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 9999;
-}
-
-#scroll-to-top svg {
-  width: 40px;
-  height: 40px;
-}
-#scroll-to-top:hover{
-  background-color: #302142;
-}
-
-
-     </style>
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav style="position: fixed; top: 0;" class="back">
-        <label class="logo">MENU</label>
-        
-        <div style="margin-top: -70px;">
-          <form onsubmit="return submitForm()" class="from">
-            <input id="input420" class="i1" type="text" name="i1" placeholder="Type...">
-            <input class="i2" type="submit" name="i2" value="search">
-          </form>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
         </div>
-          <ul>
-              <li><a class="home" href="../../MultiSite.html">Home</a></li>
-              <li><a class="contact" href="../../Help and contact.html">Help and contact</a></li>
-              <li><a class="fe" href="../../Team Info.html">Team Info</a></li>
-          </ul>
-          <h1 class="welcome"><em><u>Welcome to our website named MultiSite
-          </em></u>          
-    </nav>
-   
-    <script src="../../filechanger/fileChanger.js"></script>
-    <script>
-      function toggleMenu() {
-      var menu = document.querySelector('.menu');
-      menu.classList.toggle('menu-open');
-      }
-      </script>
-<script>
-  function toggleScrollButton() {
-    var everylistDiv = document.getElementById('top-help');
-    var scrollButton = document.getElementById('scroll-to-top');
-
-    if (everylistDiv.scrollTop > 200) { // Change 200 to the desired scroll position to show the button
-      scrollButton.style.display = 'block';
-    } else {
-      scrollButton.style.display = 'none';
-    }
-  }
-
-  function scrollToTop() {
-    var everylistDiv = document.getElementById('top-help');
-    everylistDiv.scrollTop = 0;
-  }
-</script>
-      <div class="everylist" id="top-help" style="position: fixed; 
-      top: 200px;
-      left: 15px;
-      width: 100%;
-      height: 440px; /* Adjust height as needed */
-      background-color: white;
-      overflow-y: auto; font-size: x-large; font-family: 'Times New Roman', Times, serif; width: 80%; margin-left: 35px;"  onscroll="toggleScrollButton()">
-        <div style="    column-count: 3 !important;">
-        <div class="points"><a href="#about-bronchitis" class="points-a">About bronchitis</a></div>
-        <div class="points"><a href="#symptoms-of-bronchitis" class="points-a">Symptoms of bronchitis</a></div>
-        <div class="points"><a href="#causes-of-bronchitis" class="points-a">Causes of bronchitis</a></div>
-        <div class="points"><a href="#treating-bronchitis" class="points-a">Treating bronchitis</a></div>
-        
-
-
-        <div id="scroll-to-top" onclick="scrollToTop()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
-        </div>                
       </div>
-   
-<div class="menu">
+    </div>
+  </div>
+
   <div class="hamburger" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
-  <ul class="menu-items">
-      <a style="text-decoration: none;" href="http://127.0.0.1:7000"><div class="medic"><li>Identify Disease</li></div></a>
-      <div class="medic"><li>About Medicine</li></div>
-      <div class="medic"><li>About Hospital</li></div>
-  </ul>
-</div>
 
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
 
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
 
-<div class="plethoraplugins-tabs--content">
-                
-  <div class="active js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="about-bronchitis" aria-hidden="false" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_0">
-  
-  <h2 class="wp-block-heading">About bronchitis</h2>
-  
-  
-  
-  <p>Bronchitis is an infection of the main airways of the lungs (bronchi), causing them to become irritated and inflamed.</p>
-  
-  
-  
-  <p>The main symptom is a <a data-id="17522" href="/illnesses-and-conditions/lungs-and-airways/cough/" title="Cough" data-modal="ext">cough</a>, which may bring up yellow-grey mucus (phlegm). Bronchitis may also cause a&nbsp;<a data-id="22425" href="/illnesses-and-conditions/ears-nose-and-throat/sore-throat/" title="Sore throat" data-modal="ext">sore throat</a>&nbsp;and wheezing.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="6282" href="/illnesses-and-conditions/lungs-and-airways/bronchitis#symptoms-of-bronchitis" title="Symptoms of bronchitis" data-modal="ext">symptoms of bronchitis</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">When to see your GP</h2>
-  
-  
-  
-  <p>Most cases of bronchitis can be treated easily at home with rest, <a data-id="8217" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/nsaids/" title="NSAIDs" data-modal="ext">non-steroidal anti-inflammatory drugs (NSAIDs)</a> and plenty of fluids.</p>
-  
-  
-  
-  <p>You only need to see your GP if your symptoms are severe or unusual – for example, if:</p>
-  
-  
-  
-  <ul>
-  <li>your cough is severe or lasts longer than three weeks</li>
-  
-  
-  
-  <li>you have a constant fever&nbsp;(a temperature of 38°C&nbsp;–&nbsp;100.4°F&nbsp;–&nbsp;or above) for more than three days</li>
-  
-  
-  
-  <li>you cough up mucus streaked with blood</li>
-  
-  
-  
-  <li>you have an underlying heart or lung condition, such as&nbsp;<a data-id="5478" href="/illnesses-and-conditions/lungs-and-airways/asthma/" title="Asthma" data-modal="ext">asthma</a> or&nbsp;<a data-id="10243" href="/illnesses-and-conditions/heart-and-blood-vessels/conditions/heart-failure/" title="Heart failure" data-modal="ext">heart failure</a></li>
-  </ul>
-  
-  
-  
-  <p>Your GP may need to rule out other lung infections, such as <a data-id="5406" href="/illnesses-and-conditions/lungs-and-airways/pneumonia/" title="Pneumonia" data-modal="ext">pneumonia</a>, which has symptoms similar to those of bronchitis. If your GP thinks you may have pneumonia, you will probably need a chest X-ray, and a sample of mucus may be taken for testing.</p>
-  
-  
-  
-  <p>If your GP thinks you might have an undiagnosed underlying condition, they may also suggest a pulmonary function test. You will be asked to take a deep breath and blow into a device called a spirometer, which measures the volume of air in your lungs. Decreased lung capacity can indicate an underlying health problem.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Treating bronchitis</h2>
-  
-  
-  
-  <p>In most cases, bronchitis will clear up by itself within a few weeks without the need for treatment. This type of bronchitis is known as “acute bronchitis”. While you are waiting for it to pass, you should drink lots of fluid and get plenty of rest.</p>
-  
-  
-  
-  <p>In some cases, the symptoms of bronchitis can last much longer. If symptoms last for at least three months, it is known as “chronic bronchitis”. There is no cure for chronic bronchitis, but there are several medications to help relieve symptoms. It is also important to avoid smoking and smoky environments, as this can make your symptoms worse.</p>
-  
-  
-  
-  <p>Read more about <a data-id="6284" href="/illnesses-and-conditions/lungs-and-airways/bronchitis#treating-bronchitis" title="Treating bronchitis" data-modal="ext">treating bronchitis</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Why do I have bronchitis?</h2>
-  
-  
-  
-  <p>The bronchi are the main airways in your lungs, which branch off on either side of your windpipe (trachea). They lead to smaller and smaller airways inside your lungs, known as bronchioles.</p>
-  
-  
-  
-  <p>The walls of the bronchi produce mucus to trap dust and other particles that could otherwise cause irritation.</p>
-  
-  
-  
-  <p>Most cases of acute bronchitis&nbsp;develop when an infection causes the bronchi to become irritated and inflamed, which causes them to produce more mucus than usual. Your body tries to shift this extra mucus through coughing.</p>
-  
-  
-  
-  <p>Smoking is the most common cause of chronic bronchitis. Over time, tobacco smoke can cause permanent damage to the bronchi, causing them to become inflamed.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="6283" href="/illnesses-and-conditions/lungs-and-airways/bronchitis#causes-of-bronchitis" title="Causes of bronchitis" data-modal="ext">causes of bronchitis</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Complications</h2>
-  
-  
-  
-  <p><a data-id="5406" href="/illnesses-and-conditions/lungs-and-airways/pneumonia/" title="Pneumonia" data-modal="ext">Pneumonia</a> is the most common complication of bronchitis. It&nbsp;happens when the&nbsp;infection spreads further into the lungs, causing air sacs inside the lungs to fill up with fluid.&nbsp;1 in 20 cases of bronchitis leads to pneumonia.</p>
-  
-  
-  
-  <p>People at an increased risk of developing pneumonia include:</p>
-  
-  
-  
-  <ul>
-  <li>elderly people</li>
-  
-  
-  
-  <li>people who smoke</li>
-  
-  
-  
-  <li>people with other health conditions, such as heart, liver or kidney disease</li>
-  
-  
-  
-  <li>people with a weakened immune system</li>
-  </ul>
-  
-  
-  
-  <p>Mild pneumonia can usually be treated with <a data-id="6250" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/antibiotics/" title="Antibiotics" data-modal="ext">antibiotics</a> at home. More severe cases may require admission to hospital.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="5408" href="/illnesses-and-conditions/lungs-and-airways/pneumonia#treating-pneumonia" title="Treatment" data-modal="ext">treatment of pneumonia</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Who is affected</h2>
-  
-  
-  
-  <p>Acute bronchitis is one of the most common types of lung infection, and is one of the top five reasons for GP visits.</p>
-  
-  
-  
-  <p>Acute bronchitis can affect people of all ages, but is most common in younger children under the age of five. It is more common in winter, and often develops following a <a data-id="5692" href="/illnesses-and-conditions/infections-and-poisoning/common-cold/" title="Common cold" data-modal="ext">cold</a>,&nbsp;sore throat or <a data-id="5185" href="/illnesses-and-conditions/infections-and-poisoning/flu/" title="Flu" data-modal="ext">flu</a>.</p>
-  
-  
-  
-  <p>It is estimated that there are around 2 million people in the UK affected by chronic bronchitis. Most of these are adults over the age of 50.</p>
-  
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Bronchitis Information</h2>
+      <div class="nav-points">
+        <a href="#about-bronchitis" class="nav-point active">About Bronchitis</a>
+        <a href="#symptoms-of-bronchitis" class="nav-point">Symptoms of Bronchitis</a>
+        <a href="#causes-of-bronchitis" class="nav-point">Causes of Bronchitis</a>
+        <a href="#treating-bronchitis" class="nav-point">Treating Bronchitis</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-bronchitis" class="content-section">
+        <h1 class="content-title">About Bronchitis</h1>
+        <p class="content-text">Bronchitis is an infection of the main airways of the lungs (bronchi), causing them to become irritated and inflamed.</p>
+        
+        <p class="content-text">The main symptom is a cough, which may bring up yellow-grey mucus (phlegm). Bronchitis may also cause a sore throat and wheezing.</p>
+        
+        <h2 class="content-subtitle">When to See Your GP</h2>
+        <p class="content-text">Most cases of bronchitis can be treated easily at home with rest, non-steroidal anti-inflammatory drugs (NSAIDs) and plenty of fluids.</p>
+        
+        <p class="content-text">You only need to see your GP if your symptoms are severe or unusual:</p>
+        <ul class="content-list">
+          <li>Your cough is severe or lasts longer than three weeks</li>
+          <li>You have a constant fever (38°C/100.4°F or above) for more than three days</li>
+          <li>You cough up mucus streaked with blood</li>
+          <li>You have an underlying heart or lung condition</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Types of Bronchitis</h2>
+        <p class="content-text">There are two main types of bronchitis:</p>
+        <ul class="content-list">
+          <li><strong>Acute bronchitis</strong> - Usually clears up within a few weeks</li>
+          <li><strong>Chronic bronchitis</strong> - Symptoms last for at least three months and may recur</li>
+        </ul>
+        
+        <div class="info-box">
+          <p><strong>Note:</strong> Chronic bronchitis is often part of chronic obstructive pulmonary disease (COPD) and is commonly caused by smoking.</p>
+        </div>
+      </div>
+
+      <div id="symptoms-of-bronchitis" class="content-section">
+        <h1 class="content-title">Symptoms of Bronchitis</h1>
+        <p class="content-text">The main symptom of bronchitis is a hacking cough. It is likely that your cough will bring up thick yellow-grey mucus (phlegm), although this does not always happen.</p>
+        
+        <p class="content-text">Other symptoms of bronchitis are similar to those of other infections and may include:</p>
+        <ul class="content-list">
+          <li>Sore throat</li>
+          <li>Headache</li>
+          <li>Runny or blocked nose</li>
+          <li>Aches and pains</li>
+          <li>Tiredness</li>
+        </ul>
+        
+        <p class="content-text">If you have bronchitis, your cough may last for several weeks after other symptoms have gone. You may also find that the continual coughing makes your chest and stomach muscles sore.</p>
+        
+        <h2 class="content-subtitle">Chronic Bronchitis Symptoms</h2>
+        <p class="content-text">Chronic bronchitis, often part of COPD, can include:</p>
+        <ul class="content-list">
+          <li>Wheezing</li>
+          <li>Increasing breathlessness when exercising or moving around</li>
+          <li>A persistent cough that brings up mucus</li>
+          <li>Frequent chest infections</li>
+        </ul>
+        
+        <div class="warning-box">
+          <p><strong>When to see your GP:</strong> Contact your doctor if your cough is very severe, lasts longer than three weeks, you have a high fever for more than three days, cough up blood, or develop rapid breathing or chest pains.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-bronchitis" class="content-section">
+        <h1 class="content-title">Causes of Bronchitis</h1>
+        <p class="content-text">The bronchitis infection can be caused by either a virus or bacteria, although viral bronchitis is much more common.</p>
+        
+        <p class="content-text">In most cases, bronchitis is caused by the same viruses that cause the common cold or flu. The virus is contained in the millions of tiny droplets that come out of the nose and mouth when someone coughs or sneezes.</p>
+        
+        <h2 class="content-subtitle">Irritant Substances</h2>
+        <p class="content-text">Bronchitis can also be triggered by breathing in irritant substances, such as:</p>
+        <ul class="content-list">
+          <li>Smog and air pollution</li>
+          <li>Chemicals in household products</li>
+          <li>Tobacco smoke</li>
+        </ul>
+        
+        <p class="content-text">Smoking is the main cause of long-term (chronic) bronchitis, and it can affect people who inhale second-hand smoke, as well as smokers themselves.</p>
+        
+        <h2 class="content-subtitle">Occupational Exposure</h2>
+        <p class="content-text">You may be at risk of bronchitis if you are often exposed to materials that can damage your lungs, such as:</p>
+        <ul class="content-list">
+          <li>Grain dust</li>
+          <li>Textiles (fabric fibres)</li>
+          <li>Ammonia</li>
+          <li>Strong acids</li>
+          <li>Chlorine</li>
+        </ul>
+        
+        <div class="danger-box">
+          <p><strong>Important:</strong> Smoking significantly increases your risk of developing chronic bronchitis and can make symptoms worse. Quitting smoking is the most important step you can take to improve your lung health.</p>
+        </div>
+      </div>
+
+      <div id="treating-bronchitis" class="content-section">
+        <h1 class="content-title">Treating Bronchitis</h1>
+        <p class="content-text">Most cases of bronchitis do not require treatment from a GP, and the symptoms can be easily managed at home.</p>
+        
+        <p class="content-text">There is no cure for chronic bronchitis, but healthy living will help. In particular, you should stop smoking if you smoke.</p>
+        
+        <h2 class="content-subtitle">Managing Symptoms at Home</h2>
+        <p class="content-text">If you have bronchitis:</p>
+        <ul class="content-list">
+          <li>Get plenty of rest</li>
+          <li>Drink lots of fluids - this helps prevent dehydration and thins the mucus in your lungs</li>
+          <li>Treat headaches, fever, and aches with paracetamol or ibuprofen</li>
+        </ul>
+        
+        <p class="content-text">There is little evidence that cough medicines work. As an alternative, try making your own mixture of honey and lemon, which can help soothe a sore throat and ease your cough.</p>
+        
+        <h2 class="content-subtitle">Antibiotics</h2>
+        <p class="content-text">Your GP will not routinely prescribe antibiotics, as bronchitis is nearly always caused by a virus. Antibiotics have no effect on viruses.</p>
+        
+        <p class="content-text">Antibiotics may be recommended only for people at increased risk of complications, such as:</p>
+        <ul class="content-list">
+          <li>Premature babies</li>
+          <li>Elderly people over 80</li>
+          <li>People with history of heart, lung, kidney or liver disease</li>
+          <li>People with weakened immune systems</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Chronic Bronchitis Treatment</h2>
+        <p class="content-text">Chronic bronchitis is treated similarly to COPD:</p>
+        <ul class="content-list">
+          <li>Medications called mucolytics can make mucus easier to cough up</li>
+          <li>Pulmonary rehabilitation exercise programmes can help you cope better with symptoms</li>
+          <li>Stopping smoking is essential</li>
+        </ul>
+        
+        <div class="success-box">
+          <p><strong>Recovery tip:</strong> Most cases of acute bronchitis clear up on their own within a few weeks. Getting plenty of rest and staying hydrated are the most effective treatments.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="symptoms-of-bronchitis" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_1">
-  
-  <h2 class="wp-block-heading">Symptoms of bronchitis</h2>
-  
-  
-  
-  <p>The main symptom of bronchitis is a hacking cough. It is likely that your cough will bring up thick yellow-grey mucus (phlegm), although this does not always happen.</p>
-  
-  
-  
-  <p>Other symptoms of bronchitis are similar to those of other infections, such as the <a data-id="5692" href="/illnesses-and-conditions/infections-and-poisoning/common-cold/" title="Common cold" data-modal="ext">common cold</a> or <a data-id="5925" href="/illnesses-and-conditions/ears-nose-and-throat/sinusitis/" title="Sinusitis" data-modal="ext">sinusitis</a>, and may include:</p>
-  
-  
-  
-  <ul>
-  <li>sore throat</li>
-  
-  
-  
-  <li>headache</li>
-  
-  
-  
-  <li>runny or blocked nose</li>
-  
-  
-  
-  <li>aches and pains</li>
-  
-  
-  
-  <li>tiredness</li>
-  </ul>
-  
-  
-  
-  <p>If you have bronchitis,&nbsp;your cough may last for several weeks after other symptoms have gone. You may also find that the continual coughing makes your chest and stomach muscles sore.</p>
-  
-  
-  
-  <p>Some people may experience shortness of breath&nbsp;or wheezing, due to inflamed airways. However, this is more common with long-term (chronic) bronchitis.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Long-term (chronic) bronchitis</h2>
-  
-  
-  
-  <p>Chronic bronchitis is often known as <a data-id="4561" href="/illnesses-and-conditions/lungs-and-airways/copd/chronic-obstructive-pulmonary-disease/" title="Chronic obstructive pulmonary disease" data-modal="ext">chronic obstructive pulmonary disease (COPD)</a>.</p>
-  
-  
-  
-  <p>The symptoms of COPD can include:</p>
-  
-  
-  
-  <ul>
-  <li>wheezing</li>
-  
-  
-  
-  <li>increasing breathlessness when exercising or moving around</li>
-  
-  
-  
-  <li>a persistent cough that brings up mucus (phlegm)</li>
-  
-  
-  
-  <li>frequent <a data-id="4320" href="#" title="Chest infection">chest infections</a></li>
-  </ul>
-  
-  
-  
-  <p>The symptoms are often worse in the winter, and it is common to have two or more flare-ups a year. A flare-up is when your symptoms are particularly bad.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">When to see your GP</h2>
-  
-  
-  
-  <p>See your GP as soon as possible if:</p>
-  
-  
-  
-  <ul>
-  <li>your cough is very severe or lasts longer than three weeks</li>
-  
-  
-  
-  <li>you have a constant fever (a temperature of 38°C – 100.4°F – or above) for more than three days – this may be a sign of <a data-id="5185" href="/illnesses-and-conditions/infections-and-poisoning/flu/" title="Flu" data-modal="ext">flu</a> or a more serious condition, such as <a data-id="5406" href="/illnesses-and-conditions/lungs-and-airways/pneumonia/" title="Pneumonia" data-modal="ext">pneumonia</a></li>
-  
-  
-  
-  <li>you cough up mucus streaked with blood</li>
-  
-  
-  
-  <li>you develop rapid breathing (more than 30 breaths a minute) or chest pains</li>
-  
-  
-  
-  <li>you become drowsy or confused</li>
-  
-  
-  
-  <li>you have had repeated bouts of bronchitis</li>
-  </ul>
-  
-  
-  
-  <p>You should also contact your GP if you have an underlying heart or lung condition, such as:</p>
-  
-  
-  
-  <ul>
-  <li><a data-id="5478" href="/illnesses-and-conditions/lungs-and-airways/asthma/" title="Asthma" data-modal="ext">asthma</a></li>
-  
-  
-  
-  <li><a data-id="10243" href="/illnesses-and-conditions/heart-and-blood-vessels/conditions/heart-failure/" title="Heart failure" data-modal="ext">heart failure</a> – weakness in the heart that leads to fluid in your lungs</li>
-  
-  
-  
-  <li>emphysema – damage to the small airways in your lungs</li>
-  </ul>
-  
-  </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="causes-of-bronchitis" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_2">
-  
-  <h2 class="wp-block-heading">Causes of bronchitis</h2>
-  
-  
-  
-  <p>The bronchitis infection can be caused by either a virus or bacteria, although viral bronchitis is much more common.</p>
-  
-  
-  
-  <p>In most cases, bronchitis is caused by the same viruses that cause the&nbsp;<a data-id="5692" href="/illnesses-and-conditions/infections-and-poisoning/common-cold/" title="Common cold" data-modal="ext">common cold</a> or <a data-id="5185" href="/illnesses-and-conditions/infections-and-poisoning/flu/" title="Flu" data-modal="ext">flu</a>. The virus is contained in the millions of tiny droplets that come out of the nose and mouth when someone coughs or sneezes.</p>
-  
-  
-  
-  <p>These droplets typically spread about 1m (3ft). They hang suspended in the air for a while, then land on surfaces where the virus can survive for up to&nbsp;24 hours. Anyone who touches these surfaces can spread the virus further by touching something else.</p>
-  
-  
-  
-  <p>Everyday items at home and in public places, such as door handles and keyboards,&nbsp;may have traces of the virus on them. People usually become infected by picking up the virus on their hands from contaminated objects, and then placing their hands near their nose or mouth. It is also possible to breathe in the virus if it is suspended in airborne droplets.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Breathing in&nbsp;irritant substances</h2>
-  
-  
-  
-  <p>Bronchitis can also be triggered by breathing in irritant substances, such as smog, chemicals in household products or tobacco smoke.</p>
-  
-  
-  
-  <p>Smoking is the main cause of long-term (chronic) bronchitis, and it can affect people who inhale second-hand smoke, as well as smokers themselves.</p>
-  
-  
-  
-  <p>Read information about <a data-id="4414" href="/healthy-living/stopping-smoking#how-to-stop" title="Ways to stop smoking" data-modal="ext">treatments to quit smoking</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Occupational exposure</h2>
-  
-  
-  
-  <p>You may also be at risk of bronchitis and other forms of&nbsp;<a data-id="4561" href="/illnesses-and-conditions/lungs-and-airways/copd/chronic-obstructive-pulmonary-disease/" title="Chronic obstructive pulmonary disease" data-modal="ext">chronic obstructive pulmonary disease (COPD)</a> if you are often exposed to materials that can damage your lungs, such as:</p>
-  
-  
-  
-  <ul>
-  <li>grain dust</li>
-  
-  
-  
-  <li>textiles (fabric fibres)</li>
-  
-  
-  
-  <li>ammonia</li>
-  
-  
-  
-  <li>strong acids</li>
-  
-  
-  
-  <li>chlorine</li>
-  </ul>
-  
-  
-  
-  <p>This is sometimes referred to as ‘occupational bronchitis’, and usually eases once you are no longer exposed to the irritant substance.</p>
-  
-  
-  
-  <p>Read more information about the <a data-id="4564" href="/illnesses-and-conditions/lungs-and-airways/copd/chronic-obstructive-pulmonary-disease#causes-of-copd" title="Causes" data-modal="ext">causes of COPD</a>.</p>
-  
-  
-  
-  <p>You can also read&nbsp;the&nbsp;<a href="http://www.hse.gov.uk/statistics/causdis/copd.pdf" data-modal="ext" title="">Health and Safety Executive’s report on COPD in Great Britain&nbsp;attributed to occupational exposure (PDF, 275 KB).</a></p>
-  
-  </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="treating-bronchitis" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_3">
-  
-  <h2 class="wp-block-heading">Treating bronchitis</h2>
-  
-  
-  
-  <p>Most cases of bronchitis do not require treatment from a GP, and the symptoms can be easily managed at home.</p>
-  
-  
-  
-  <p>There is no cure for chronic bronchitis, but healthy living&nbsp;will help. In particular,&nbsp;you should&nbsp;<a data-id="4402" href="/healthy-living/stopping-smoking/" title="Smoking" data-modal="ext">stop smoking</a>,&nbsp;if you smoke.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Managing symptoms at home</h2>
-  
-  
-  
-  <p>If you have bronchitis:</p>
-  
-  
-  
-  <ul>
-  <li>get plenty of rest</li>
-  
-  
-  
-  <li>drink lots of fluids – this helps prevent <a data-id="6024" href="/illnesses-and-conditions/nutritional/dehydration/" title="Dehydration" data-modal="ext">dehydration</a> and thins the mucus in your lungs, making it easier to cough up</li>
-  
-  
-  
-  <li>treat headaches, fever, and aches and pains with&nbsp;<a data-id="6295" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/paracetamol/" title="Paracetamol" data-modal="ext">paracetamol</a> or&nbsp;<a data-id="8789" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/ibuprofen/" title="Ibuprofen" data-modal="ext">ibuprofen</a> – although ibuprofen is not recommended if you have <a data-id="5478" href="/illnesses-and-conditions/lungs-and-airways/asthma/" title="Asthma" data-modal="ext">asthma</a>&nbsp;</li>
-  </ul>
-  
-  
-  
-  <p>There is little evidence that cough medicines work – <a data-id="17522" href="/illnesses-and-conditions/lungs-and-airways/cough/" title="Cough" data-modal="ext">read&nbsp;more about&nbsp;treating coughs</a>. The&nbsp;Medicines and Healthcare Products Regulatory Agency (MHRA)&nbsp;has recommended that over-the-counter cough medicines should not be given to children under the age of six.</p>
-  
-  
-  
-  <p>As an alternative to an&nbsp;over-the-counter&nbsp;cough medicine, try making your own mixture of honey and lemon, which can help soothe a&nbsp;<a data-id="22425" href="/illnesses-and-conditions/ears-nose-and-throat/sore-throat/" title="Sore throat" data-modal="ext">sore throat</a> and ease your cough.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Stop smoking</h2>
-  
-  
-  
-  <p>If you smoke, you should stop immediately. Smoking aggravates&nbsp;bronchitis and increases your risk of developing a long-term (chronic) condition.</p>
-  
-  
-  
-  <p><a data-id="4409" href="/healthy-living/stopping-smoking#help-to-stop" title="Help to stop" data-modal="ext">Stopping smoking</a> while you have bronchitis can also be the perfect opportunity to quit altogether.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Antibiotics</h2>
-  
-  
-  
-  <p>Although treatment from a GP is rarely necessary, there may be times when you should see one – read more about&nbsp;<a data-id="6282" href="/illnesses-and-conditions/lungs-and-airways/bronchitis#symptoms-of-bronchitis" title="Symptoms" data-modal="ext">when to see your GP</a>.</p>
-  
-  
-  
-  <p>Your GP will not routinely prescribe&nbsp;<a data-id="6250" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/antibiotics/" title="Antibiotics" data-modal="ext">antibiotics</a>, as bronchitis is nearly always caused by a virus. Antibiotics have no effect on viruses, and prescribing them when they are unnecessary can, over time, make bacteria more resistant to antibiotic treatment.&nbsp;</p>
-  
-  
-  
-  <p>Your GP will only prescribe antibiotics if you have an increased risk of developing complications, such as <a data-id="5406" href="/illnesses-and-conditions/lungs-and-airways/pneumonia/" title="Pneumonia" data-modal="ext">pneumonia</a>.&nbsp;Antibiotics may be recommended for:</p>
-  
-  
-  
-  <ul>
-  <li>premature babies</li>
-  
-  
-  
-  <li>elderly people over the age of 80</li>
-  
-  
-  
-  <li>people with a history of heart, lung, kidney or liver disease</li>
-  
-  
-  
-  <li>people with a weakened immune system, which could be the result of an underlying condition or a side effect of a treatment such as steroid medication</li>
-  
-  
-  
-  <li>people with&nbsp;<a data-id="6131" href="/illnesses-and-conditions/lungs-and-airways/cystic-fibrosis/" title="Cystic fibrosis" data-modal="ext">cystic fibrosis</a></li>
-  </ul>
-  
-  
-  
-  <p>If you are prescribed antibiotics for bronchitis, it is likely to be a five-day course of amoxicillin, oxytetracycline or doxycycline.</p>
-  
-  
-  
-  <p>Possible side effects of these medicines include nausea, vomiting and&nbsp;diarrhoea, but they are uncommon.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Chronic bronchitis</h2>
-  
-  
-  
-  <p>Chronic bronchitis is treated in the same way as chronic obstructive pulmonary disease (COPD).</p>
-  
-  
-  
-  <p>For example:</p>
-  
-  
-  
-  <ul>
-  <li>a type of medication called mucolytics can be used to make mucus easier to cough up</li>
-  
-  
-  
-  <li>an exercise programme known as pulmonary rehabilitation can help you cope better with your symptoms</li>
-  </ul>
-  
-  
-  
-  <p>Stopping smoking is also very important if you have been diagnosed with chronic bronchitis or COPD.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="4566" href="/illnesses-and-conditions/lungs-and-airways/copd/chronic-obstructive-pulmonary-disease#treating-copd" title="Treatment" data-modal="ext">treatment of COPD</a>.</p>
-  
-  </div>
-  
-              </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+        
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+        
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

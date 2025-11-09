@@ -1,0 +1,708 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Functional Neurological Disorder Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .accordion {
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-header {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(30, 41, 59, 1);
+    }
+
+    .accordion-header h3 {
+      margin: 0;
+      flex: 1;
+      color: var(--text-primary);
+    }
+
+    .accordion-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-content {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: rgba(30, 41, 59, 0.6);
+    }
+
+    .accordion-content.open {
+      padding: 1.5rem;
+      max-height: 1000px;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">FND Information</h2>
+      <div class="nav-points">
+        <a href="#about-fnd" class="nav-point active">About FND</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatments" class="nav-point">Treatments</a>
+        <a href="#support" class="nav-point">Support</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-fnd" class="content-section">
+        <h1 class="content-title">Functional Neurological Disorder (FND)</h1>
+        <p class="content-text">Functional neurological disorder (FND) describes a problem with how the brain receives and sends information to the rest of the body.</p>
+
+        <p class="content-text">It's often helpful to think of your brain as a computer. In someone who has FND, there's no damage to the hardware, or structure, of the brain. It's the software, or program running on the computer, that isn't working properly.</p>
+
+        <p class="content-text">The problems that cause FND are going on in a level of the brain that you cannot control. It includes symptoms like arm and leg weakness and seizures. Other symptoms like fatigue or pain are not directly caused by FND, but are often found alongside it.</p>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> A diagnosis of FND should be made because you have one or more clinical features that a specialist can recognise as typical of FND. It shouldn't be made just because scans or tests for other neurological conditions that have similar symptoms are normal.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of FND</h1>
+        <p class="content-text">FND can have many symptoms that can vary from person to person. Some people may have few symptoms, and some people may have many.</p>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Functional Limb Weakness</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Functional limb weakness is when a leg or an arm doesn't work properly. In FND, this happens because of a problem with how the nervous system is functioning.</p>
+            <p>It can cause a range of symptoms, including:</p>
+            <ul class="content-list">
+              <li>Problems walking</li>
+              <li>Heaviness down one side</li>
+              <li>Dropping things</li>
+              <li>Feeling like a limb isn't part of you</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Functional Seizures</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>A functional seizure (also called a dissociative seizure) is an episode where someone loses either their awareness of, or their ability to interact with, their surroundings.</p>
+            <p>A functional seizure can appear as:</p>
+            <ul class="content-list">
+              <li>Uncontrolled shaking</li>
+              <li>Suddenly going motionless and unresponsive</li>
+              <li>Staring without responding to surroundings</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Functional Tremor</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Tremor is uncontrollable shaking of part of the body. It's most often found in the arms and legs.</p>
+            <p>Functional tremor can come and go throughout the day, and change in speed and strength.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Other Common Symptoms</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <ul class="content-list">
+              <li>Functional dystonia (muscle spasms)</li>
+              <li>Functional gait disorder (walking problems)</li>
+              <li>Functional facial spasm</li>
+              <li>Functional tics</li>
+              <li>Functional jerks and twitches</li>
+              <li>Functional sensory symptoms</li>
+              <li>Functional cognitive symptoms</li>
+              <li>Speech and swallowing difficulties</li>
+              <li>Visual symptoms</li>
+              <li>Dissociative symptoms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">What Causes FND?</h1>
+        <p class="content-text">We know that the symptoms of FND happen because there's a problem with how the brain is sending and receiving messages to itself and other parts of the body. Using research tools, scientists can see that certain circuits in the brain are not working properly in people with FND.</p>
+
+        <p class="content-text">However, there's still a lot of research to be done to understand how and why FND happens.</p>
+
+        <h2 class="content-subtitle">Why Does FND Happen?</h2>
+        <p class="content-text">FND can happen for a wide range of reasons. There's often more than one reason, and the reasons can vary hugely from person to person.</p>
+
+        <p class="content-text">Some of the reasons why the brain stops working properly in FND include:</p>
+
+        <ul class="content-list">
+          <li>The brain trying to get rid of a painful sensation</li>
+          <li>A migraine or other neurological symptom</li>
+          <li>The brain shutting down a part or all of the body in response to a situation it thinks is threatening</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Note:</strong> In some people, stressful events in the past or present can be relevant to FND. In others, stress is not relevant. The risk of developing FND increases if you have another neurological condition.</p>
+        </div>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosing FND</h1>
+        <p class="content-text">When diagnosing FND, your healthcare provider will carry out an assessment to see if there are typical clinical features of FND.</p>
+
+        <p class="content-text">Your healthcare provider may still choose to test for other diseases and conditions before diagnosing FND. This is because many conditions share the same symptoms and, in around a quarter of cases, FND is present alongside another neurological condition.</p>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> The diagnosis of FND should be given because you have the clinical features of FND. It shouldn't be given just because there's no evidence of other conditions or illnesses.</p>
+        </div>
+
+        <p class="content-text">Because the symptoms of FND are not always there, your healthcare provider may ask you to video your symptoms. This will allow them to see what your symptoms look like.</p>
+      </div>
+
+      <div id="treatments" class="content-section">
+        <h1 class="content-title">Treatments for FND</h1>
+        <p class="content-text">FND is a really variable condition. Some people have quite short-lived symptoms. Others can have them for many years.</p>
+
+        <p class="content-text">There are treatments available that can manage and improve FND. These treatments are all forms of rehabilitation therapy, which aims to improve your ability to carry out every day activities.</p>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Physiotherapy</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Specialised physiotherapy can be useful in treating FND. It helps to remind the body how it should move. It can also help you build up strength and stamina you may have lost.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Occupational Therapy</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Occupational therapy can be helpful in treating FND. An occupational therapist will work with you to plan your treatment goals, and gradually build your confidence and ability to reach them.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3>Psychological Therapy</h3>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content">
+            <p>Psychological therapy can be helpful to many people with FND, even those without stress in their lives. It can help you gain a better understanding of FND and its relationship to your personal circumstances.</p>
+            <p>Not everyone with FND will need psychological therapy.</p>
+          </div>
+        </div>
+
+        <div class="danger-box">
+          <p><strong>Warning:</strong> Do not stop taking any medicine that's been prescribed without checking with your GP or healthcare provider first. You could make yourself very ill.</p>
+        </div>
+      </div>
+
+      <div id="support" class="content-section">
+        <h1 class="content-title">Where to Find Support</h1>
+        <p class="content-text">If you've been diagnosed with FND there are sources of information, charities and support groups that can help you.</p>
+
+        <ul class="content-list">
+          <li><strong>Neurosymptoms FND Guide:</strong> Detailed information about FND with an available app</li>
+          <li><strong>My FND App:</strong> Helps you track symptoms and offers management advice</li>
+          <li><strong>FND Hope UK:</strong> Charity that raises awareness and provides support services</li>
+          <li><strong>FND Action:</strong> Charity providing information and support for those with FND</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Remember:</strong> Many people with FND benefit a lot from treatment and may go into remission. Support from healthcare professionals and community resources can make a significant difference in managing the condition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Accordion functionality
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('.accordion-icon');
+
+      content.classList.toggle('open');
+      icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

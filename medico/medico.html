@@ -90,45 +90,6 @@
       margin-top: 0.2rem;
     }
 
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .search-input {
-      background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      padding: 0.7rem 1rem;
-      color: var(--text-primary);
-      width: 300px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
-    }
-
-    .search-button {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border: none;
-      border-radius: 8px;
-      padding: 0.7rem 1.2rem;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .search-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-    }
-
     .hero-section {
       max-width: 1200px;
       margin: 2rem auto;
@@ -215,6 +176,44 @@
       color: var(--text-primary);
     }
 
+    .alphabet-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .letter-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .letter-btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+    }
+
+    .letter-btn.active {
+      background: var(--primary);
+      box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.5);
+    }
+
     .disease-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -245,6 +244,9 @@
       transition: all 0.3s ease;
       cursor: pointer;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
 
     .disease-item:hover {
@@ -359,10 +361,6 @@
         gap: 1.5rem;
       }
       
-      .search-input {
-        width: 100%;
-      }
-      
       .hero-title {
         font-size: 2.5rem;
       }
@@ -376,40 +374,51 @@
       .disease-list {
         grid-template-columns: 1fr;
       }
+      
+      .alphabet-nav {
+        gap: 0.3rem;
+      }
+      
+      .letter-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
     }
+
     .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--danger);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transform: translateX(150%);
-    transition: transform 0.3s ease;
-    max-width: 300px;
-  }
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--danger);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transform: translateX(150%);
+      transition: transform 0.3s ease;
+      max-width: 300px;
+    }
 
-  .notification.show {
-    transform: translateX(0);
-  }
+    .notification.show {
+      transform: translateX(0);
+    }
 
-  .notification-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-  .notification-close {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin-left: auto;
-  }
+    .notification-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
   </style>
 </head>
 <body>
@@ -421,10 +430,6 @@
           <div class="logo-text">Medico-Bot</div>
           <div class="tagline">Your AI-powered medical assistant</div>
         </div>
-      </div>
-      <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search for diseases, symptoms...">
-        <button class="search-button">Search</button>
       </div>
     </div>
   </div>
@@ -438,8 +443,6 @@
   <div class="menu">
     <ul class="menu-items">
       <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
-      <li class="menu-item"><a href="#">About Medicine</a></li>
-      <li class="menu-item"><a href="hospital.html">About Hospital</a></li>
       <li class="menu-item"><a href="medico.html">Home</a></li>
     </ul>
   </div>
@@ -451,6 +454,11 @@
 
   <div class="disease-section">
     <h2 class="section-title">Browse Medical Conditions</h2>
+    
+    <div class="alphabet-nav" id="alphabetNav">
+      <!-- Alphabet buttons will be populated by JavaScript -->
+    </div>
+    
     <div class="disease-list" id="diseaseList">
       <!-- Disease items will be populated by JavaScript -->
     </div>
@@ -545,7 +553,7 @@
       "Bronchiectasis",
       "Bronchitis",
       "Bulimia",
-      "Bunion",
+      "Bunion Hallux Valgus",
       "Carcinoid syndrome and carcinoid tumours",
       "Catarrh",
       "Cellulitis",
@@ -822,52 +830,70 @@
       "Yellow fever"
     ];
 
-    // Populate disease list
+    // Create alphabet navigation
+    const alphabetNav = document.getElementById('alphabetNav');
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+    
+    alphabet.forEach(letter => {
+      const letterBtn = document.createElement('button');
+      letterBtn.className = 'letter-btn';
+      letterBtn.textContent = letter;
+      letterBtn.setAttribute('data-letter', letter);
+      
+      letterBtn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        document.querySelectorAll('.letter-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        letterBtn.classList.add('active');
+        
+        // Scroll to diseases starting with this letter
+        scrollToLetter(letter);
+      });
+      
+      alphabetNav.appendChild(letterBtn);
+    });
+
+    // Function to scroll to diseases starting with a specific letter
+    function scrollToLetter(letter) {
+      const diseaseItems = document.querySelectorAll('.disease-item');
+      let found = false;
+      
+      for (let i = 0; i < diseaseItems.length; i++) {
+        if (diseaseItems[i].textContent.charAt(0).toUpperCase() === letter) {
+          diseaseItems[i].scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+          found = true;
+          break;
+        }
+      }
+      
+      if (!found) {
+        showNotification(`No diseases found starting with "${letter}"`);
+      }
+    }
+
+    // Populate disease list with proper anchor tags
     const diseaseList = document.getElementById('diseaseList');
     
     diseases.forEach(disease => {
-      const diseaseItem = document.createElement('div');
-      diseaseItem.className = 'disease-item';
-      diseaseItem.textContent = disease;
-      
       // Create a URL-friendly ID from the disease name
       const diseaseId = disease.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       
-      diseaseItem.addEventListener('click', () => {
-        // Navigate to the disease page
-        window.location.href = `Diseases/${diseaseId}.html`;
-      });
+      // Create anchor tag instead of div
+      const diseaseLink = document.createElement('a');
+      diseaseLink.className = 'disease-item';
+      diseaseLink.textContent = disease;
+      diseaseLink.href = `Diseases/${diseaseId}.html`;
       
-      diseaseList.appendChild(diseaseItem);
-    });
-
-    // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    const searchButton = document.querySelector('.search-button');
-    
-    function performSearch() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
+      // Add target="_blank" for external links if needed
+      // diseaseLink.target = "_blank";
       
-      if (searchTerm) {
-        // Find matching disease
-        const matchingDisease = diseases.find(disease => 
-          disease.toLowerCase().includes(searchTerm)
-        );
-        
-        if (matchingDisease) {
-          const diseaseId = matchingDisease.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-          window.location.href = `Diseases/${diseaseId}.html`;
-        } else {
-          alert('No matching disease found. Please try a different search term.');
-        }
-      }
-    }
-    
-    searchButton.addEventListener('click', performSearch);
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        performSearch();
-      }
+      diseaseList.appendChild(diseaseLink);
     });
 
     // Notification functions
@@ -885,34 +911,14 @@
       const notification = document.getElementById('notification');
       notification.classList.remove('show');
     }
-
-    // Update the search function
-    function performSearch() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      
-      if (searchTerm) {
-        // Find matching disease
-        const matchingDisease = diseases.find(disease => 
-          disease.toLowerCase().includes(searchTerm)
-        );
-        
-        if (matchingDisease) {
-          const diseaseId = matchingDisease.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-          window.location.href = `Diseases/${diseaseId}.html`;
-        } else {
-          showNotification('No matching disease found. Please try a different search term.');
-        }
-      } else {
-        showNotification('Please enter a search term.');
-      }
-    }
   </script>
+  
   <div class="notification" id="notification">
-  <div class="notification-content">
-    <span>⚠️</span>
-    <span id="notification-message">No matching disease found. Please try a different search term.</span>
-    <button class="notification-close" onclick="hideNotification()">&times;</button>
+    <div class="notification-content">
+      <span>⚠️</span>
+      <span id="notification-message">No matching disease found. Please try a different search term.</span>
+      <button class="notification-close" onclick="hideNotification()">&times;</button>
+    </div>
   </div>
-</div>
 </body>
 </html>

@@ -1,0 +1,656 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Down's Syndrome Information</title>
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --secondary: #7e22ce;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(14, 165, 233, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="../../medico.html" class="nav-link">Home</a>
+        <a href="../../Help and contact.html" class="nav-link">Help and Contact</a>
+        <a href="../../Team Info.html" class="nav-link">Team Info</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Down's Syndrome Information</h2>
+      <div class="nav-points">
+        <a href="#about-downs-syndrome" class="nav-point active">About Down's Syndrome</a>
+        <a href="#living-with-downs-syndrome" class="nav-point">Living with Down's Syndrome</a>
+        <a href="#health-considerations" class="nav-point">Health Considerations</a>
+        <a href="#screening" class="nav-point">Screening</a>
+        <a href="#support-resources" class="nav-point">Support & Resources</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-downs-syndrome" class="content-section">
+        <h1 class="content-title">About Down's Syndrome</h1>
+        <p class="content-text">Down's syndrome is a genetic condition where a baby is born with an extra copy of chromosome 21 in some or all of their cells. This is also known as Trisomy 21.</p>
+        
+        <p class="content-text">The additional genetic material affects development and causes the characteristic features associated with Down's syndrome.</p>
+        
+        <h2 class="content-subtitle">Key Facts</h2>
+        <ul class="content-list">
+          <li>It's the most common chromosomal condition</li>
+          <li>Occurs in about 1 in every 1,000 babies born</li>
+          <li>Can affect people of all ethnic and social backgrounds</li>
+          <li>The risk increases with maternal age, but can occur at any age</li>
+          <li>It's a lifelong condition but not a disease</li>
+        </ul>
+        
+        <div class="info-box">
+          <p><strong>Important:</strong> People with Down's syndrome can lead active, healthy and independent lives into their 60s, 70s and beyond with proper support and opportunities.</p>
+        </div>
+      </div>
+
+      <div id="living-with-downs-syndrome" class="content-section">
+        <h1 class="content-title">Living with Down's Syndrome</h1>
+        <p class="content-text">There are increasing opportunities and support in education, work and housing for people with Down's syndrome, enabling them to live fulfilling lives as part of their families and communities.</p>
+        
+        <h2 class="content-subtitle">Education and Development</h2>
+        <ul class="content-list">
+          <li>Most people have mild to moderate learning disabilities</li>
+          <li>Some may have more complex needs</li>
+          <li>Many children attend mainstream schools with additional support</li>
+          <li>Early intervention programs can significantly help development</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Independence and Lifestyle</h2>
+        <p class="content-text">With proper support, people with Down's syndrome can:</p>
+        <ul class="content-list">
+          <li>Live independently or with minimal support</li>
+          <li>Have meaningful employment</li>
+          <li>Form relationships and social connections</li>
+          <li>Participate in community activities</li>
+          <li>Develop hobbies and interests</li>
+        </ul>
+        
+        <div class="success-box">
+          <p><strong>Positive outlook:</strong> Evidence suggests most families of people with Down's syndrome feel satisfied with their lives and report positive experiences.</p>
+        </div>
+        
+        <h2 class="content-subtitle">Congenital Condition Register</h2>
+        <p class="content-text">Babies with Down's syndrome are included in the secure congenital and rare condition (CARDRISS) register maintained by Public Health Scotland. This helps:</p>
+        <ul class="content-list">
+          <li>Track prevalence of the condition</li>
+          <li>Plan and improve health and care services</li>
+          <li>Support research and service development</li>
+        </ul>
+      </div>
+
+      <div id="health-considerations" class="content-section">
+        <h1 class="content-title">Health Considerations</h1>
+        <p class="content-text">While many children with Down's syndrome have similar health conditions to all children, some health aspects require special attention.</p>
+        
+        <h2 class="content-subtitle">Common Health Considerations</h2>
+        <ul class="content-list">
+          <li><strong>Heart issues:</strong> Around half of children may have heart conditions, though fewer than 1 in 5 need surgery</li>
+          <li><strong>Hearing and vision:</strong> Increased likelihood of reduced hearing or vision</li>
+          <li><strong>Muscle tone:</strong> May experience hypotonia (low muscle tone)</li>
+          <li><strong>Digestion:</strong> Potential for digestive issues</li>
+          <li><strong>Thyroid function:</strong> Higher risk of thyroid problems</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Positive Health Aspects</h2>
+        <p class="content-text">Interestingly, people with Down's syndrome have:</p>
+        <ul class="content-list">
+          <li>Lower risk of developing some cancers</li>
+          <li>Reduced risk of certain types of heart disease</li>
+          <li>Lower incidence of dental cavities</li>
+        </ul>
+        
+        <div class="warning-box">
+          <p><strong>Health monitoring:</strong> Regular health checks are essential to identify and manage any health conditions early. This includes cardiac, hearing, vision, and thyroid screenings.</p>
+        </div>
+        
+        <h2 class="content-subtitle">Life Expectancy</h2>
+        <p class="content-text">Down's syndrome is not a life-limiting condition. With modern healthcare and support:</p>
+        <ul class="content-list">
+          <li>Life expectancy has increased significantly</li>
+          <li>Many people live into their 60s and 70s</li>
+          <li>Quality of life continues to improve with better support systems</li>
+        </ul>
+      </div>
+
+      <div id="screening" class="content-section">
+        <h1 class="content-title">Screening for Down's Syndrome</h1>
+        <p class="content-text">During pregnancy, screening tests are offered to assess the likelihood of the baby having Down's syndrome.</p>
+        
+        <h2 class="content-subtitle">Screening Availability</h2>
+        <ul class="content-list">
+          <li>Available to all pregnant women regardless of age</li>
+          <li>Offered as part of routine prenatal care</li>
+          <li>Completely voluntary - you can choose whether to have the tests</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Screening Methods</h2>
+        <p class="content-text">The main screening approaches include:</p>
+        <ul class="content-list">
+          <li><strong>Combined test:</strong> Blood test and nuchal translucency (NT) scan</li>
+          <li><strong>Non-invasive prenatal testing (NIPT):</strong> Blood test analyzing fetal DNA</li>
+          <li><strong>Diagnostic tests:</strong> Chorionic villus sampling (CVS) or amniocentesis for confirmation</li>
+        </ul>
+        
+        <div class="info-box">
+          <p><strong>Important note:</strong> Screening tests assess probability, not certainty. Only diagnostic tests can provide definitive results, and these carry a small risk of miscarriage.</p>
+        </div>
+      </div>
+
+      <div id="support-resources" class="content-section">
+        <h1 class="content-title">Support & Resources</h1>
+        <p class="content-text">Numerous organizations and resources are available to support individuals with Down's syndrome and their families.</p>
+        
+        <h2 class="content-subtitle">Support Organizations</h2>
+        <ul class="content-list">
+          <li><strong>Down's Syndrome Scotland:</strong> Provides comprehensive information and support services</li>
+          <li><strong>Local health services:</strong> Offer developmental support and healthcare</li>
+          <li><strong>Educational support:</strong> Schools provide additional learning support</li>
+          <li><strong>Community groups:</strong> Connect families for mutual support</li>
+        </ul>
+        
+        <h2 class="content-subtitle">Types of Support Available</h2>
+        <ul class="content-list">
+          <li>Early intervention programs for infants and toddlers</li>
+          <li>Educational support and inclusion programs</li>
+          <li>Transition support for moving into adulthood</li>
+          <li>Employment assistance and workplace support</li>
+          <li>Housing and independent living support</li>
+          <li>Social and recreational opportunities</li>
+        </ul>
+        
+        <div class="success-box">
+          <p><strong>Remember:</strong> Every person with Down's syndrome is unique with their own strengths, talents, and personality. With proper support and opportunities, they can achieve their full potential and lead fulfilling lives.</p>
+        </div>
+        
+        <h2 class="content-subtitle">Looking Forward</h2>
+        <p class="content-text">Society's understanding and acceptance of Down's syndrome continues to improve, with:</p>
+        <ul class="content-list">
+          <li>Better educational inclusion</li>
+          <li>Increased employment opportunities</li>
+          <li>Greater social acceptance and awareness</li>
+          <li>Ongoing research into supporting development and health</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+        
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+        
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

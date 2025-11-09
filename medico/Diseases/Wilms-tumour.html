@@ -1,0 +1,631 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Wilms' Tumour Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Wilms' Tumour</h2>
+      <div class="nav-points">
+        <a href="#about-wilms" class="nav-point active">About Wilms' Tumour</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#staging" class="nav-point">Staging</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#side-effects" class="nav-point">Side Effects</a>
+        <a href="#follow-up" class="nav-point">Follow-up Care</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-wilms" class="content-section">
+        <h1 class="content-title">About Wilms' Tumour</h1>
+        <p class="content-text">Wilms' tumour is a type of kidney cancer in children. It most often affects children under the age of 5.</p>
+
+        <div class="info-box">
+          <p><strong>Positive note:</strong> More children than ever are surviving childhood cancer. There are new and better drugs and treatments, and we can now also work to reduce the after-effects of having had cancer in the past.</p>
+        </div>
+
+        <p class="content-text">Wilms' tumour is a type of kidney cancer that was named after Dr Max Wilms, who first described it. It's thought to come from very specialised cells in the embryo known as metanephric blastema.</p>
+        <p class="content-text">The kidneys are a pair of organs found at the back of the abdomen. They clean the blood by removing excess fluids and waste products, which are then converted into urine.</p>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> It is devastating to hear that your child has cancer, and at times it can feel overwhelming. There are many healthcare professionals and support organisations to help you through this difficult time.</p>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes</h1>
+        <p class="content-text">In most children, the causes of Wilms' tumour are unknown. Very rarely, people who develop Wilms' tumour have other specific conditions which are present at birth (congenital malformations).</p>
+        <p class="content-text">These include:</p>
+        <ul class="content-list">
+          <li>The lack of an iris in the eye (aniridia)</li>
+          <li>Abnormalities of the genitals</li>
+          <li>A condition where one side of the body is slightly larger than the other (hemihypertrophy)</li>
+        </ul>
+        <p class="content-text">In 1 in 100 people with Wilms' tumour, another family member will also have Wilms' tumour.</p>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Signs and Symptoms</h1>
+        <p class="content-text">The most common symptom is a swollen abdomen, which is usually painless. Sometimes a parent or carer may feel a lump in the abdomen which can be quite large.</p>
+        <p class="content-text">Other symptoms may include:</p>
+        <ul class="content-list">
+          <li>Blood in your child's urine (pee)</li>
+          <li>Raised blood pressure</li>
+          <li>High temperature (fever)</li>
+          <li>Upset stomach</li>
+          <li>Weight loss or lack of appetite</li>
+          <li>Pain (if the tumour bleeds and irritates the kidney)</li>
+        </ul>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">How Wilms' Tumour is Diagnosed</h1>
+        <p class="content-text">A variety of tests and investigations may be needed to diagnose a Wilms' tumour.</p>
+        <p class="content-text">Diagnostic procedures include:</p>
+        <ul class="content-list">
+          <li><strong>Abdominal ultrasound scan</strong> - usually the first test done</li>
+          <li><strong>MRI and/or CT scan</strong> - of the abdomen and chest to identify tumour location and spread</li>
+          <li><strong>Urine and blood samples</strong> - to check kidney function and general health</li>
+          <li><strong>Biopsy</strong> - where a sample of tissue is taken from the tumour to confirm diagnosis</li>
+        </ul>
+      </div>
+
+      <div id="staging" class="content-section">
+        <h1 class="content-title">Staging</h1>
+        <p class="content-text">The stage of a cancer is a term used to describe its size and whether it has spread beyond its original site. Knowing the particular type and the stage of the cancer helps doctors decide on the most appropriate treatment.</p>
+
+        <h2 class="content-subtitle">Stage 1</h2>
+        <p class="content-text">The tumour is only affecting the kidney and has not begun to spread. It can be completely removed with surgery.</p>
+
+        <h2 class="content-subtitle">Stage 2</h2>
+        <p class="content-text">The tumour has begun to spread beyond the kidney to nearby structures, but it's still possible to remove it completely with surgery.</p>
+
+        <h2 class="content-subtitle">Stage 3</h2>
+        <p class="content-text">The tumour has spread beyond the kidney; either because the tumour has burst before (or during) the operation, has spread to lymph glands (nodes), or has not been completely removed by surgery.</p>
+
+        <h2 class="content-subtitle">Stage 4</h2>
+        <p class="content-text">The tumour has spread to other parts of the body such as the lungs or liver. Tumours in other parts of the body are known as metastases.</p>
+
+        <h2 class="content-subtitle">Stage 5</h2>
+        <p class="content-text">There are tumours in both kidneys (bilateral Wilms' tumour).</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> If the tumour comes back after initial treatment, this is known as recurrent cancer or relapse.</p>
+        </div>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment</h1>
+        <p class="content-text">Treatment is planned by specialists in children's tumours and cancers and may include chemotherapy, radiotherapy, or surgery.</p>
+
+        <h2 class="content-subtitle">Surgery</h2>
+        <p class="content-text">All children with Wilms' tumour will have surgery. This may involve:</p>
+        <ul class="content-list">
+          <li><strong>Biopsy</strong> - taking a small sample of cells to confirm diagnosis</li>
+          <li><strong>Nephrectomy</strong> - removing the affected kidney (except in very young children under 6 months)</li>
+        </ul>
+
+        <h2 class="content-subtitle">Risk Groups</h2>
+        <p class="content-text">After examination, Wilms' tumours are divided into risk groups:</p>
+        <ul class="content-list">
+          <li><strong>LOW RISK</strong> - requires less treatment</li>
+          <li><strong>STANDARD/INTERMEDIATE RISK</strong> - most common type</li>
+          <li><strong>HIGH RISK</strong> - includes anaplastic and blastemal types, requires more intensive chemotherapy</li>
+        </ul>
+
+        <h2 class="content-subtitle">Chemotherapy</h2>
+        <p class="content-text">Chemotherapy uses anti-cancer drugs to destroy cancer cells, usually given intravenously. It may be given before surgery (neoadjuvant) or after surgery (adjuvant).</p>
+
+        <h2 class="content-subtitle">Radiotherapy</h2>
+        <p class="content-text">Radiotherapy uses high-energy rays to destroy cancer cells. Not all children need radiotherapy - it depends on the stage and response to chemotherapy.</p>
+
+        <h2 class="content-subtitle">Bilateral Wilms' Tumour</h2>
+        <p class="content-text">In about 1 in 20 cases, Wilms' tumour affects both kidneys. Treatment aims to remove as much cancer as possible while preserving healthy kidney tissue.</p>
+      </div>
+
+      <div id="side-effects" class="content-section">
+        <h1 class="content-title">Side Effects of Treatment</h1>
+        <p class="content-text">Treatment for Wilms' tumour often causes side effects that your child's doctor will discuss with you before treatment starts.</p>
+
+        <h2 class="content-subtitle">Common Side Effects</h2>
+        <ul class="content-list">
+          <li>Nausea and vomiting</li>
+          <li>Hair loss</li>
+          <li>Bruising and bleeding</li>
+          <li>Tiredness</li>
+          <li>Diarrhea</li>
+          <li>Increased risk of infection</li>
+        </ul>
+
+        <h2 class="content-subtitle">Late Side Effects</h2>
+        <p class="content-text">A small number of children may develop late side effects years later, including:</p>
+        <ul class="content-list">
+          <li>Reduction in bone growth</li>
+          <li>Changes in heart and lung function</li>
+          <li>Slight increased risk of developing another cancer</li>
+          <li>Rare cases of infertility</li>
+        </ul>
+      </div>
+
+      <div id="follow-up" class="content-section">
+        <h1 class="content-title">Follow-up Care</h1>
+        <p class="content-text">Most children with Wilms' tumour are cured. If the cancer comes back, it's usually within the first 2 years.</p>
+
+        <div class="success-box">
+          <p><strong>Positive outcome:</strong> When one kidney is removed, the other will be able to work normally and can take over the work of the other kidney. Very few children have long-term kidney problems.</p>
+        </div>
+
+        <p class="content-text">Your child will have regular check-ups to look for any recurrence or problems following treatment.</p>
+
+        <h2 class="content-subtitle">Emotional Support</h2>
+        <p class="content-text">As a parent, the fact that your child has cancer is one of the worst situations you can be faced with. You may have many emotions such as fear, guilt, sadness, anger and uncertainty.</p>
+        <p class="content-text">These are all normal reactions and are part of the process that many parents go through at such a difficult time.</p>
+
+        <div class="info-box">
+          <p><strong>Support available:</strong> There are many healthcare professionals and support organisations to help you through this difficult time. Don't hesitate to ask for help when you need it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

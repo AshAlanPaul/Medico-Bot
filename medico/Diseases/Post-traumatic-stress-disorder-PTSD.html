@@ -1,0 +1,647 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - PTSD Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .call-to-action {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .action-link:hover {
+      background: rgba(16, 185, 129, 0.2);
+      transform: translateX(5px);
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">PTSD Information</h2>
+      <div class="nav-points">
+        <a href="#introduction" class="nav-point active">Introduction</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#complex-ptsd" class="nav-point">Complex PTSD</a>
+        <a href="#self-help-guide" class="nav-point">Self-help Guide</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="introduction" class="content-section">
+        <h1 class="content-title">Post-Traumatic Stress Disorder (PTSD)</h1>
+        <p class="content-text">Post-traumatic stress disorder (PTSD) is an anxiety disorder caused by very stressful, frightening or distressing events.</p>
+
+        <p class="content-text">Someone with PTSD often relives the traumatic event through nightmares and flashbacks, and may experience feelings of isolation, irritability and guilt.</p>
+
+        <p class="content-text">They may also have problems sleeping, such as insomnia, and find concentrating difficult.</p>
+
+        <h2 class="content-subtitle">Causes of PTSD</h2>
+        <p class="content-text">The type of events that can cause PTSD include:</p>
+        <ul class="content-list">
+          <li>Serious road accidents</li>
+          <li>Violent personal assaults, such as sexual assault, mugging or robbery</li>
+          <li>Prolonged sexual abuse, violence or severe neglect</li>
+          <li>Witnessing violent deaths</li>
+          <li>Military combat</li>
+          <li>Being held hostage</li>
+          <li>Terrorist attacks</li>
+          <li>Natural disasters, such as severe floods, earthquakes or tsunamis</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>When to seek help:</strong> It's normal to experience upsetting thoughts after trauma, but if symptoms persist beyond 4 weeks, consult your GP.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of PTSD</h1>
+        <p class="content-text">The symptoms of PTSD can have a significant impact on your day-to-day life and generally fall into these categories:</p>
+
+        <h2 class="content-subtitle">Re-experiencing</h2>
+        <ul class="content-list">
+          <li>Flashbacks</li>
+          <li>Nightmares</li>
+          <li>Repetitive and distressing images or sensations</li>
+          <li>Physical sensations – such as pain, sweating, nausea or trembling</li>
+        </ul>
+
+        <h2 class="content-subtitle">Avoidance and Emotional Numbing</h2>
+        <ul class="content-list">
+          <li>Avoiding people or places that remind you of the trauma</li>
+          <li>Avoiding talking about your experience</li>
+          <li>Emotional numbing and feeling disconnected</li>
+          <li>Isolation and withdrawal from activities</li>
+        </ul>
+
+        <h2 class="content-subtitle">Hyperarousal (Feeling 'On Edge')</h2>
+        <ul class="content-list">
+          <li>Irritability</li>
+          <li>Angry outbursts</li>
+          <li>Sleeping problems (insomnia)</li>
+          <li>Difficulty concentrating</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Children with PTSD</strong> may show symptoms like bedwetting, separation anxiety, or re-enacting trauma through play.</p>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of PTSD</h1>
+        <p class="content-text">PTSD develops in about 1 in 3 people who experience severe trauma. Certain factors increase susceptibility:</p>
+
+        <ul class="content-list">
+          <li>Previous depression or anxiety</li>
+          <li>Lack of support from family or friends</li>
+          <li>Genetic factors and family history</li>
+          <li>Previous traumatic experiences</li>
+        </ul>
+
+        <h2 class="content-subtitle">Biological Factors</h2>
+        <p class="content-text">People with PTSD have been found to have:</p>
+        <ul class="content-list">
+          <li>Abnormal levels of stress hormones</li>
+          <li>Changes in brain structure and function</li>
+          <li>Smaller hippocampus (memory and emotion center)</li>
+        </ul>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment for PTSD</h1>
+        <p class="content-text">The main treatments for PTSD are psychotherapy and medication. Treatment can be successful even years after the traumatic event.</p>
+
+        <h2 class="content-subtitle">Psychotherapy</h2>
+        <ul class="content-list">
+          <li><strong>Trauma-focused CBT</strong> – 8-12 weekly sessions to process traumatic memories</li>
+          <li><strong>EMDR</strong> – Eye movement desensitization and reprocessing</li>
+          <li><strong>Group therapy</strong> – Sharing experiences with others who have PTSD</li>
+        </ul>
+
+        <h2 class="content-subtitle">Medication</h2>
+        <p class="content-text">Antidepressants may be prescribed when:</p>
+        <ul class="content-list">
+          <li>Psychological treatment isn't preferred or effective</li>
+          <li>There's ongoing threat of further trauma</li>
+          <li>Underlying depression affects treatment ability</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Watchful waiting</strong> may be recommended for mild symptoms, as 2 in 3 people improve naturally within weeks.</p>
+        </div>
+      </div>
+
+      <div id="complex-ptsd" class="content-section">
+        <h1 class="content-title">Complex PTSD</h1>
+        <p class="content-text">Complex PTSD may be diagnosed in adults or children who have repeatedly experienced traumatic events, such as violence, neglect or abuse.</p>
+
+        <h2 class="content-subtitle">Symptoms of Complex PTSD</h2>
+        <ul class="content-list">
+          <li>Feelings of shame or guilt</li>
+          <li>Difficulty controlling emotions</li>
+          <li>Periods of dissociation (losing attention)</li>
+          <li>Physical symptoms like headaches and stomach aches</li>
+          <li>Relationship difficulties</li>
+          <li>Destructive or risky behavior</li>
+        </ul>
+
+        <h2 class="content-subtitle">Treatment Approach</h2>
+        <p class="content-text">Treatment typically occurs in three stages:</p>
+        <ul class="content-list">
+          <li><strong>Stabilization</strong> – Learning to control feelings and use grounding techniques</li>
+          <li><strong>Trauma-focused therapy</strong> – Processing traumatic memories</li>
+          <li><strong>Reintegration</strong> – Developing better relationships and life skills</li>
+        </ul>
+      </div>
+
+      <div id="self-help-guide" class="content-section">
+        <h1 class="content-title">Self-help Guide</h1>
+        <p class="content-text">If you think you're experiencing PTSD or complex PTSD, it's important to visit your GP. Self-help strategies can help manage symptoms while waiting for professional assessment.</p>
+
+        <div class="call-to-action">
+          <h3 class="content-subtitle">PTSD and CPTSD Self-help Guide</h3>
+          <p class="content-text">Work through a self-help guide for PTSD and CPTSD based on Trauma-Focused Cognitive Therapy (TF-CT).</p>
+          <a href="/illnesses-and-conditions/mental-health/mental-health-self-help-guides/ptsd-and-cptsd-self-help-guide/" class="action-link">
+            Access PTSD and CPTSD self-help guide
+          </a>
+        </div>
+
+        <p class="content-text">The guide helps you understand your symptoms and develop strategies to manage or recover from PTSD or CPTSD.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

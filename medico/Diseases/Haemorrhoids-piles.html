@@ -1,0 +1,628 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Haemorrhoids Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Haemorrhoids Information</h2>
+      <div class="nav-points">
+        <a href="#about-haemorrhoids" class="nav-point active">About Haemorrhoids</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#prevention" class="nav-point">Prevention & Treatment</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Medical Treatment</a>
+        <a href="#surgery" class="nav-point">Surgery Options</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-haemorrhoids" class="content-section">
+        <h1 class="content-title">Haemorrhoids (Piles)</h1>
+        <p class="content-text">Haemorrhoids, also known as piles, are swellings containing enlarged blood vessels that are found inside or around the bottom (the rectum and anus).</p>
+
+        <p class="content-text">In many cases, haemorrhoids don't cause symptoms, and some people don't even realise they have them. However, when symptoms do occur, they may include:</p>
+
+        <ul class="content-list">
+          <li>Bleeding after passing a stool (the blood is usually bright red)</li>
+          <li>Itchy bottom</li>
+          <li>A lump hanging down outside of the anus, which may need to be pushed back in after passing a stool</li>
+          <li>A mucus discharge after passing a stool</li>
+          <li>Soreness, redness and swelling around your anus</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> Haemorrhoids aren't usually painful, unless their blood supply slows down or is interrupted.</p>
+        </div>
+
+        <h2 class="content-subtitle">When to Seek Medical Advice</h2>
+        <p class="content-text">See your GP if you have persistent or severe symptoms of haemorrhoids. You should always get any rectal bleeding checked out, so your doctor can rule out more potentially serious causes.</p>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> Some people with haemorrhoids are reluctant to see their GP. However, there's no need to be embarrassed, because GPs are very used to diagnosing and treating haemorrhoids.</p>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of Haemorrhoids</h1>
+        <p class="content-text">The exact cause of haemorrhoids is unclear, but they're associated with increased pressure in the blood vessels in and around your anus. This pressure can cause the blood vessels in your back passage to become swollen and inflamed.</p>
+
+        <p class="content-text">Many cases are thought to be caused by too much straining on the toilet, due to prolonged constipation – this is often due to a lack of fibre in a person's diet. Chronic (long-term) diarrhoea can also make you more vulnerable to getting haemorrhoids.</p>
+
+        <h2 class="content-subtitle">Risk Factors</h2>
+        <p class="content-text">Other factors that might increase your risk of developing haemorrhoids include:</p>
+        <ul class="content-list">
+          <li>Being overweight or obese</li>
+          <li>Age – as you get older, your body's supporting tissues get weaker</li>
+          <li>Pregnancy – which can place increased pressure on your pelvic blood vessels</li>
+          <li>Having a family history of haemorrhoids</li>
+          <li>Regularly lifting heavy objects</li>
+          <li>A persistent cough or repeated vomiting</li>
+          <li>Sitting down for long periods of time</li>
+        </ul>
+      </div>
+
+      <div id="prevention" class="content-section">
+        <h1 class="content-title">Prevention and Treatment</h1>
+        <p class="content-text">Haemorrhoid symptoms often settle down after a few days, without needing treatment. Haemorrhoids that occur during pregnancy often get better after giving birth.</p>
+
+        <p class="content-text">Making lifestyle changes to reduce the strain on the blood vessels in and around your anus is often recommended:</p>
+
+        <ul class="content-list">
+          <li><strong>Gradually increase fibre in your diet</strong> – good sources include fruit, vegetables, wholegrain rice, wholewheat pasta and bread, pulses and beans, seeds, nuts and oats</li>
+          <li><strong>Drink plenty of fluid</strong> – particularly water, but avoiding or cutting down on caffeine and alcohol</li>
+          <li><strong>Don't delay going to the toilet</strong> – ignoring the urge can make stools harder and drier</li>
+          <li><strong>Avoid medication that causes constipation</strong> – such as painkillers that contain codeine</li>
+          <li><strong>Lose weight</strong> if you're overweight</li>
+          <li><strong>Exercise regularly</strong> – can help prevent constipation and reduce blood pressure</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Self-care:</strong> These measures can also reduce the risk of haemorrhoids returning, or even developing in the first place.</p>
+        </div>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosing Haemorrhoids</h1>
+        <p class="content-text">Your GP can diagnose haemorrhoids by examining your back passage to check for swollen blood vessels.</p>
+
+        <h2 class="content-subtitle">Rectal Examination</h2>
+        <p class="content-text">Your GP may examine the outside of your anus to see if you have visible haemorrhoids, and they may also carry out an internal examination called a digital rectal examination (DRE).</p>
+
+        <h2 class="content-subtitle">Proctoscopy</h2>
+        <p class="content-text">In some cases, further internal examination using a proctoscope may be needed. A proctoscope is a thin hollow tube with a light on the end that's inserted into your anus, allowing your doctor to see your entire anal canal.</p>
+
+        <h2 class="content-subtitle">Types of Haemorrhoids</h2>
+        <p class="content-text">Haemorrhoids can be classified based on their size and severity:</p>
+        <ul class="content-list">
+          <li><strong>First degree</strong> – small swellings on the inside lining of the anus</li>
+          <li><strong>Second degree</strong> – larger swellings that may come out when going to the toilet</li>
+          <li><strong>Third degree</strong> – lumps that hang down and can be pushed back inside</li>
+          <li><strong>Fourth degree</strong> – larger lumps that hang down and can't be pushed back inside</li>
+        </ul>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Medical Treatment Options</h1>
+        <p class="content-text">Various treatments are available for haemorrhoids, ranging from simple self-care measures to medical procedures.</p>
+
+        <h2 class="content-subtitle">Over-the-Counter Treatments</h2>
+        <p class="content-text">Creams, ointments and suppositories are available from pharmacies without a prescription to relieve swelling and discomfort.</p>
+
+        <div class="warning-box">
+          <p><strong>Usage note:</strong> These medicines should only be used for five to seven days at a time. If used longer, they may irritate the sensitive skin around your anus.</p>
+        </div>
+
+        <h2 class="content-subtitle">Non-Surgical Procedures</h2>
+
+        <h3 class="content-subtitle">Banding</h3>
+        <p class="content-text">Banding involves placing a very tight elastic band around the base of your haemorrhoids to cut off their blood supply. The haemorrhoids should then fall off within about a week.</p>
+
+        <h3 class="content-subtitle">Injections (Sclerotherapy)</h3>
+        <p class="content-text">A chemical solution is injected into the blood vessels in your back passage, which hardens the tissue of the haemorrhoid and causes it to shrink over 4-6 weeks.</p>
+
+        <h3 class="content-subtitle">Electrotherapy</h3>
+        <p class="content-text">An electric current is passed through a small metal probe placed at the base of the haemorrhoid, causing the blood supply to coagulate and the haemorrhoid to shrink.</p>
+
+        <div class="info-box">
+          <p><strong>Effectiveness:</strong> These non-surgical treatments are effective for most cases of haemorrhoids and have quicker recovery times than surgery.</p>
+        </div>
+      </div>
+
+      <div id="surgery" class="content-section">
+        <h1 class="content-title">Surgery for Haemorrhoids</h1>
+        <p class="content-text">About 1 in 10 people with haemorrhoids will eventually need surgery. Surgery is particularly useful for haemorrhoids that have developed in sensitive areas or haven't responded to other treatments.</p>
+
+        <h2 class="content-subtitle">Haemorrhoidectomy</h2>
+        <p class="content-text">An operation to remove haemorrhoids, usually carried out under general anaesthetic. This is the most effective treatment with the lowest chance of haemorrhoids returning.</p>
+
+        <h2 class="content-subtitle">Haemorrhoidal Artery Ligation</h2>
+        <p class="content-text">An operation to reduce the blood flow to your haemorrhoids using ultrasound guidance to locate and stitch closed the blood vessels supplying the haemorrhoids.</p>
+
+        <h2 class="content-subtitle">Stapling</h2>
+        <p class="content-text">Also known as stapled haemorrhoidopexy, this procedure staples part of the anorectum to reduce prolapse and blood supply to the haemorrhoids.</p>
+
+        <h2 class="content-subtitle">Risks of Surgery</h2>
+        <p class="content-text">Although serious complications are rare, they can include:</p>
+        <ul class="content-list">
+          <li>Bleeding or passing blood clots</li>
+          <li>Infection</li>
+          <li>Urinary retention</li>
+          <li>Faecal incontinence</li>
+          <li>Anal fistula</li>
+          <li>Stenosis (narrowing of the anal canal)</li>
+        </ul>
+
+        <div class="danger-box">
+          <p><strong>Seek medical advice if after surgery you experience:</strong> excessive bleeding, high temperature, problems urinating, or worsening pain or swelling around your anus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

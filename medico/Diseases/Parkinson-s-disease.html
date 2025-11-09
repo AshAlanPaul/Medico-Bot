@@ -1,0 +1,640 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Parkinson's Disease Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .hamburger {
+        top: 15px;
+        left: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Parkinson's Disease</h2>
+      <div class="nav-points">
+        <a href="#about-parkinsons-disease" class="nav-point active">About Parkinson's Disease</a>
+        <a href="#symptoms-of-parkinsons-disease" class="nav-point">Symptoms</a>
+        <a href="#causes-of-parkinsons-disease" class="nav-point">Causes</a>
+        <a href="#diagnosing-parkinsons-disease" class="nav-point">Diagnosis</a>
+        <a href="#treating-parkinsons-disease" class="nav-point">Treatment</a>
+        <a href="#living-with-parkinsons-disease" class="nav-point">Living with Parkinson's</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-parkinsons-disease" class="content-section">
+        <h1 class="content-title">About Parkinson's Disease</h1>
+        <p class="content-text">Parkinson's disease is a condition in which parts of the brain become progressively damaged over many years.</p>
+
+        <p class="content-text">The three main symptoms of Parkinson's disease are:</p>
+        <ul class="content-list">
+          <li>Involuntary shaking of particular parts of the body (tremor)</li>
+          <li>Slow movement</li>
+          <li>Stiff and inflexible muscles</li>
+        </ul>
+
+        <p class="content-text">A person with Parkinson's disease can also experience a wide range of other physical and psychological symptoms, including:</p>
+        <ul class="content-list">
+          <li>Depression and anxiety</li>
+          <li>Balance problems – this may increase the chance of a fall</li>
+          <li>Loss of sense of smell (anosmia)</li>
+          <li>Problems sleeping (insomnia)</li>
+          <li>Memory problems</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Seeking medical advice:</strong> See your GP if you're concerned that you may have symptoms of Parkinson's disease. Your GP will ask about the problems you're experiencing and may refer you to a specialist for further tests.</p>
+        </div>
+
+        <h2 class="content-subtitle">Who's affected?</h2>
+        <p class="content-text">It's thought around 1 in 500 people are affected by Parkinson's disease, which means there are an estimated 127,000 people in the UK with the condition.</p>
+
+        <p class="content-text">Most people with Parkinson's start to develop symptoms when they're over 50, although around 1 in 20 people with the condition first experience symptoms when they're under 40.</p>
+
+        <p class="content-text">Men are slightly more likely to get Parkinson's disease than women.</p>
+      </div>
+
+      <div id="symptoms-of-parkinsons-disease" class="content-section">
+        <h1 class="content-title">Symptoms of Parkinson's Disease</h1>
+        <p class="content-text">The symptoms of Parkinson's disease usually develop gradually and are mild at first.</p>
+
+        <h2 class="content-subtitle">Main Symptoms</h2>
+        <p class="content-text">The three main symptoms of Parkinson's disease affect physical movement:</p>
+        <ul class="content-list">
+          <li><strong>Tremor</strong> – shaking, which usually begins in the hand or arm and is more likely to occur when the limb is relaxed and resting</li>
+          <li><strong>Slowness of movement (bradykinesia)</strong> – where physical movements are much slower than normal, which can make everyday tasks difficult</li>
+          <li><strong>Muscle stiffness (rigidity)</strong> – stiffness and tension in the muscles, which can make it difficult to move around</li>
+        </ul>
+
+        <h2 class="content-subtitle">Other Physical Symptoms</h2>
+        <ul class="content-list">
+          <li>Balance problems</li>
+          <li>Loss of sense of smell (anosmia)</li>
+          <li>Nerve pain</li>
+          <li>Problems with urination</li>
+          <li>Constipation</li>
+          <li>Swallowing difficulties (dysphagia)</li>
+          <li>Excessive sweating (hyperhidrosis)</li>
+        </ul>
+
+        <h2 class="content-subtitle">Cognitive and Psychiatric Symptoms</h2>
+        <ul class="content-list">
+          <li>Depression and anxiety</li>
+          <li>Mild cognitive impairment</li>
+          <li>Dementia in later stages</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>When to seek medical advice:</strong> See your GP if you're concerned you may have symptoms of Parkinson's disease. Your GP will ask about your symptoms and medical history to help them decide whether referral to a specialist is necessary.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-parkinsons-disease" class="content-section">
+        <h1 class="content-title">Causes of Parkinson's Disease</h1>
+        <p class="content-text">Parkinson's disease is caused by a loss of nerve cells in the part of the brain called the substantia nigra.</p>
+
+        <p class="content-text">Nerve cells in this part of the brain are responsible for producing a chemical called dopamine. Dopamine acts as a messenger between the parts of the brain and nervous system that help control and co-ordinate body movements.</p>
+
+        <p class="content-text">If these nerve cells die or become damaged, the amount of dopamine in the brain is reduced. This means the part of the brain controlling movement can't work as well as normal, causing movements to become slow and abnormal.</p>
+
+        <h2 class="content-subtitle">What causes the loss of nerve cells?</h2>
+        <p class="content-text">It's not known why the loss of nerve cells associated with Parkinson's disease occurs, although research is ongoing to identify potential causes.</p>
+
+        <p class="content-text">Currently, it's believed a combination of genetic changes and environmental factors may be responsible for the condition.</p>
+
+        <h2 class="content-subtitle">Genetics</h2>
+        <p class="content-text">A number of genetic factors have been shown to increase a person's risk of developing Parkinson's disease. Parkinson's disease can run in families as a result of faulty genes being passed to a child by their parents, although this is rare.</p>
+
+        <h2 class="content-subtitle">Environmental Factors</h2>
+        <p class="content-text">Some researchers feel environmental factors may increase a person's risk of developing Parkinson's disease. It's been suggested that pesticides and herbicides used in farming and traffic or industrial pollution may contribute to the condition, although the evidence is inconclusive.</p>
+      </div>
+
+      <div id="diagnosing-parkinsons-disease" class="content-section">
+        <h1 class="content-title">Diagnosing Parkinson's Disease</h1>
+        <p class="content-text">No tests can conclusively show that you have Parkinson's disease. Your doctor will base a diagnosis on your symptoms, medical history and a detailed physical examination.</p>
+
+        <h2 class="content-subtitle">Referral to a Specialist</h2>
+        <p class="content-text">If your GP suspects Parkinson's disease, you'll be referred to a specialist. This will usually be a neurologist or geriatrician.</p>
+
+        <p class="content-text">The specialist will most likely ask you to perform a number of physical exercises so they can assess whether you have any problems with movement.</p>
+
+        <p class="content-text">A diagnosis of Parkinson's disease is likely if you have at least two of the three following symptoms:</p>
+        <ul class="content-list">
+          <li>Shaking or tremor in a part of your body that usually only occurs at rest</li>
+          <li>Slowness of movement (bradykinesia)</li>
+          <li>Muscle stiffness (rigidity)</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Support:</strong> Being told you have Parkinson's disease can be emotionally distressing. It's important that you have the support of your family and a care team who will be able to help you come to terms with the diagnosis.</p>
+        </div>
+      </div>
+
+      <div id="treating-parkinsons-disease" class="content-section">
+        <h1 class="content-title">Treating Parkinson's Disease</h1>
+        <p class="content-text">Although there's currently no cure for Parkinson's disease, treatments are available to help reduce the main symptoms and maintain quality of life for as long as possible.</p>
+
+        <h2 class="content-subtitle">Supportive Therapies</h2>
+        <ul class="content-list">
+          <li><strong>Physiotherapy</strong> – to relieve muscle stiffness and joint pain</li>
+          <li><strong>Occupational therapy</strong> – to help with everyday tasks and maintain independence</li>
+          <li><strong>Speech and language therapy</strong> – for swallowing and speech problems</li>
+          <li><strong>Diet advice</strong> – to manage symptoms like constipation and low blood pressure</li>
+        </ul>
+
+        <h2 class="content-subtitle">Medication</h2>
+        <p class="content-text">Three main types of medication are commonly used:</p>
+        <ul class="content-list">
+          <li><strong>Levodopa</strong> – most people eventually need this medication</li>
+          <li><strong>Dopamine agonists</strong> – act as a substitute for dopamine</li>
+          <li><strong>Monoamine oxidase-B inhibitors</strong> – help increase dopamine levels</li>
+        </ul>
+
+        <h2 class="content-subtitle">Surgery</h2>
+        <p class="content-text">Deep brain stimulation involves surgically implanting a pulse generator that stimulates specific areas in your brain. Although surgery doesn't cure Parkinson's disease, it can ease the symptoms for some people.</p>
+
+        <div class="danger-box">
+          <p><strong>Important:</strong> Always consult with your healthcare specialist before starting any new treatment or making changes to your medication regimen.</p>
+        </div>
+      </div>
+
+      <div id="living-with-parkinsons-disease" class="content-section">
+        <h1 class="content-title">Living with Parkinson's Disease</h1>
+        <p class="content-text">It's important to do what you can to stay physically and mentally healthy if you have Parkinson's disease.</p>
+
+        <h2 class="content-subtitle">Exercise and Healthy Eating</h2>
+        <p class="content-text">Regular exercise is particularly important in helping relieve muscle stiffness, improving your mood, and relieving stress.</p>
+
+        <p class="content-text">You should also try to eat a balanced diet containing all the food groups to give your body the nutrition it needs to stay healthy.</p>
+
+        <h2 class="content-subtitle">Relationships and Support</h2>
+        <p class="content-text">Being diagnosed with a long-term condition like Parkinson's disease can put a strain on you, your family and friends. Be open about how you feel, and let your family and friends know what they can do to help.</p>
+
+        <h2 class="content-subtitle">Work and Finances</h2>
+        <p class="content-text">Being diagnosed with Parkinson's doesn't mean you have to stop working. Many people with the condition keep working for years after their diagnosis.</p>
+
+        <div class="success-box">
+          <p><strong>Support resources:</strong> Parkinson's UK is the main Parkinson's support and research charity in the UK. They can offer support and advice you may need if you're living with Parkinson's disease.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

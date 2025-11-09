@@ -1,1331 +1,618 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="shortcut icon" type="x-icon" href="../../multisite.png">
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiSite-Medical Segment</title>
-    <style> 
-        nav{
-         height: 75px;
-         width: 100%;
-       }
-       label.logo{
-         color: orange;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
-       }
-       nav ul{
-         float: right;
-         margin-right:20px ;
-         
-       }
-       nav ul li{
-         display: inline-block;
-         line-height: 50px;
-         margin:0 5px;
-       }
-       nav ul li a{
-         color: aliceblue;
-         font-size: 20px;
-         padding: 10px 15px;
-         border-radius: 10px;
-       }
-       a.home,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
-       a.contact,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
- 
-       a.fe,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-       }
-       .h{
-         margin-left: 20px;
-         font-size: larger;
-         
-       }
-     
-      .Ashfaq{
-         background-color: aliceblue;
-         width: 200px;
-         margin-top: 10%;
-         margin-left: 9%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-         
-      }
-      .Evan{
-         background-color: aliceblue;
-         width: 210px;
-         margin-top: 19%;
-         margin-left: 22%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-     }
-     .Al-Raji{
-         width: 160px;
-         background-color: aliceblue;
-         margin-top: -125%;
-         margin-left: 74%;
-         height: auto;
-         border-radius: 10px;
-         border: 10px solid black;
-     }
-     .Ashfaq.Evan.Al-Raji{
-         box-sizing: border-box;
-         
-     }
-      
-      .welcome{color: gold;
-         margin-left:30%;
-         font-size: xx-large;
-         font-weight: bolder;
-         margin-top: 7%;
-      }
-      .starting{
-         color: white;
-         margin-left: 1%;
-         font-size: xx-large;
-      }
-      .history{
-         color: gold;
-         margin-left: 1%;
-         margin-top: 8%;
-      }
-      .math{
-         color: gold;
-         margin-left: 1%;
-         margin-top: 12%;
-      }
-      .m{
-         color: white;
-         margin-left: 1%;
-         font-size: x-large;
-      }
-      .SCI{
-       color: gold;
-         margin-left: 1%;
-         margin-top: 12%;
-      }
-     .h{
-       font-size: xx-large;
-       margin-top: 150%;
-       margin-left: 40%;
-       color: rgb(92, 7, 73);
-     }
-    
-       label.logo{
-         color: orange;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
-       }
-       nav ul{
-         float: right;
-         margin-right:20px ;
-         
-       }
-       nav ul li{
-         display: inline-block;
-         line-height: 50px;
-         margin:0 5px;
-       }
-       nav ul li a{
-         color: aliceblue;
-         font-size: 20px;
-         padding: 10px 15px;
-         border-radius: 10px;
-       }
-       a.home,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       }
-       a.contact,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       }
-       a.fe,a:hover{
-        background-color: darkslateblue;
-        transition: .5s;
-        text-decoration: none;
-       } a.fei,a:hover{
-        background-color: black;
-        transition: .5s;
-        text-decoration: none;
-       }
-      
- 
-       .I{
-         font-weight: bold;
-         font-size: xx-large;
-         margin-left: 4%;
-         color: brown;
-         margin-top: 6%;
-       }
-       .back{
-       background-image:url(../../s1.jpg);
-       background-size: cover;
-       background-repeat: repeat;
-       height: 30vh;
-       width: 100%;
-       border-bottom-left-radius: 15% 40%;
-       border-bottom-right-radius: 15% 40%;
-       overflow: hidden;
-     }
-     .bac{
-       background-image:url(../../S2.png);
-       background-size: cover;
-       background-repeat: repeat;
-       height: 50vh;
-       width: 100%;
-       border-bottom-left-radius: 40% 40%;
-       border-top-right-radius: 40% 40%;
-       overflow: hidden;
-     }nav ul li.abc{
-         display: inline-block;
-         line-height: 425px;
-         margin:0 5px;
-       }
-       label.log{color: black;
-         width: 50px;
-         line-height: 80px;
-         font-size: 40px;
-         font-weight: bold;
-         padding: 0 25px;
- 
-       }
-       .NO{
-         font-size: xx-large;
-         color: aliceblue;
-       }
-       .backgroundofdivv{
-         width: 100%;
-         background-image: url(../../a2.jpeg);
-         background-size: cover;
-         margin-top: -2%
-       }
-       .from{
-         margin-left: 440px;
-       }
-       .i1{
-         font-size: 30px;
-         border: 5px solid black;
-         border-top-left-radius: 25px;
-         border-bottom-left-radius: 25px;
-         border-top-right-radius: 25px;
-         border-bottom-right-radius: 25px;
-         background-image: url(../../home.jpg);
-         background-size: cover;
-         color: rgb(255, 255, 255);
-       }
-       .i2{
-         font-size: 30px;
-         border-top: 5px solid black;
-         border-bottom: 5px solid black;
-         border-left: 5px solid black;
-         margin-left: -115px;
-         border-top-right-radius: 25px;
-         border-bottom-right-radius: 25px;
-         background-color: black;
-         color: aliceblue;
-       }
-       #body{
-         background-image: url(../home.jpg);
-         background-size: cover;
-       }
-       #login{
-         margin-left: 93%;
-         border-radius: 10px;
-         font-size: x-large;
-         background-color: rgb(0, 0, 255);
-         color: white;
-         border: 5px solid black;
-         cursor: pointer;
-       }
-       .logo{
-         margin-top: -5%;
-       }
-       body {
-        margin: 0;
-        }
-
-      .menu {
-          position: fixed;
-          top: 0;
-          left: -250px;
-          width: 250px;
-          height: 100%;
-          background:linear-gradient(#000000,#252525,rgba(24, 24, 29, 0.486),#000000);
-          transition: left 0.3s ease;
-          margin-top: 57px;
-      }
-
-        .menu-items {
-            list-style: none;
-            padding: 0;
-            margin: 50px 20px;
-        }
-
-        .menu-items li {
-            color: #ece8e8;
-            font-size: 18px;
-            padding: 10px;
-        }
-
-        .hamburger {
-            width: 30px;
-            height: 25px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            z-index: 1;
-            margin-top: 45px;
-            margin-left: 6px;
-        }
-
-        .bar {
-            width: 100%;
-            height: 4px;
-            background:linear-gradient(rgb(226, 29, 29), rgb(61, 2, 2));
-            margin-bottom: 5px;
-        }
-
-        .menu-open {
-            left: 0;
-        }
-        .medic:hover {
-        border-bottom: 1px solid cornsilk;
-        cursor: pointer;
-        background: linear-gradient(rgb(51, 42, 73), rgb(37, 73, 121));
-        transition: background .5s, transform .5s;
-        transform: scale(1.1); /* Increase the scale factor for a larger effect */
-      }
-        .medic{
-          border-bottom: 1px solid cornsilk;
-          margin-left: 6px;
-        }
-
-        .points:hover {
-        border-bottom: 1px solid cornsilk;
-        cursor: pointer;
-        background: linear-gradient(rgb(88, 71, 131), rgb(37, 73, 121));
-        transition: background .5s, transform .5s;
-        transform: scale(1.1); /* Increase the scale factor for a larger effect */
-      }
-        .points{
-          border-bottom: 1px solid cornsilk;
-          margin-left: 6px;
-          padding: 20px;
-          display: inline-grid;
-          border-bottom: 2px solid black;
-
-        }
-        .points-a{
-          text-decoration: none;
-          color: #000000;
-          display: block;
-          cursor: pointer;
-          scroll-margin-top: 150px;
-        }
-        .points-a:hover{
-          background: none;
-        }
-        .everylist::-webkit-scrollbar {
-      width: 10px; /* Adjust width as needed */
+    <title>Medico-Bot - Acute Myeloid Leukaemia Information</title>
+    <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #3b82f6;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
     }
-    .upward{
-        margin-left: 15%;
-        border-radius: 50%;
-        background: transparent;
-        border: none;
-        cursor: pointer;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
-      .upward-icon{
-        width: 50px;
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
       }
-    
-      .upward-div {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
 
-#scroll-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 9999;
-}
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
 
-#scroll-to-top svg {
-  width: 40px;
-  height: 40px;
-}
-#scroll-to-top:hover{
-  background-color: #302142;
-}
-.stydivnav{
-  margin-top: -70px;
-}
-.everylist{
-    position: fixed;
-    top: 200px;
-    left: 15px;
-    width: 100%;
-    height: 65%;
-    background-color: white;
-    overflow-y: auto;
-    font-size: x-large;
-    font-family: 'Times New Roman', Times, serif;
-    width: 80%;
-    margin-left: 35px;
-
-}
-
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
      </style>
-     <link rel="stylesheet" href="../../reponsivecss/media.css">
 </head>
 <body>
-    <nav style="position: fixed; top: 0;" class="back">
-        <label class="logo">MENU</label>
-        
-        <div class="stydivnav">
-          <form onsubmit="return submitForm()" class="from">
-            <input id="input420" class="i1" type="text" name="i1" placeholder="Type...">
-            <input class="i2" type="submit" name="i2" value="search">
-          </form>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
         </div>
-          <ul>
-              <li><a class="home" href="../../MultiSite.html">Home</a></li>
-              <li><a class="contact" href="../../Help and contact.html">Help and contact</a></li>
-              <li><a class="fe" href="../../Team Info.html">Team Info</a></li>
-          </ul>
-          <h1 class="welcome"><em><u>Welcome to our website named MultiSite
-          </em></u>          
-    </nav>
-   
-    <script src="../../filechanger/fileChanger.js"></script>
-    <script>
-      function toggleMenu() {
-      var menu = document.querySelector('.menu');
-      menu.classList.toggle('menu-open');
-      }
-      </script>
-<script>
-  function toggleScrollButton() {
-    var everylistDiv = document.getElementById('top-help');
-    var scrollButton = document.getElementById('scroll-to-top');
+      </div>
+    </div>
+  </div>
 
-    if (everylistDiv.scrollTop > 200) { // Change 200 to the desired scroll position to show the button
-      scrollButton.style.display = 'block';
-    } else {
-      scrollButton.style.display = 'none';
-    }
-  }
-
-  function scrollToTop() {
-    var everylistDiv = document.getElementById('top-help');
-    everylistDiv.scrollTop = 0;
-  }
-</script>
-      <div class="everylist" id="top-help"  onscroll="toggleScrollButton()">
-        <div class="column-num" style="    column-count: 3 ">
-        <div class="points"><a href="#about-acute-myeloid-leukaemia" class="points-a">About acute myeloid leukaemia </a></div>
-        <div class="points"><a href="#symptoms-of-acute-myeloid-leukaemia" class="points-a">Symptoms of acute myeloid leukaemia       </a></div>
-        <div class="points"><a href="#symptoms-of-acute-myeloid-leukaemia" class="points-a">Symptoms of acute myeloid leukaemia</a></div>
-        <div class="points"><a href="#diagnosing-acute-myeloid-leukaemia" class="points-a">Diagnosing acute myeloid leukaemia</a></div>
-        <div class="points"><a href="#treating-acute-myeloid-leukaemia" class="points-a">Treating acute myeloid leukaemia</a></div>
-        <div class="points"><a href="#complications-of-acute-myeloid-leukaemia" class="points-a">Complications of acute myeloid leukaemia</a></div></div>
-
-
-        <div id="scroll-to-top" onclick="scrollToTop()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
-        </div>
-
-
-       
-   
-<div class="menu">
   <div class="hamburger" onclick="toggleMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
   </div>
-  <ul class="menu-items">
-      <a style="text-decoration: none;" href="http://127.0.0.1:7000"><div class="medic"><li>Identify Disease</li></div></a>
-      <div class="medic"><li>About Medicine</li></div>
-      <div class="medic"><li>About Hospital</li></div>
-  </ul>
-</div>
 
-
-
-
-
-
-
-<div class="plethoraplugins-tabs--content">
-                
-  <div class="active js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="about-acute-myeloid-leukaemia" aria-hidden="false" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_0">
-  
-  <h2 class="wp-block-heading">About acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>Leukaemia is cancer of the white blood cells. Acute leukaemia means it progresses rapidly and aggressively, and usually requires immediate treatment.</p>
-  
-  
-  
-  <p>Acute leukaemia is classified according to the type of white blood cells affected. The 2 main types of white blood cells are:</p>
-  
-  
-  
-  <ul>
-  <li>lymphocytes – mostly used to fight viral infections</li>
-  
-  
-  
-  <li>myeloid cells – which perform a number of different functions, such as fighting bacterial infections, defending&nbsp;the body against parasites and preventing the spread of tissue damage&nbsp;</li>
-  </ul>
-  
-  
-  
-  <p>This topic focuses on acute myeloid leukaemia (AML), which is an aggressive&nbsp;cancer of the myeloid cells. The following types of leukaemia are covered separately:</p>
-  
-  
-  
-  <ul>
-  <li><a data-id="7514" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-lymphoblastic-leukaemia/" title="Acute lymphoblastic leukaemia" data-modal="ext">acute lymphoblastic leukaemia</a></li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/cancer-types-in-adults/chronic-myeloid-leukaemia" data-modal="ext" title="">chronic myeloid leukaemia</a></li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/cancer-types-in-adults/chronic-lymphocytic-leukaemia" data-modal="ext" title="">chronic lymphocytic leukaemia</a></li>
-  </ul>
-  
-  
-  
-  <h2 class="wp-block-heading">Signs and symptoms of AML</h2>
-  
-  
-  
-  <p>The&nbsp;<a data-id="7528" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#symptoms-of-acute-myeloid-leukaemia" title="Symptoms of acute myeloid leukaemia" data-modal="ext">symptoms of AML</a> usually develop over a few weeks and become increasingly more severe. Symptoms can include:</p>
-  
-  
-  
-  <ul>
-  <li>pale skin</li>
-  
-  
-  
-  <li>tiredness</li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/side-effects/breathlessness-and-cancer/">breathlessness</a></li>
-  
-  
-  
-  <li>frequent infections</li>
-  
-  
-  
-  <li>unusual and frequent bleeding, such as bleeding gums or <a href="/illnesses-and-conditions/ears-nose-and-throat/nosebleed/">nosebleeds</a></li>
-  </ul>
-  
-  
-  
-  <p>In more advanced cases, AML can make you extremely vulnerable to life-threatening infections or serious internal bleeding.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="7532" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#complications-of-acute-myeloid-leukaemia" title="Complications of acute myeloid leukaemia" data-modal="ext">complications of AML</a></p>
-  
-  
-  
-  <h2 class="wp-block-heading">Seeking medical advice</h2>
-  
-  
-  
-  <p>You should see your GP if you or your child have possible symptoms&nbsp;of AML. Although it’s highly unlikely that leukaemia is the cause,&nbsp;these symptoms should be investigated.</p>
-  
-  
-  
-  <p>If your GP thinks you may have leukaemia, they’ll arrange <a href="/tests-and-treatments/blood-tests/">blood tests</a> to check your blood cell production. If the tests suggest there’s a problem, you’ll be urgently referred to a haematologist (a specialist in treating blood conditions) for further tests and any necessary treatment.</p>
-  
-  
-  
-  <p>Read more about <a data-id="7530" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#diagnosing-acute-myeloid-leukaemia" title="Diagnosing acute myeloid leukaemia" data-modal="ext">diagnosing AML</a></p>
-  
-  
-  
-  <h2 class="wp-block-heading">What causes AML?</h2>
-  
-  
-  
-  <p>AML&nbsp;occurs when specialised cells called stem cells, which are found in the bone marrow (a spongy material inside the bones),&nbsp;produce too many immature white blood cells. These immature cells are known as blast cells.</p>
-  
-  
-  
-  <p>Blast cells don’t have the infection-fighting properties of healthy white blood cells, and producing too many can&nbsp;lead to a&nbsp;decrease in the number of red blood cells (which carry oxygen in the blood) and platelets (cells that help the blood to clot).</p>
-  
-  
-  
-  <p>It’s not clear exactly why this happens and, in most cases, there’s no identifiable cause. However,&nbsp;a number of factors that can increase your risk of developing AML have been identified. These include:</p>
-  
-  
-  
-  <ul>
-  <li>previous&nbsp;<a data-id="8037" href="/tests-and-treatments/non-surgical-procedures/chemotherapy/" title="Chemotherapy" data-modal="ext">chemotherapy</a> or <a data-id="7807" href="/tests-and-treatments/non-surgical-procedures/radiotherapy/" title="Radiotherapy" data-modal="ext">radiotherapy</a></li>
-  
-  
-  
-  <li>exposure to very high levels of radiation&nbsp;(including previous&nbsp; radiotherapy&nbsp;treatment)</li>
-  
-  
-  
-  <li>exposure to benzene – a chemical used in manufacturing that’s also found in cigarette smoke</li>
-  
-  
-  
-  <li>having an underlying blood disorder or genetic disorder, such as <a href="/illnesses-and-conditions/downs-syndrome/">Down’s syndrome</a></li>
-  </ul>
-  
-  
-  
-  <p>Read more about the <a data-id="7529" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#causes-of-acute-myeloid-leukaemia" title="Causes of acute myeloid leukaemia" data-modal="ext">causes of AML</a></p>
-  
-  
-  
-  <h2 class="wp-block-heading">Who’s affected</h2>
-  
-  
-  
-  <p>AML&nbsp;is a rare type of cancer.&nbsp;The risk of developing AML increases with&nbsp;age. It’s&nbsp;most common in people over 65.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">How AML is treated</h2>
-  
-  
-  
-  <p>AML is an aggressive type of cancer that can develop rapidly, so treatment usually needs to begin soon after a diagnosis is confirmed.</p>
-  
-  
-  
-  <p><a data-id="8037" href="/tests-and-treatments/non-surgical-procedures/chemotherapy/" title="Chemotherapy" data-modal="ext">Chemotherapy</a>&nbsp;is the main treatment for AML. It’s used to kill as many leukaemia cells in your body as possible and reduce the risk of the condition coming back (relapsing).</p>
-  
-  
-  
-  <p>In some cases, intensive chemotherapy and radiotherapy may be needed, in combination with a&nbsp;<a href="http://www.macmillan.org.uk/information-and-support/treating/stem-cell-and-bone-marrow-transplants/stem-cell-and-bone-marrow-transplants-explained" data-modal="ext" title="">bone marrow or stem cell transplant</a>, to achieve a cure.</p>
-  
-  
-  
-  <p>Read more about <a data-id="7531" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#treating-acute-myeloid-leukaemia" title="Treatment" data-modal="ext">treating AML</a></p>
-  
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
   </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="symptoms-of-acute-myeloid-leukaemia" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_1">
-  
-  <h2 class="wp-block-heading">Symptoms of acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>The symptoms of acute myeloid leukaemia (AML) usually develop over a few weeks, becoming more severe as the number of immature white blood cells (blast cells) in your blood increases.</p>
-  
-  
-  
-  <p>Symptoms of AML can&nbsp;include:</p>
-  
-  
-  
-  <ul>
-  <li>pale skin</li>
-  
-  
-  
-  <li>tiredness</li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/side-effects/breathlessness-and-cancer/">breathlessness</a></li>
-  
-  
-  
-  <li>a high temperature (fever)</li>
-  
-  
-  
-  <li>excessive sweating</li>
-  
-  
-  
-  <li>weight loss</li>
-  
-  
-  
-  <li>frequent infections</li>
-  
-  
-  
-  <li>unusual and frequent bleeding, such as bleeding gums or <a href="/illnesses-and-conditions/ears-nose-and-throat/nosebleed/">nosebleeds</a></li>
-  
-  
-  
-  <li>easily bruised skin</li>
-  
-  
-  
-  <li>flat&nbsp;red or purple spots on the skin (petechiae)</li>
-  
-  
-  
-  <li>bone and joint pain</li>
-  
-  
-  
-  <li>a feeling of fullness or discomfort in your tummy (abdomen), caused by swelling of the liver or spleen</li>
-  </ul>
-  
-  
-  
-  <p>In&nbsp;rare cases of AML, the affected cells can spread into the central nervous system. This can cause symptoms such as <a href="/illnesses-and-conditions/brain-nerves-and-spinal-cord/headaches" data-modal="ext" title="">headaches</a>, fits (seizures), vomiting, blurred vision and dizziness.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">When to seek medical advice</h2>
-  
-  
-  
-  <p>See your GP if you or your child have these symptoms. Although it’s highly unlikely that AML is the cause, these symptoms need to be investigated and treated&nbsp;promptly.</p>
-  
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">AML Information</h2>
+      <div class="nav-points">
+        <a href="#about-aml" class="nav-point active">About AML</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#complications" class="nav-point">Complications</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-aml" class="content-section">
+        <h1 class="content-title">Acute Myeloid Leukaemia (AML)</h1>
+
+        <p class="content-text">Leukaemia is cancer of the white blood cells. Acute leukaemia means it progresses rapidly and aggressively, and usually requires immediate treatment.</p>
+
+        <p class="content-text">Acute leukaemia is classified according to the type of white blood cells affected. The 2 main types of white blood cells are:</p>
+
+        <ul class="content-list">
+          <li><strong>Lymphocytes</strong> - mostly used to fight viral infections</li>
+          <li><strong>Myeloid cells</strong> - which perform a number of different functions, such as fighting bacterial infections, defending the body against parasites and preventing the spread of tissue damage</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Focus:</strong> This topic focuses on acute myeloid leukaemia (AML), which is an aggressive cancer of the myeloid cells.</p>
+        </div>
+
+        <h2 class="content-subtitle">Who's Affected</h2>
+        <p class="content-text">AML is a rare type of cancer. The risk of developing AML increases with age. It's most common in people over 65.</p>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of AML</h1>
+
+        <p class="content-text">The symptoms of acute myeloid leukaemia (AML) usually develop over a few weeks, becoming more severe as the number of immature white blood cells (blast cells) in your blood increases.</p>
+
+        <p class="content-text">Symptoms of AML can include:</p>
+
+        <ul class="content-list">
+          <li>Pale skin</li>
+          <li>Tiredness</li>
+          <li>Breathlessness</li>
+          <li>A high temperature (fever)</li>
+          <li>Excessive sweating</li>
+          <li>Weight loss</li>
+          <li>Frequent infections</li>
+          <li>Unusual and frequent bleeding, such as bleeding gums or nosebleeds</li>
+          <li>Easily bruised skin</li>
+          <li>Flat red or purple spots on the skin (petechiae)</li>
+          <li>Bone and joint pain</li>
+          <li>A feeling of fullness or discomfort in your tummy (abdomen)</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Medical Advice:</strong> See your GP if you or your child have these symptoms. Although it's highly unlikely that AML is the cause, these symptoms need to be investigated and treated promptly.</p>
+        </div>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of AML</h1>
+
+        <p class="content-text">Acute myeloid leukaemia (AML) is caused by a DNA mutation in the stem cells in your bone marrow that produce red blood cells, platelets and infection-fighting white blood cells.</p>
+
+        <p class="content-text">The mutation causes the stem cells to produce many more white blood cells that are needed. These white blood cells are still immature and don't have the infection-fighting properties of fully developed white blood cells.</p>
+
+        <h2 class="content-subtitle">Risk Factors</h2>
+
+        <h3 class="content-subtitle">Radiation Exposure</h3>
+        <p class="content-text">Being exposed to a significant level of radiation can increase your chances of developing AML.</p>
+
+        <h3 class="content-subtitle">Benzene and Smoking</h3>
+        <p class="content-text">Exposure to the chemical benzene is a known risk factor for AML in adults. Benzene is found in cigarette smoke, which could explain why people who smoke have an increased risk.</p>
+
+        <h3 class="content-subtitle">Previous Cancer Treatment</h3>
+        <p class="content-text">Treatment with radiotherapy and certain chemotherapy medications for an earlier, unrelated cancer can increase your risk of developing AML many years later.</p>
+
+        <h3 class="content-subtitle">Blood Disorders</h3>
+        <p class="content-text">People with certain blood disorders have an increased risk of developing AML.</p>
+
+        <h3 class="content-subtitle">Genetic Disorders</h3>
+        <p class="content-text">People with certain genetic disorders, including Down's syndrome, have an increased risk of developing leukaemia.</p>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosing AML</h1>
+
+        <p class="content-text">In the initial stages of diagnosing acute myeloid leukaemia (AML), your GP will check for physical signs of the condition and arrange for you to have blood tests.</p>
+
+        <h2 class="content-subtitle">Bone Marrow Biopsy</h2>
+        <p class="content-text">To confirm a diagnosis of AML, the haematologist will take a small sample of your bone marrow to examine under a microscope. This procedure is known as a bone marrow biopsy.</p>
+
+        <h2 class="content-subtitle">Further Tests</h2>
+
+        <h3 class="content-subtitle">Genetic Testing</h3>
+        <p class="content-text">Genetic tests can be carried out on blood and bone marrow samples to identify the genetic makeup of the cancerous cells.</p>
+
+        <h3 class="content-subtitle">Scans</h3>
+        <p class="content-text">CT scans, X-rays or echocardiograms may be used to check that your organs are healthy before treatment begins.</p>
+
+        <h3 class="content-subtitle">Lumbar Puncture</h3>
+        <p class="content-text">In rare situations, a lumbar puncture may be carried out to check if AML has spread to your nervous system.</p>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treating AML</h1>
+
+        <p class="content-text">Acute myeloid leukaemia (AML) is an aggressive condition that develops rapidly, so treatment will usually begin a few days after a diagnosis has been confirmed.</p>
+
+        <h2 class="content-subtitle">Treatment Plan</h2>
+        <p class="content-text">Treatment for AML is often carried out in 2 stages:</p>
+
+        <ul class="content-list">
+          <li><strong>Induction</strong> - the aim of this initial stage is to kill as many leukaemia cells as possible and restore your blood to proper working order</li>
+          <li><strong>Consolidation</strong> - this stage aims to prevent the cancer returning by killing any remaining leukaemia cells</li>
+        </ul>
+
+        <h2 class="content-subtitle">Treatment Options</h2>
+
+        <h3 class="content-subtitle">Chemotherapy</h3>
+        <p class="content-text">Chemotherapy is the main treatment for AML. It's used to kill as many leukaemia cells in your body as possible.</p>
+
+        <h3 class="content-subtitle">Radiotherapy</h3>
+        <p class="content-text">Radiotherapy may be used to prepare the body for a bone marrow transplant or to treat advanced cases.</p>
+
+        <h3 class="content-subtitle">Bone Marrow and Stem Cell Transplants</h3>
+        <p class="content-text">If chemotherapy doesn't work, a possible alternative treatment option is a bone marrow or stem cell transplant.</p>
+
+        <div class="info-box">
+          <p><strong>Clinical Trials:</strong> A number of clinical trials are currently underway that aim to find the best way of treating AML. Your care team can tell you whether there are any clinical trials available in your area.</p>
+        </div>
+      </div>
+
+      <div id="complications" class="content-section">
+        <h1 class="content-title">Complications of AML</h1>
+
+        <p class="content-text">If you have acute myeloid leukaemia (AML), you may experience a number of complications. These can be caused by the condition itself, although they can also occur as a side effect of treatment.</p>
+
+        <h2 class="content-subtitle">Weakened Immune System</h2>
+        <p class="content-text">Having a weakened immune system is a common complication of AML. This means you're more vulnerable to developing infections.</p>
+
+        <h2 class="content-subtitle">Bleeding</h2>
+        <p class="content-text">If you have AML, you'll bleed and bruise more easily due to the low levels of platelets in your blood.</p>
+
+        <h2 class="content-subtitle">Infertility</h2>
+        <p class="content-text">Many of the treatments that are used to treat AML can cause infertility. This is often temporary, but in some cases can be permanent.</p>
+
+        <div class="danger-box">
+          <p><strong>Emergency:</strong> Serious bleeding can occur inside the skull, lungs, or stomach. These types of haemorrhage should be regarded as medical emergencies. Dial 999 immediately if you think a haemorrhage is occurring.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="causes-of-acute-myeloid-leukaemia" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_2">
-  
-  <h2 class="wp-block-heading">Causes of acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>Acute myeloid leukaemia (AML) is caused by a DNA mutation in the stem cells in your bone marrow that produce red blood cells, platelets and infection-fighting white blood cells.</p>
-  
-  
-  
-  <p>The mutation&nbsp;causes the stem cells&nbsp;to produce many more white blood cells that are needed.</p>
-  
-  
-  
-  <p>The white blood cells produced are still immature, so they don’t have the infection-fighting properties of fully developed white blood cells. These immature cells are known as ‘blast cells’.</p>
-  
-  
-  
-  <p>As the number of immature cells increases, the amount of healthy red blood cells and platelets decrease, and it’s this fall that causes many of the <a data-id="7528" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#symptoms-of-acute-myeloid-leukaemia" title="Symptoms" data-modal="ext">symptoms of leukaemia</a>.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Increased risk</h2>
-  
-  
-  
-  <p>It’s not known what triggers the genetic mutation&nbsp;in AML, although a number of different factors that&nbsp;can increase your risk of developing the condition have been identified.</p>
-  
-  
-  
-  <p>The main risk factors for AML are&nbsp;outlined below.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Radiation exposure</h3>
-  
-  
-  
-  <p>Being exposed to&nbsp;a significant level of radiation&nbsp;can increase your chances of developing AML, although this usually requires exposure&nbsp;at very high levels. For example, rates of AML are higher in people who survived&nbsp;the atomic bomb explosions in Japan in 1945.</p>
-  
-  
-  
-  <p>In the UK, most people&nbsp;are unlikely to be exposed to levels of radiation high enough to cause AML.&nbsp;However, some people who have had <a data-id="7807" href="/tests-and-treatments/non-surgical-procedures/radiotherapy/" title="Radiotherapy" data-modal="ext">radiotherapy</a> as part of their treatment for previous cancer (see below) can be the exception.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Benzene and smoking</h3>
-  
-  
-  
-  <p>Exposure to the chemical benzene is a known risk factor for AML in adults. Benzene is found in petrol, and it’s also used in the rubber industry, although there are strict controls to protect people from prolonged exposure.</p>
-  
-  
-  
-  <p>Benzene is also found in cigarette smoke, which could explain why people who smoke have an increased risk of developing AML.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Previous cancer treatment</h3>
-  
-  
-  
-  <p>Treatment with radiotherapy and certain <a data-id="8037" href="/tests-and-treatments/non-surgical-procedures/chemotherapy/" title="Chemotherapy" data-modal="ext">chemotherapy</a> medications for&nbsp;an earlier, unrelated cancer can increase your risk of developing AML many years later.</p>
-  
-  
-  
-  <p>Leukaemia that develops as a result of previous cancer treatment is called ‘secondary leukaemia’ or ‘treatment-related leukaemia’.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Blood disorders</h3>
-  
-  
-  
-  <p>People with certain blood disorders – such as myelodysplasia, myelofibrosis or&nbsp;<a href="https://www.macmillan.org.uk/cancer-information-and-support/blood-cancer/polycythaemia-vera-pv" target="_blank" rel="noreferrer noopener">polycythaemia</a> vera (PCV) – have an increased risk of developing AML.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Genetic disorders</h3>
-  
-  
-  
-  <p>People with certain genetic disorders, including <a href="/illnesses-and-conditions/downs-syndrome/">Down’s syndrome</a> and Fanconi’s anaemia, have an increased risk of developing leukaemia.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Other suggested triggers</h3>
-  
-  
-  
-  <p>A number of other environmental factors that could trigger AML have also been suggested, including childhood vaccinations and living near a nuclear power station or a high-voltage power line. However, there’s no clear&nbsp;evidence to suggest that these can increase your risk of developing AML.</p>
-  
-  </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="diagnosing-acute-myeloid-leukaemia" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_3">
-  
-  <h2 class="wp-block-heading">Diagnosing acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>In the initial stages of diagnosing acute myeloid leukaemia (AML), your GP will check for physical signs of the condition and arrange for you to have <a href="/tests-and-treatments/blood-tests/">blood tests</a>.</p>
-  
-  
-  
-  <p>A high number of abnormal white blood cells, or a very low blood count in the test sample, could indicate the presence of leukaemia. If this is the case, you’ll be urgently referred to a haematologist (a specialist in treating blood conditions).</p>
-  
-  
-  
-  <p>A haematologist may carry out further blood tests, in addition to some of the tests outlined on this page.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Bone marrow biopsy</h2>
-  
-  
-  
-  <p>To confirm a diagnosis of AML, the haematologist will take a small sample of your bone marrow to examine under a microscope. This procedure is known as a bone marrow biopsy, which is usually carried out under a <a data-id="8855" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/local-anaesthetic/" title="Local anaesthetic" data-modal="ext">local anaesthetic</a>.</p>
-  
-  
-  
-  <p>The haematologist will numb an area of skin at the back of your hip bone, before using a thin needle to remove a sample of liquid bone marrow. In some cases, a larger needle may also be used to remove a small amount of bone and bone marrow together.</p>
-  
-  
-  
-  <p>You won’t feel any pain during the procedure, but you may experience some bruising and discomfort for a few days afterwards. The procedure takes around 15 minutes to complete, and you shouldn’t have to stay in hospital overnight.</p>
-  
-  
-  
-  <p>The bone marrow sample will be checked for cancerous cells. If cancerous cells are present, the biopsy can also be used to determine the type of leukaemia you have.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Further tests</h2>
-  
-  
-  
-  <p>Additional tests can be used to reveal more information about the progress and extent of your AML. They can also provide insight into how the condition should be treated. These tests are described below.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Genetic testing</h3>
-  
-  
-  
-  <p>Genetic tests can be carried out on blood and bone marrow samples to identify the genetic makeup of the cancerous cells. There are many specific genetic variations that can occur in AML, and knowing the exact type of AML you have can help doctors make decisions about the most appropriate treatment.</p>
-  
-  
-  
-  <p>For example, people who have a type of AML known as acute promyelocytic leukaemia (APML) are known to respond well to a medicine called All Trans-Retinoic Acid (ATRA).</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Scans</h3>
-  
-  
-  
-  <p>If you have AML, a&nbsp;<a data-id="22113" title="CT scan" data-modal="ext" href="/tests-and-treatments/scans-and-x-rays/ct-scan/">computerised tomography (CT) scan</a>,&nbsp;<a href="/tests-and-treatments/scans-and-x-rays/x-ray/">X-ray</a> or echocardiogram (an&nbsp;<a data-id="22111" title="Ultrasound scan" data-modal="ext" href="/tests-and-treatments/scans-and-x-rays/ultrasound-scan/">ultrasound</a> scan of the heart) may be used to check that your organs, such as your heart and lungs, are healthy.</p>
-  
-  
-  
-  <p>These tests are carried out because it’s important for doctors to assess your general health before they can decide on the most appropriate treatment for you.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Lumbar puncture</h3>
-  
-  
-  
-  <p>In rare situations where it’s thought there’s a risk that AML has spread to your nervous system, a <a href="https://www.macmillan.org.uk/cancer-information-and-support/diagnostic-tests/lumbar-puncture" target="_blank" rel="noreferrer noopener">lumbar puncture</a>&nbsp;may be carried out. In this procedure, a needle is used to extract a sample of cerebrospinal fluid (which surrounds and protects your spine) from your back, so it can be checked for cancerous cells.</p>
-  
-  
-  
-  <p>If cancerous cells are found in your nervous system, you may need to have injections of chemotherapy medication directly into your cerebrospinal fluid as part of your treatment.</p>
-  
-  </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="treating-acute-myeloid-leukaemia" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_4">
-  
-  <h2 class="wp-block-heading">Treating acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>Acute myeloid leukaemia (AML) is an aggressive condition that develops rapidly, so treatment will usually begin a few days after a diagnosis has been confirmed.</p>
-  
-  
-  
-  <p>As AML is a complex condition, it’s usually treated by a multidisciplinary team (MDT) – a group of different specialists working together.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Your treatment plan</h2>
-  
-  
-  
-  <p>Treatment for AML is often carried out in 2 stages:</p>
-  
-  
-  
-  <ul>
-  <li>induction – the aim of this initial stage of treatment is to kill as many leukaemia cells in your blood and bone marrow as possible, restore your blood to proper working order and treat any symptoms you may have</li>
-  
-  
-  
-  <li>consolidation – this stage aims to prevent the cancer returning (relapsing), by killing any remaining leukaemia cells that may be present in your body</li>
-  </ul>
-  
-  
-  
-  <p>The induction stage of treatment isn’t always successful and sometimes needs to be repeated before consolidation can begin.</p>
-  
-  
-  
-  <p>If you have a relapse after treatment, both re-induction and consolidation may need to be carried out. This may be the same as your first treatment, although it’s likely to involve different medications or a stem cell transplant.</p>
-  
-  
-  
-  <p>If you’re thought to have a high risk of experiencing <a data-id="7532" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#complications-of-acute-myeloid-leukaemia" title="Complications of acute myeloid leukaemia" data-modal="ext">complications of AML treatment</a> – for example, if you’re over 75 years of age or have another underlying health condition – less intensive chemotherapy treatment may be carried out. This is less likely to successfully kill all of the cancerous cells in your body, but it can help control your condition.&nbsp;</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Induction</h2>
-  
-  
-  
-  <p>The initial treatment you have for AML will largely depend on whether you’re fit enough to have intensive&nbsp;<a data-id="8037" href="/tests-and-treatments/non-surgical-procedures/chemotherapy/" title="Chemotherapy" data-modal="ext">chemotherapy</a>, or whether treatment at a lower dosage is recommended.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Intensive chemotherapy</h3>
-  
-  
-  
-  <p>If you can have intensive induction chemotherapy, you’ll usually be given a combination of chemotherapy medication at a high dose to kill the cancerous cells in your blood and bone marrow.</p>
-  
-  
-  
-  <p>This stage of treatment will be carried out in hospital or in a specialist centre, as you’ll need very close medical and nursing supervision.</p>
-  
-  
-  
-  <p>You’ll have regular&nbsp;<a href="/tests-and-treatments/non-surgical-procedures/blood-transfusion#introduction" data-modal="ext" title="">blood transfusions</a>&nbsp;because your blood won’t contain enough healthy blood cells.</p>
-  
-  
-  
-  <p>You’ll also be vulnerable to infection, so it’s important that you’re in a clean and stable environment where your health can be carefully monitored and any infection you have can be promptly treated. You may also be prescribed&nbsp;antibiotics to help prevent further infection.</p>
-  
-  
-  
-  <p>Depending on how well you respond to treatment, the induction phase can last from four weeks to a couple of months. You may be able to leave hospital and receive treatment on an outpatient basis if your symptoms improve.</p>
-  
-  
-  
-  <p>For intensive treatment, the chemotherapy medications will be injected into a thin tube that’s inserted either into a blood vessel near your heart (central line) or into your arm (a peripherally inserted central catheter, or PICC).</p>
-  
-  
-  
-  <p>In very rare cases, chemotherapy medication may also be directly administered into your cerebrospinal fluid to kill any leukaemia cells that may have spread to your nervous system. This is done using a needle that’s placed into your spine, in a similar way to a&nbsp;<a href="https://www.macmillan.org.uk/cancer-information-and-support/diagnostic-tests/lumbar-puncture" target="_blank" rel="noreferrer noopener">lumbar puncture</a>.</p>
-  
-  
-  
-  <p>Side effects of intensive chemotherapy for AML are common. They can include:&nbsp;</p>
-  
-  
-  
-  <ul>
-  <li>nausea</li>
-  
-  
-  
-  <li>vomiting</li>
-  
-  
-  
-  <li><a data-id="22427" href="/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/diarrhoea/" title="Diarrhoea" data-modal="ext">diarrhoea</a></li>
-  
-  
-  
-  <li>loss of appetite</li>
-  
-  
-  
-  <li>sore mouth and <a data-id="5310" href="/illnesses-and-conditions/mouth/mouth-ulcer/" title="Mouth ulcer" data-modal="ext">mouth ulcers</a> (mucositis)</li>
-  
-  
-  
-  <li>tiredness</li>
-  
-  
-  
-  <li>skin rashes</li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/side-effects/hair-loss-and-cancer/">hair loss</a></li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/cancer/practical-issues/fertility-and-cancer/">infertility</a> – which may be temporary or permanent (see <a data-id="7532" title="Complications of acute myeloid leukaemia" data-modal="ext" href="/illnesses-and-conditions/cancer/cancer-types-in-adults/acute-myeloid-leukaemia#complications-of-acute-myeloid-leukaemia">complications of AML</a> for more information)</li>
-  </ul>
-  
-  
-  
-  <p>Most side effects should resolve once treatment has finished. Tell a member of your care team if side effects become particularly troublesome, as there are medicines that can help you cope better with certain side effects.</p>
-  
-  
-  
-  <p>Read more about the <a data-id="8041" href="/tests-and-treatments/non-surgical-procedures/chemotherapy#side-effects" title="Side effects" data-modal="ext">side effects of chemotherapy</a></p>
-  
-  
-  
-  <h3 class="wp-block-heading">Non-intensive chemotherapy</h3>
-  
-  
-  
-  <p>If your doctors don’t think you’re fit enough to withstand the effects of intensive chemotherapy, they may recommend non-intensive treatment. This involves using an alternative type of chemotherapy to the standard intensive therapy, which&nbsp;is designed more to control leukaemia rather than cure it.</p>
-  
-  
-  
-  <p>The main aim of this treatment is to control the level of cancerous cells in your body and limit any symptoms you have, while reducing your risk of experiencing significant side effects of treatment.</p>
-  
-  
-  
-  <p>The medications used during non-intensive chemotherapy may be given through a drip into a vein, by mouth or by injection under the skin, and can often be given on an outpatient basis.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">All Trans-Retinoic Acid (ATRA)</h3>
-  
-  
-  
-  <p>If you have the sub-type of AML known as acute promyelocytic leukaemia, you’ll usually be given capsules of a medicine called ATRA, in addition to chemotherapy.</p>
-  
-  
-  
-  <p>ATRA works by changing the immature white blood cells (blast cells) into mature healthy cells, and can reduce symptoms very quickly.</p>
-  
-  
-  
-  <p>Side effects of ATRA can include <a href="/illnesses-and-conditions/brain-nerves-and-spinal-cord/headaches" data-modal="ext" title="">headaches</a>, nausea, bone pain, and <a href="/illnesses-and-conditions/mouth/dry-mouth" data-modal="ext" title="">dry mouth</a>, skin and eyes.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Consolidation</h2>
-  
-  
-  
-  <p>If induction is successful, the next stage of treatment will be consolidation.</p>
-  
-  
-  
-  <p>This often involves receiving regular injections of chemotherapy medication that are usually given on an outpatient basis, which means that you won’t have to stay in hospital overnight. However, you may need some short stays in hospital if your symptoms suddenly get worse or if you develop an infection.</p>
-  
-  
-  
-  <p>The consolidation phase of treatment lasts several months.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Other treatments</h2>
-  
-  
-  
-  <p>Many other treatments are used for AML.&nbsp;</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Radiotherapy</h3>
-  
-  
-  
-  <p><a data-id="7807" href="/tests-and-treatments/non-surgical-procedures/radiotherapy/" title="Radiotherapy" data-modal="ext">Radiotherapy</a>&nbsp;involves using high doses of controlled radiation&nbsp;to kill cancerous cells. There are 2 main reasons why radiotherapy is usually used to treat AML:</p>
-  
-  
-  
-  <ul>
-  <li>to prepare the body for a bone marrow or stem cell transplant</li>
-  
-  
-  
-  <li>to treat advanced cases that have spread to the nervous system and/or brain, although this is uncommon</li>
-  </ul>
-  
-  
-  
-  <p><a data-id="7810" href="/tests-and-treatments/non-surgical-procedures/radiotherapy#side-effects" title="Side effects" data-modal="ext">Side effects of radiotherapy</a>&nbsp;can include hair loss, nausea and fatigue. The side effects should pass once your course of radiotherapy has been completed.</p>
-  
-  
-  
-  <h3 class="wp-block-heading">Bone marrow and stem cell transplants</h3>
-  
-  
-  
-  <p>If chemotherapy doesn’t work, a possible alternative treatment option is a <a href="https://www.macmillan.org.uk/cancer-information-and-support/treatments-and-drugs/stem-cell-and-bone-marrow-transplants" target="_blank" rel="noreferrer noopener">bone marrow or stem cell transplant</a>.</p>
-  
-  
-  
-  <p>Before transplantation can take place, the person receiving the transplant will need to have&nbsp;intensive high-dose chemotherapy and possibly radiotherapy to destroy the cells in their bone marrow. The donated stem cells are given through a tube into a blood vessel, in a similar way to chemotherapy medication.</p>
-  
-  
-  
-  <p>This process can put an enormous amount of strain on the body and cause significant side effects and potential complications, so you’ll usually need to stay in hospital for a few weeks.</p>
-  
-  
-  
-  <p>Transplantations have better outcomes if the donor has the same tissue type as the person receiving the donation. The best candidate to provide a donation is usually a brother or sister with the same tissue type.</p>
-  
-  
-  
-  <p>Transplantations are most successful when they’re carried out on children and young people, or older people who are otherwise in good health, and when there’s a suitable donor, such as a brother or sister.</p>
-  
-  
-  
-  <p>Read&nbsp;about&nbsp;<a href="https://www.anthonynolan.org/8-ways-you-could-save-life/donate-your-stem-cells" data-modal="ext" title="">bone marrow donation</a></p>
-  
-  
-  
-  <h3 class="wp-block-heading">Azacitidine</h3>
-  
-  
-  
-  <p>Azacitidine is a possible alternative treatment for adults with AML who can’t have a stem cell transplant.</p>
-  
-  
-  
-  <p>It’s recommended by the National Institute for Health and Care Excellence (NICE) for use&nbsp;in certain circumstances&nbsp;– for example, depending on the characteristics of the person’s blood and bone marrow.</p>
-  
-  
-  
-  <p>Azacitidine is a chemotherapy medication that’s given by injection under the skin. It interferes with the growth of cancer cells and destroys them, and also helps bone marrow to produce normal blood cells.</p>
-  
-  
-  
-  <p>NICE has&nbsp;more information about <a href="http://www.nice.org.uk/guidance/ta218" title="External website" data-modal="ext">azacitidine for the treatment of AML</a></p>
-  
-  
-  
-  <h2 class="wp-block-heading">Clinical trials and&nbsp;newer unlicensed treatments</h2>
-  
-  
-  
-  <p>In the UK, a number of clinical trials&nbsp;are currently underway that aim to find the best way of treating AML. Clinical trials are studies that use new and experimental techniques to see how well they work in treating, and possibly curing, AML.</p>
-  
-  
-  
-  <p>As part of your treatment, your care team may suggest taking part in a clinical trial to help researchers learn more about the best way to treat your&nbsp;AML, and AML in general. Search for <a href="http://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/clinical-trials-search?populate=Acute%20myeloid%20leukaemia%20%28AML%29&amp;f%5B0%5D=field_trial_status%3A4386" data-modal="ext" title="">clinical trials for AML</a>.</p>
-  
-  
-  
-  <p>If you take part in a clinical trial, you may be offered medication that isn’t licensed for use in the UK and isn’t normally available. However, there’s no guarantee that the techniques being studied in the clinical trial will work better than current treatments.</p>
-  
-  
-  
-  <p>Your care team can tell you whether there are any clinical trials available in your area, and can explain the benefits and risks involved.</p>
-  
-  </div>
-  
-  <div class="js-plethoraplugins-tab-panel" data-accordion-initially-open="false" id="complications-of-acute-myeloid-leukaemia" role="tabpanel" aria-labelledby="plethorapluginstab_1_tablink_5">
-  
-  <h2 class="wp-block-heading">Complications of acute myeloid leukaemia</h2>
-  
-  
-  
-  <p>If you have acute myeloid leukaemia (AML), you may experience a number of complications. These can be caused by the condition itself, although they can also occur as a side effect of treatment.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Weakened immune system</h2>
-  
-  
-  
-  <p>Having a weakened immune system – being immunocompromised – is a common complication of AML.</p>
-  
-  
-  
-  <p>Even if your blood is restored to normal working order with treatment, many of the medications that are used to treat&nbsp;AML can temporarily weaken your immune system.</p>
-  
-  
-  
-  <p>This means you’re more vulnerable to developing an infection, and any infection you develop could be more serious than usual. Complications arising from infection are the leading cause of death in people with AML. However, if treated early, nearly all infections respond to appropriate treatment.</p>
-  
-  
-  
-  <p>Therefore, you may be advised to:</p>
-  
-  
-  
-  <ul>
-  <li>take regular doses of <a data-id="6250" href="/tests-and-treatments/medicines-and-medical-aids/types-of-medicine/antibiotics/" title="Antibiotics" data-modal="ext">antibiotics</a> to prevent bacterial infections</li>
-  
-  
-  
-  <li>maintain good personal and dental hygiene</li>
-  
-  
-  
-  <li>avoid contact with anyone who’s&nbsp;known to have an infection – even if it’s a type of infection that you were previously immune to, such as&nbsp;<a data-id="4763" title="Chickenpox" data-modal="ext" href="/illnesses-and-conditions/infections-and-poisoning/chickenpox/">chickenpox</a> or <a href="/illnesses-and-conditions/infections-and-poisoning/measles/">measles</a></li>
-  
-  
-  
-  <li>check with your GP to ensure that all of your vaccinations are up to date, although&nbsp;you won’t be able to have any vaccine that contains ‘live’ viruses or bacteria, such as the&nbsp;<a data-id="13885" href="/healthy-living/immunisation/vaccines/shingles-vaccine/" title="Shingles vaccine" data-modal="ext">shingles vaccine</a> and <a data-id="13848" href="/healthy-living/immunisation/vaccines/mmr-vaccine/" title="MMR vaccine" data-modal="ext">MMR vaccine</a> (against measles, mumps and rubella)</li>
-  </ul>
-  
-  
-  
-  <p>Report any possible symptoms of an infection&nbsp;to your&nbsp;treatment unit immediately because prompt treatment may be needed to prevent complications.</p>
-  
-  
-  
-  <p>Symptoms of an infection can&nbsp;include:</p>
-  
-  
-  
-  <ul>
-  <li>a high temperature (fever)</li>
-  
-  
-  
-  <li>a&nbsp;<a href="/illnesses-and-conditions/brain-nerves-and-spinal-cord/headaches" data-modal="ext" title="">headache</a></li>
-  
-  
-  
-  <li>aching muscles</li>
-  
-  
-  
-  <li><a href="/illnesses-and-conditions/stomach-liver-and-gastrointestinal-tract/diarrhoea/">diarrhoea</a></li>
-  
-  
-  
-  <li>tiredness</li>
-  </ul>
-  
-  
-  
-  <h2 class="wp-block-heading">Bleeding</h2>
-  
-  
-  
-  <p>If you have AML, you’ll bleed and bruise more easily due to the low levels of platelets (clot-forming cells) in your blood. Bleeding may also be excessive.</p>
-  
-  
-  
-  <p>People with advanced AML are more&nbsp;vulnerable to excessive bleeding inside their body, which is the second most common cause of death in people with the condition.</p>
-  
-  
-  
-  <p>Serious bleeding can occur:</p>
-  
-  
-  
-  <ul>
-  <li>inside&nbsp;the skull (intracranial haemorrhage) – causing symptoms such as a&nbsp;severe headache, stiff neck, vomiting and confusion</li>
-  
-  
-  
-  <li>inside the lungs (pulmonary haemorrhage) – causing&nbsp;symptoms such as coughing up blood,&nbsp;breathing difficulties and a&nbsp;bluish skin tone (cyanosis)</li>
-  
-  
-  
-  <li>inside the stomach (gastrointestinal haemorrhage) – causing symptoms such as&nbsp;vomiting blood and&nbsp;passing stools (faeces) that are very dark or tar-like in colour</li>
-  </ul>
-  
-  
-  
-  <p>All these types of haemorrhage should be regarded as medical emergencies. Dial 999 immediately and ask for an ambulance if you think a haemorrhage is occurring.</p>
-  
-  
-  
-  <h2 class="wp-block-heading">Infertility</h2>
-  
-  
-  
-  <p>Many of the treatments that are used to treat AML can cause <a href="/illnesses-and-conditions/cancer/practical-issues/fertility-and-cancer/">infertility</a>.&nbsp;This is often temporary, but in some cases can be permanent.</p>
-  
-  
-  
-  <p>People who are particularly at risk of permanent infertility, are those who have received high doses of <a data-id="8037" title="Chemotherapy" data-modal="ext" href="/tests-and-treatments/non-surgical-procedures/chemotherapy/">chemotherapy</a> and&nbsp;<a data-id="7807" title="Radiotherapy" data-modal="ext" href="/tests-and-treatments/non-surgical-procedures/radiotherapy/">radiotherapy</a> in preparation for a <a href="https://www.macmillan.org.uk/cancer-information-and-support/treatments-and-drugs/stem-cell-and-bone-marrow-transplants" target="_blank" rel="noreferrer noopener">bone marrow or stem cell transplant</a>.</p>
-  
-  
-  
-  <p>Your treatment team can give a good estimation of the risk of infertility in your specific circumstances.</p>
-  
-  
-  
-  <p>It may be possible to guard against any risk of infertility before you begin your treatment. For example, men can have their sperm samples stored. Similarly, women can have eggs or&nbsp;fertilised embryos stored, which can then be placed back into their womb, following treatment.</p>
-  
-  
-  
-  <p>However, as AML is an aggressive condition that develops rapidly, there may not always be time to do this before treatment needs to start.</p>
-  
-  </div>
-  
-              </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

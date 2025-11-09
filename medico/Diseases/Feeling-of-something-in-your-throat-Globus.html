@@ -1,0 +1,573 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Globus Sensation Information</title>
+  <style>
+    :root {
+      --primary: #8a2be2;
+      --primary-dark: #6a1cb8;
+      --secondary: #ff6b6b;
+      --dark-bg: #1a1a2e;
+      --darker-bg: #16213e;
+      --card-bg: #0f3460;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --accent: #4ecdc4;
+      --warning: #ffd166;
+      --danger: #ef476f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(138, 43, 226, 0.15);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(138, 43, 226, 0.25);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(255, 209, 102, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(138, 43, 226, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 71, 111, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(78, 205, 196, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .do-list {
+      background: rgba(78, 205, 196, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4);
+      border-right: 1px solid rgba(138, 43, 226, 0.3);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(138, 43, 226, 0.15);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Globus Sensation Information</h2>
+      <div class="nav-points">
+        <a href="#about-globus" class="nav-point active">About Globus Sensation</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#when-to-see-doctor" class="nav-point">When to See a Doctor</a>
+        <a href="#self-care" class="nav-point">Self-Care & Treatment</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-globus" class="content-section">
+        <h1 class="content-title">Globus Sensation</h1>
+        <p class="content-text">Globus is a symptom that can make you feel like you have a lump in your throat. It's also called 'globus sensation'.</p>
+
+        <p class="content-text">Globus is usually not a sign of anything serious. It can be caused by many things, such as an increased tension of muscles or irritation in the throat. Your throat can be irritated by, for example, reflux.</p>
+
+        <div class="info-box">
+          <p><strong>Good to know:</strong> There are things you can do to help your globus symptoms at home, without the need to attend your GP.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of Globus</h1>
+        <p class="content-text">Different people describe globus differently. It may be felt as:</p>
+
+        <ul class="content-list">
+          <li>Tightness or pressure in your throat</li>
+          <li>Mucus that you cannot clear (catarrh)</li>
+          <li>An area of discomfort in your throat</li>
+          <li>A feeling of something stuck or a lump in your throat</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Important:</strong> If you feel something sticking in your throat, but can eat and drink normally and without pain, you do not need to worry.</p>
+        </div>
+
+        <h2 class="content-subtitle">Common Patterns</h2>
+        <p class="content-text">Your symptoms may:</p>
+        <ul class="content-list">
+          <li>Be most noticeable when swallowing saliva</li>
+          <li>Get worse with stress and worry</li>
+          <li>Vary from day to day</li>
+        </ul>
+      </div>
+
+      <div id="when-to-see-doctor" class="content-section">
+        <h1 class="content-title">When to Get Medical Advice</h1>
+
+        <div class="warning-box">
+          <p><strong>Speak to your GP practice if:</strong></p>
+          <ul class="content-list">
+            <li>You develop any difficulty or pain when swallowing</li>
+            <li>You feel a lump in the neck</li>
+            <li>You experience unintentional weight loss</li>
+            <li>Your symptoms do not improve</li>
+          </ul>
+        </div>
+
+        <p class="content-text">If your symptoms do not improve, your GP will provide further support and advice on whether you need to see an ear nose and throat (ENT) specialist.</p>
+      </div>
+
+      <div id="self-care" class="content-section">
+        <h1 class="content-title">Treatment for Globus at Home</h1>
+        <p class="content-text">There are a number of things you can do to try to relieve globus symptoms.</p>
+
+        <p class="content-text">In most people, symptoms will get better following these self-help tips. However, for some people symptoms can recur off and on for several months.</p>
+
+        <h2 class="content-subtitle">Eating and Drinking</h2>
+        <div class="do-list">
+          <h3 class="content-subtitle">Do</h3>
+          <ul class="content-list">
+            <li>Drink at least 1.5 litres (3 pints) of water every day - drink in small sips as swallowing helps to relax the throat</li>
+            <li>Avoid too much alcohol, tea, coffee and fizzy drinks</li>
+            <li>Reduce the amount of fatty and spicy food in your diet</li>
+            <li>Leave at least 3 hours between your last meal and going to bed</li>
+            <li>Try anti-reflux medication (ask a pharmacist for advice)</li>
+          </ul>
+        </div>
+
+        <h2 class="content-subtitle">Stop Smoking</h2>
+        <p class="content-text">Smoking causes irritation to your throat. By stopping smoking, you can help to improve your globus symptoms.</p>
+
+        <h2 class="content-subtitle">Avoid Clearing Your Throat</h2>
+        <p class="content-text">Try not to clear your throat as this can make your globus sensation worse. Try sipping water instead.</p>
+
+        <h2 class="content-subtitle">Maintain a Healthy Weight</h2>
+        <p class="content-text">Losing any excess weight may reduce your symptoms.</p>
+
+        <h2 class="content-subtitle">Reduce Stress</h2>
+        <p class="content-text">Stress can increase your globus sensation.</p>
+
+        <p class="content-text">If you think you might be stressed, try to relax in a way that is doable for you and your situation. Breathing and relaxation exercises can sometimes help. If you feel you need further help with managing stress, your GP can discuss this with you.</p>
+
+        <div class="info-box">
+          <p><strong>Remember:</strong> Most cases of globus sensation improve with these self-care measures. Be patient and consistent with your efforts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

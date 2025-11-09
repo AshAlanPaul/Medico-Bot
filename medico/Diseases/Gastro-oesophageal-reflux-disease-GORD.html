@@ -1,0 +1,654 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - GORD Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">GORD Information</h2>
+      <div class="nav-points">
+        <a href="#about-gastro-oesophageal-reflux-disease-gord" class="nav-point active">About GORD</a>
+        <a href="#symptoms-of-gord" class="nav-point">Symptoms of GORD</a>
+        <a href="#causes-of-gord" class="nav-point">Causes of GORD</a>
+        <a href="#diagnosing-gord" class="nav-point">Diagnosing GORD</a>
+        <a href="#treating-gord" class="nav-point">Treating GORD</a>
+        <a href="#complications-of-gord" class="nav-point">Complications of GORD</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-gastro-oesophageal-reflux-disease-gord" class="content-section">
+        <h1 class="content-title">About Gastro-Oesophageal Reflux Disease (GORD)</h1>
+        <p class="content-text">Gastro-oesophageal reflux disease (GORD) is a common condition, where acid from the stomach leaks up into the oesophagus (gullet).</p>
+
+        <p class="content-text">It usually occurs as a result of the ring of muscle at the bottom of the oesophagus becoming weakened.</p>
+
+        <p class="content-text">GORD causes symptoms such as heartburn and an unpleasant taste in the back of the mouth. It may just be an occasional nuisance for some people, but for others it can be a severe, lifelong problem.</p>
+
+        <p class="content-text">GORD can often be controlled with self-help measures and medication. Occasionally, surgery to correct the problem may be needed.</p>
+
+        <h2 class="content-subtitle">What to do if you have GORD</h2>
+        <p class="content-text">You can often control the symptoms of GORD by making some lifestyle changes and taking over-the-counter medication.</p>
+
+        <p class="content-text">You don't necessarily need to see your GP if you only have symptoms occasionally. Ask your pharmacist for advice on treatments.</p>
+
+        <h2 class="content-subtitle">When to see your GP</h2>
+        <p class="content-text">Visit your GP if you're worried about your symptoms, or if:</p>
+        <ul class="content-list">
+          <li>you have symptoms several times a week</li>
+          <li>over-the-counter medications aren't helping</li>
+          <li>your symptoms are severe</li>
+          <li>you have difficulty swallowing</li>
+          <li>you have possible signs of a more serious problem</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> This topic focuses on GORD in adults.</p>
+        </div>
+      </div>
+
+      <div id="symptoms-of-gord" class="content-section">
+        <h1 class="content-title">Symptoms of GORD</h1>
+        <p class="content-text">The main symptoms of gastro-oesophageal reflux disease (GORD) are heartburn and acid reflux.</p>
+
+        <h2 class="content-subtitle">Heartburn</h2>
+        <p class="content-text">Heartburn is an uncomfortable burning sensation in the chest. It's usually felt just below your breastbone, but can spread up to the throat in some people.</p>
+
+        <h2 class="content-subtitle">Acid reflux</h2>
+        <p class="content-text">Acid reflux is where acid and other stomach contents are brought back up (regurgitated) into your throat and mouth. It usually causes an unpleasant, sour taste at the back of your mouth.</p>
+
+        <h2 class="content-subtitle">Other symptoms</h2>
+        <p class="content-text">If you have GORD, you may also experience:</p>
+        <ul class="content-list">
+          <li>a sore, inflamed oesophagus (oesophagitis)</li>
+          <li>bad breath</li>
+          <li>bloating and belching</li>
+          <li>feeling or being sick</li>
+          <li>difficulty swallowing</li>
+          <li>pain when swallowing</li>
+          <li>a sore throat and hoarseness</li>
+          <li>a persistent cough or wheezing</li>
+          <li>tooth decay and gum disease</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Note:</strong> If you also have asthma, the symptoms may get worse as a result of stomach acid irritating your airways.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-gord" class="content-section">
+        <h1 class="content-title">Causes of GORD</h1>
+        <p class="content-text">Gastro-oesophageal reflux disease (GORD) is usually caused by the ring of muscle at the bottom of the oesophagus (gullet) becoming weakened.</p>
+
+        <p class="content-text">Normally, this ring of muscle opens to let food into your stomach and closes to stop stomach acid leaking back up into your oesophagus. But for people with GORD, stomach acid is able to pass back up into the oesophagus.</p>
+
+        <h2 class="content-subtitle">Who's most at risk of GORD?</h2>
+        <p class="content-text">The following factors may increase your risk of developing GORD:</p>
+        <ul class="content-list">
+          <li><strong>Being overweight or obese</strong> - this can place increased pressure on your stomach</li>
+          <li><strong>Eating large amounts of fatty foods</strong> - the stomach takes longer to get rid of stomach acid</li>
+          <li><strong>Smoking, alcohol, coffee or chocolate</strong> - these may relax the muscles at the bottom of the oesophagus</li>
+          <li><strong>Pregnancy</strong> - temporary changes in hormone levels and increased pressure</li>
+          <li><strong>Hiatus hernia</strong> - when part of your stomach pushes up through your diaphragm</li>
+          <li><strong>Gastroparesis</strong> - when the stomach takes longer to get rid of stomach acid</li>
+          <li><strong>Certain medicines</strong> - some can cause GORD or make symptoms worse</li>
+          <li><strong>Stress</strong></li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Genetic factors:</strong> GORD can sometimes affect several members of the same family, suggesting inherited genes may play a role.</p>
+        </div>
+      </div>
+
+      <div id="diagnosing-gord" class="content-section">
+        <h1 class="content-title">Diagnosing GORD</h1>
+        <p class="content-text">Your GP will often be able to diagnose gastro-oesophageal reflux disease (GORD) based on your symptoms. They may prescribe medication to treat it without needing to carry out any tests.</p>
+
+        <h2 class="content-subtitle">When tests may be needed</h2>
+        <p class="content-text">You'll usually only need to be referred for tests in hospital if:</p>
+        <ul class="content-list">
+          <li>your GP is unsure whether you have GORD</li>
+          <li>your symptoms are persistent, severe or unusual</li>
+          <li>prescription medications aren't controlling your symptoms</li>
+          <li>your GP thinks you might benefit from surgery</li>
+          <li>you have signs of a potentially more severe condition</li>
+        </ul>
+
+        <h2 class="content-subtitle">Tests for GORD</h2>
+        <p class="content-text">Tests you may have include:</p>
+        <ul class="content-list">
+          <li><strong>Endoscopy</strong> - examines the inside of your oesophagus</li>
+          <li><strong>Barium swallow or barium meal</strong> - assesses swallowing ability</li>
+          <li><strong>Manometry</strong> - measures pressure in your oesophagus</li>
+          <li><strong>24-hour pH monitoring</strong> - measures acidity level</li>
+          <li><strong>Blood tests</strong> - to check for anaemia</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Procedure note:</strong> Endoscopy is usually carried out while you're awake, but you may be given a sedative to help you relax.</p>
+        </div>
+      </div>
+
+      <div id="treating-gord" class="content-section">
+        <h1 class="content-title">Treating GORD</h1>
+        <p class="content-text">Heartburn and gastro-oesophageal reflux disease (GORD) can often be treated with self-help measures and over-the-counter medicines. If these don't help, your GP can prescribe stronger medication or refer you to a specialist.</p>
+
+        <h2 class="content-subtitle">Self-help measures</h2>
+        <p class="content-text">You may find the following measures can help reduce heartburn and other symptoms of GORD:</p>
+        <ul class="content-list">
+          <li>Eat smaller, more frequent meals</li>
+          <li>Avoid trigger foods and drinks</li>
+          <li>Don't wear tight clothing</li>
+          <li>Raise the head of your bed</li>
+          <li>Try to relax and manage stress</li>
+          <li>Maintain a healthy weight</li>
+          <li>Stop smoking</li>
+        </ul>
+
+        <h2 class="content-subtitle">Medication</h2>
+        <p class="content-text">A number of different medications can be used to treat symptoms of GORD:</p>
+        <ul class="content-list">
+          <li><strong>Over-the-counter medicines:</strong> Antacids, alginates, low-dose PPIs and H2-receptor antagonists</li>
+          <li><strong>Proton-pump inhibitors (PPIs):</strong> Reduce acid production</li>
+          <li><strong>H2-receptor antagonists (H2RAs):</strong> Alternative acid reducers</li>
+        </ul>
+
+        <h2 class="content-subtitle">Surgery and procedures</h2>
+        <p class="content-text">Surgery may be an option if medications aren't helping or you don't want long-term medication. The main procedure is laparoscopic Nissen fundoplication (LNF).</p>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> Always consult with your doctor before making changes to your medication or treatment plan.</p>
+        </div>
+      </div>
+
+      <div id="complications-of-gord" class="content-section">
+        <h1 class="content-title">Complications of GORD</h1>
+        <p class="content-text">A number of possible complications can occur as a result of having gastro-oesophageal reflux disease (GORD) for a long time.</p>
+
+        <h2 class="content-subtitle">Oesophageal ulcers</h2>
+        <p class="content-text">The stomach acid that leaks into the oesophagus can damage the lining, which can cause ulcers to form. These ulcers can bleed, causing pain and making it difficult to swallow.</p>
+
+        <h2 class="content-subtitle">Scarred and narrow oesophagus</h2>
+        <p class="content-text">Repeated damage to the oesophagus can cause it to become scarred and narrowed (oesophageal stricture), making swallowing difficult and painful.</p>
+
+        <h2 class="content-subtitle">Barrett's oesophagus</h2>
+        <p class="content-text">About 1 in 10 people with GORD develop Barrett's oesophagus, where cells in the lining change. While it doesn't usually cause noticeable symptoms, there's a small risk these cells could become cancerous.</p>
+
+        <h2 class="content-subtitle">Oesophageal cancer</h2>
+        <p class="content-text">It's estimated that 1 in every 10 to 20 people with Barrett's oesophagus will develop oesophageal cancer within 10 to 20 years.</p>
+
+        <p class="content-text">Symptoms of oesophageal cancer include:</p>
+        <ul class="content-list">
+          <li>Difficulty swallowing</li>
+          <li>Unexplained weight loss</li>
+          <li>Persistent indigestion</li>
+          <li>Hoarseness</li>
+          <li>Persistent cough and/or coughing blood</li>
+          <li>Vomiting</li>
+        </ul>
+
+        <div class="danger-box">
+          <p><strong>Medical attention needed:</strong> Speak to your doctor if you experience any swallowing difficulties, or any other unusual or persistent symptoms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

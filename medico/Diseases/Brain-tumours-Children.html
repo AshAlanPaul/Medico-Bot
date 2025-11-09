@@ -1,0 +1,657 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Brain Tumours: Children Information</title>
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --secondary: #7e22ce;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(14, 165, 233, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-subtitle-small {
+      font-size: 1.3rem;
+      margin: 1.2rem 0 0.8rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(14, 165, 233, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Brain Tumours: Children</h2>
+      <div class="nav-points">
+        <a href="#about-brain-tumours" class="nav-point active">About Brain Tumours</a>
+        <a href="#signs-symptoms" class="nav-point">Signs and Symptoms</a>
+        <a href="#brain-anatomy" class="nav-point">The Brain</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#types-tumours" class="nav-point">Types of Brain Tumours</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#feelings-support" class="nav-point">Your Feelings</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-brain-tumours" class="content-section">
+        <h1 class="content-title">Brain Tumours: Children</h1>
+        <p class="content-text">Brain tumours are the most common tumours that develop in children. Children of any age may be affected. Boys are affected slightly more often than girls.</p>
+        
+        <p class="content-text">More children than ever are surviving childhood cancer. There are new and better drugs and treatments, and we can now also work to reduce the after-effects of having had cancer in the past.</p>
+        
+        <p class="content-text">It's devastating to hear that your child has cancer. At times it can feel overwhelming, but there are many healthcare professionals and support organisations to help you through this difficult time.</p>
+        
+        <p class="content-text">Understanding more about the cancer your child has, and the treatments that may be used, can often help parents to cope. Your child's specialist will give you more detailed information and, if you have any questions, it's important to ask the specialist doctor or nurse who knows your child's individual situation.</p>
+        
+        <h2 class="content-subtitle">Brain tumours</h2>
+        <p class="content-text">A tumour in the brain can come from the brain itself (primary), or from another part of the body (secondary). This information is about primary brain tumours.</p>
+        
+        <div class="info-box">
+          <p><strong>Important:</strong> More children are surviving childhood cancer than ever before due to advances in treatment and care.</p>
+        </div>
+      </div>
+
+      <div id="signs-symptoms" class="content-section">
+        <h1 class="content-title">Signs and Symptoms</h1>
+        <p class="content-text">Symptoms will depend on the size of the tumour, where it is and how it affects that part of the brain. Symptoms are caused by the pressure inside the head being higher than it should be. A growing tumour may push normal brain out of the way, or block the flow of fluid in the brain. Doctors call this raised intracranial pressure, and it can cause symptoms such as:</p>
+        
+        <ul class="content-list">
+          <li>Headaches (often worse in the morning)</li>
+          <li>Vomiting (usually in the morning) or feeling sick</li>
+          <li>Fits (seizures)</li>
+          <li>Feeling very irritated or losing interest in day-to-day things</li>
+          <li>Eye problems, such as abnormal eye movements, blurring or double vision</li>
+          <li>Feeling very tired much more quickly than usual</li>
+          <li>Feeling extremely sleepy (drowsy) for no reason</li>
+        </ul>
+        
+        <p class="content-text">Brain tumours can also cause problems with balance and walking, weakness down one side of the body, or changes in behaviour. Some of these symptoms are common even without a brain tumour, and this can cause confusion in the early stages.</p>
+        
+        <div class="warning-box">
+          <p><strong>Note:</strong> Many of these symptoms can have other causes, but persistent or worsening symptoms should always be evaluated by a doctor.</p>
+        </div>
+      </div>
+
+      <div id="brain-anatomy" class="content-section">
+        <h1 class="content-title">The Brain</h1>
+        <p class="content-text">The brain is contained within the skull, which protects it. Between the brain and the skull, there are 3 layers of membrane called the meninges. These completely cover the brain and spinal cord and help to protect it. Between 2 of these layers is a space that contains a fluid called cerebrospinal fluid (CSF), which circulates around the brain and spinal cord.</p>
+        
+        <p class="content-text">The main parts of the brain are:</p>
+        
+        <ul class="content-list">
+          <li><strong>The cerebrum</strong> - this is at the top of the head and is the largest part of the brain; it's made up of 2 halves (hemispheres), it controls thinking, learning, memory, problem-solving, emotions and touch, and it also helps us be aware of our body position</li>
+          <li><strong>The cerebellum</strong> - this is the back part of the brain, and it controls movement, balance and coordination</li>
+          <li><strong>The brain stem</strong> - this connects the brain to the spinal cord and is in the lower part of the brain just above the back of the neck; it controls breathing, body temperature, heart rate and blood pressure, eye movements and swallowing</li>
+        </ul>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosis</h1>
+        <p class="content-text">Knowing what a test involves can make things a bit easier. The specialist doctor and nurse will explain things but don't be afraid to ask questions.</p>
+        
+        <p class="content-text">Your doctor will want to hear about the problems your child has had recently, and will examine him or her properly. This will include looking into the back of your child's eyes with an ophthalmoscope to check for swelling, which can be a sign of raised pressure in the brain. They'll usually check other things like balance, coordination, sensation and reflexes.</p>
+        
+        <h2 class="content-subtitle">CT or MRI scan</h2>
+        <p class="content-text">Most children will have a CT or an MRI scan, which looks in detail at the inside of the brain.</p>
+        
+        <p class="content-text">A CT scan uses X-rays. It's quick and often is the best first-line investigation, but it does not give as detailed pictures as an MRI. It uses quite a lot of X-rays, and so it is important to make sure we do not use it on too many people if it can be avoided.</p>
+        
+        <p class="content-text">An MRI scan uses no X-rays, and gives more detailed pictures, but takes much longer. Machines are noisy, and often children cannot lie still long enough to get proper images. It is sometimes necessary to have an anaesthetic for this scan.</p>
+        
+        <p class="content-text">Ordinary X-rays are not usually helpful for brain tumours.</p>
+        
+        <h2 class="content-subtitle">Blood tests</h2>
+        <p class="content-text">These are usually done to make sure it is safe to do an operation, and can also be used to help diagnose certain types of tumour.</p>
+        
+        <h2 class="content-subtitle">Biopsy</h2>
+        <p class="content-text">It's often necessary for doctors to remove a small part of the tumour (biopsy) to find out exactly what type of tumour it is. It means your child will need to go into hospital for an operation under general anaesthetic. The piece of tumour removed is then examined under a microscope by a specialist doctor called a pathologist.</p>
+        
+        <p class="content-text">A biopsy isn't always done; it is sometimes better to remove the whole tumour in one operation. In this case, it will be a few days before the exact type of tumour is known.</p>
+        
+        <p class="content-text">Sometimes, it may be safer to do the operation in two stages. Part of the tumour might be removed in the first operation and the rest a few days later.</p>
+      </div>
+
+      <div id="types-tumours" class="content-section">
+        <h1 class="content-title">Types of Brain Tumours</h1>
+        <p class="content-text">There are different types of brain tumours and they are usually named after the type of cells they develop from. The main types are astrocytoma, ependymoma, and medulloblastoma, but there are many other, less common types.</p>
+        
+        <p class="content-text">Brain tumours can be either benign (non-cancerous) or malignant (cancerous).</p>
+        
+        <h2 class="content-subtitle">Benign brain tumours</h2>
+        <p class="content-text">These remain in the part of the brain that they started in and do not usually spread into other areas. Sometimes it may be difficult to remove a benign tumour, because of where it is and, in this situation, other treatments may be needed.</p>
+        
+        <p class="content-text">The most common tumour of this type is a low-grade astrocytoma (also called low-grade glioma).</p>
+        
+        <h2 class="content-subtitle">Malignant primary brain tumours</h2>
+        <p class="content-text">These are most likely to cause problems by causing pressure and damage to the areas around them and possibly by spreading to the normal brain tissue close by.</p>
+        
+        <h3 class="content-subtitle-small">High-grade astrocytoma and ependymoma</h3>
+        <p class="content-text">These tumours develop from the supporting cells of the brain known as glial cells, and are sometimes also called gliomas.</p>
+        
+        <h3 class="content-subtitle-small">Medulloblastomas</h3>
+        <p class="content-text">These usually develop in the lower part of the brain, the cerebellum. They may spread to other parts of the brain or into the spinal cord, and treatment must include the whole of this.</p>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment</h1>
+        <p class="content-text">Because there are different types of brain tumours, treatment will not be the same for everyone. The doctors will look at the type of brain tumour, its size and where it is in the brain before deciding on the best treatment.</p>
+        
+        <p class="content-text">These are the main treatments used to treat brain tumours. Your child may have one treatment or a combination of treatments.</p>
+        
+        <h2 class="content-subtitle">Surgery</h2>
+        <p class="content-text">Usually, a neurosurgeon will operate to remove as much of the tumour as possible. Operations can be very long. It's not uncommon for these to be more than 6 or 8 hours.</p>
+        
+        <p class="content-text">Sometimes, the fluid in and around the brain does not flow freely, as a result of the tumour or brain swelling. In this case, it may be necessary to place a fine tube (shunt) to drain excess fluid from the brain and into the lining of the tummy area (abdomen). You cannot see the shunt outside the body. Another way of treating this is to create another drainage route for the fluid around the obstruction (called a ventriculostomy).</p>
+        
+        <p class="content-text">After the operation, your child may spend some time in an intensive care ward or high dependency unit, so the nurses and doctors can keep a very close eye on them.</p>
+        
+        <p class="content-text">Once a diagnosis is known, a plan to treat any tumour left behind can be made. For benign tumours, there may be no further treatment, but for some, radiotherapy or chemotherapy will be required.</p>
+        
+        <h2 class="content-subtitle">Radiotherapy</h2>
+        <p class="content-text">Radiotherapy treats cancer by using high energy radiation beams. These are exactly the same as visible light, but instead of reflecting from the surface, the energy passes inside the body, where it causes damage to tumour cells.</p>
+        
+        <p class="content-text">Radiotherapy is delivered extremely carefully, using machines linked to the MRI scans of your child's brain. The process usually takes a few minutes each time, but often needs to continue for 5 or 6 weeks.</p>
+        
+        <p class="content-text">Sometimes more specialised types of radiotherapy may be used. Your child's oncologist will explain more about this.</p>
+        
+        <h2 class="content-subtitle">Chemotherapy</h2>
+        <p class="content-text">Chemotherapy uses drugs to get rid of cancer cells. Chemotherapy is given into the veins, and sometimes as a liquid or tablets by mouth. Treatment is often quite prolonged, with periods of time in hospital and gaps when you will be able to return home. This part of the treatment is planned by an oncologist.</p>
+        
+        <p class="content-text">The specialist doctor and nurse will explain your child's treatment and answer your questions so that you understand what is involved.</p>
+        
+        <h2 class="content-subtitle">Other medicines your child may need to take</h2>
+        <p class="content-text">Your child may need to take medicines for a while to reduce or control the symptoms of the brain tumour:</p>
+        
+        <h3 class="content-subtitle-small">Steroids</h3>
+        <p class="content-text">These are medicines that reduce swelling and inflammation in the brain and can help with symptoms.</p>
+        
+        <h3 class="content-subtitle-small">Anticonvulsants</h3>
+        <p class="content-text">These are medicines that help prevent fits, which can be a problem before or after operations on the brain. They may only be necessary for a short period, but sometimes are needed for longer.</p>
+        
+        <h2 class="content-subtitle">Side effects of treatment</h2>
+        <p class="content-text">Your child's doctor and specialist nurse will explain more about what to expect. Always let them know about any side effects your child is having. Many side effects can be well controlled or made easier.</p>
+        
+        <h3 class="content-subtitle-small">Hair loss</h3>
+        <p class="content-text">Both radiotherapy and chemotherapy can cause hair loss. Your child's hair will usually grow back again after chemotherapy, although it may not after radiotherapy.</p>
+        
+        <h3 class="content-subtitle-small">Tiredness</h3>
+        <p class="content-text">Tiredness is very common with both treatments and may continue for weeks after chemotherapy or radiotherapy finishes.</p>
+        
+        <h3 class="content-subtitle-small">Feeling sick</h3>
+        <p class="content-text">Radiotherapy and chemotherapy may make your child feel sick. This can usually be controlled well with anti-sickness drugs, which the oncologist will prescribe for your child.</p>
+        
+        <h3 class="content-subtitle-small">Increased risk of an infection</h3>
+        <p class="content-text">Chemotherapy can increase the risk of infection. It's important to contact the oncologist or specialist nurse straight away if your child has a temperature, any signs of infection or suddenly feels unwell.</p>
+        
+        <h3 class="content-subtitle-small">Skin changes in the treated area if your child is having radiotherapy</h3>
+        <p class="content-text">Radiotherapy can cause a mild form of sunburn. The skin may become red, flaky or sore if your child has fair skin and may become darker and flaky if your child has dark skin. You'll be given advice on looking after the skin in the treated area.</p>
+        
+        <div class="success-box">
+          <p><strong>Support:</strong> There are many support organizations available to help families cope with childhood cancer treatment and its side effects.</p>
+        </div>
+      </div>
+
+      <div id="feelings-support" class="content-section">
+        <h1 class="content-title">Your Feelings</h1>
+        <p class="content-text">As a parent, the fact that your child has cancer is one of the worst situations you can be faced with. You may have many emotions, such as fear, guilt, sadness, anger and uncertainty. These are all normal reactions and are part of the process that many parents go through at such a difficult time.</p>
+        
+        <p class="content-text">It's not possible to address here all of the feelings you may have. However, the CCLG booklet Children & Young People's Cancer; A Parent's Guide talks about the emotional impact of caring for a child with cancer and suggests sources of help and support.</p>
+        
+        <p class="content-text">Your child may have a variety of powerful emotions throughout their experience of cancer. The Parent's Guide discusses these further and talks about how you can support your child.</p>
+        
+        <div class="info-box">
+          <p><strong>Remember:</strong> You are not alone. There are many healthcare professionals and support organizations ready to help you through this difficult journey.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+        
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+        
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

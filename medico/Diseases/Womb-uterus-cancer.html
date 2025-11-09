@@ -1,0 +1,622 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Womb Cancer Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Womb Cancer Information</h2>
+      <div class="nav-points">
+        <a href="#about-womb-cancer" class="nav-point active">About Womb Cancer</a>
+        <a href="#symptoms-of-womb-cancer" class="nav-point">Symptoms</a>
+        <a href="#causes-of-womb-cancer" class="nav-point">Causes</a>
+        <a href="#diagnosing-womb-cancer" class="nav-point">Diagnosis</a>
+        <a href="#treating-womb-cancer" class="nav-point">Treatment</a>
+        <a href="#living-with-womb-cancer" class="nav-point">Living with Womb Cancer</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-womb-cancer" class="content-section">
+        <h1 class="content-title">About Womb Cancer</h1>
+
+        <p class="content-text">Cancer of the womb (uterus) is a common cancer that affects the female reproductive system. It's also called uterine cancer and endometrial cancer.</p>
+
+        <p class="content-text">Abnormal vaginal bleeding is the most common symptom of womb cancer.</p>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> If you have been through the menopause, any vaginal bleeding is considered abnormal. If you have not yet been through the menopause, unusual bleeding may include bleeding between your periods.</p>
+        </div>
+
+        <p class="content-text">You should speak to your GP as soon as possible if you experience any unusual vaginal bleeding. While it's unlikely to be caused by womb cancer, it's best to be sure.</p>
+
+        <h2 class="content-subtitle">Types of womb cancer</h2>
+        <p class="content-text">The vast majority of womb cancers begin in the cells that make up the lining of the womb (called the endometrium), which is why cancer of the womb is often called endometrial cancer.</p>
+
+        <p class="content-text">In rare cases, womb cancer can start in the muscles surrounding the womb. This type of cancer is called uterine sarcoma and may be treated differently from endometrial cancer.</p>
+
+        <p class="content-text">Womb cancer is separate from other cancers of the female reproductive system, such as ovarian cancer and cervical cancer.</p>
+      </div>
+
+      <div id="symptoms-of-womb-cancer" class="content-section">
+        <h1 class="content-title">Symptoms of Womb Cancer</h1>
+
+        <p class="content-text">The most common symptom of womb cancer is abnormal bleeding from the vagina, although most people with abnormal bleeding don't have cancer.</p>
+
+        <p class="content-text">Bleeding may start as light bleeding accompanied by a watery discharge, which may get heavier over time.</p>
+
+        <h2 class="content-subtitle">Symptoms include:</h2>
+        <ul class="content-list">
+          <li><strong>Post-menopausal:</strong> Any vaginal bleeding after menopause</li>
+          <li><strong>Pre-menopausal:</strong> Periods that are heavier than usual or bleeding between periods</li>
+          <li>Pain in the lower abdomen</li>
+          <li>Pain during sex</li>
+        </ul>
+
+        <h2 class="content-subtitle">Advanced stage symptoms:</h2>
+        <ul class="content-list">
+          <li>Pain in the back, legs, or pelvis</li>
+          <li>Loss of appetite</li>
+          <li>Tiredness</li>
+          <li>Nausea</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>When to seek medical advice:</strong> If you have postmenopausal vaginal bleeding, or notice a change in the normal pattern of your period, visit your GP immediately.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-womb-cancer" class="content-section">
+        <h1 class="content-title">Causes of Womb Cancer</h1>
+
+        <p class="content-text">It's not known exactly what causes womb cancer, but certain things can increase your risk of developing it.</p>
+
+        <h2 class="content-subtitle">Risk factors include:</h2>
+        <ul class="content-list">
+          <li><strong>Age:</strong> Risk increases with age (most cases occur in women aged 40-74)</li>
+          <li><strong>Oestrogen levels:</strong> High levels of unopposed oestrogen</li>
+          <li><strong>Obesity:</strong> Being overweight or obese significantly increases risk</li>
+          <li><strong>Reproductive history:</strong> Not having children</li>
+          <li><strong>Medical conditions:</strong> Diabetes, polycystic ovarian syndrome (PCOS)</li>
+          <li><strong>Medications:</strong> Tamoxifen treatment, oestrogen-only HRT</li>
+          <li><strong>Endometrial hyperplasia:</strong> Thickening of the womb lining</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Prevention:</strong> Maintaining a healthy weight and using certain types of contraception may help reduce your risk of developing womb cancer.</p>
+        </div>
+      </div>
+
+      <div id="diagnosing-womb-cancer" class="content-section">
+        <h1 class="content-title">Diagnosing Womb Cancer</h1>
+
+        <p class="content-text">Your GP will probably carry out a physical examination of your pelvic area and may refer you to a specialist for further tests.</p>
+
+        <h2 class="content-subtitle">Diagnostic tests include:</h2>
+        <ul class="content-list">
+          <li><strong>Transvaginal ultrasound (TVU):</strong> Uses a small probe to check the thickness of the womb lining</li>
+          <li><strong>Biopsy:</strong> Taking a sample of cells from the womb lining</li>
+          <li><strong>Hysteroscopy:</strong> Using a thin telescope to look inside the womb</li>
+          <li><strong>Blood tests:</strong> To check for tumour markers and general health</li>
+        </ul>
+
+        <h2 class="content-subtitle">Further tests if cancer is confirmed:</h2>
+        <ul class="content-list">
+          <li>Chest X-ray</li>
+          <li>MRI scan</li>
+          <li>CT scan</li>
+          <li>Additional blood tests</li>
+        </ul>
+      </div>
+
+      <div id="treating-womb-cancer" class="content-section">
+        <h1 class="content-title">Treating Womb Cancer</h1>
+
+        <p class="content-text">Treatment depends on the stage of the cancer and your individual circumstances.</p>
+
+        <h2 class="content-subtitle">Cancer stages:</h2>
+        <ul class="content-list">
+          <li><strong>Stage 1:</strong> Cancer contained inside the womb</li>
+          <li><strong>Stage 2:</strong> Cancer spread to the cervix</li>
+          <li><strong>Stage 3:</strong> Cancer spread outside the womb to nearby tissues</li>
+          <li><strong>Stage 4:</strong> Cancer spread to other organs</li>
+        </ul>
+
+        <h2 class="content-subtitle">Treatment options:</h2>
+        <ul class="content-list">
+          <li><strong>Surgery:</strong> Hysterectomy (removal of the womb)</li>
+          <li><strong>Radiotherapy:</strong> Using radiation to kill cancer cells</li>
+          <li><strong>Chemotherapy:</strong> Using drugs to kill cancer cells</li>
+          <li><strong>Hormone therapy:</strong> For cancers affected by hormones</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>For younger women:</strong> If you haven't been through menopause and wish to have children, hormone therapy may be an option instead of hysterectomy in specific circumstances.</p>
+        </div>
+      </div>
+
+      <div id="living-with-womb-cancer" class="content-section">
+        <h1 class="content-title">Living with Womb Cancer</h1>
+
+        <p class="content-text">Recovery from womb cancer treatment takes time and support.</p>
+
+        <h2 class="content-subtitle">Recovery and follow-up:</h2>
+        <ul class="content-list">
+          <li>Recovery from hysterectomy takes 6-12 weeks</li>
+          <li>Regular check-ups after treatment completion</li>
+          <li>Managing fatigue and other treatment side effects</li>
+        </ul>
+
+        <h2 class="content-subtitle">Relationships and emotional support:</h2>
+        <ul class="content-list">
+          <li>Open communication with family and friends</li>
+          <li>Potential impact on sex life and relationships</li>
+          <li>Access to counselling and support groups</li>
+          <li>Financial support options</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Support is available:</strong> Many organizations provide support for people living with womb cancer, including counseling, financial advice, and peer support groups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

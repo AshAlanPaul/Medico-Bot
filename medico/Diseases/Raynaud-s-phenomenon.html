@@ -1,0 +1,656 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Raynaud's Phenomenon Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Raynaud's Phenomenon</h2>
+      <div class="nav-points">
+        <a href="#about-raynauds" class="nav-point active">About Raynaud's</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#complications" class="nav-point">Complications</a>
+        <a href="#self-help" class="nav-point">Self-Help</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-raynauds" class="content-section">
+        <h1 class="content-title">About Raynaud's Phenomenon</h1>
+        <p class="content-text">Raynaud's phenomenon is a common condition that affects the blood supply to certain parts of the body – usually the fingers and toes.</p>
+
+        <p class="content-text">It's often referred to as Raynaud's syndrome, Raynaud's disease or just Raynaud's.</p>
+
+        <h2 class="content-subtitle">Why does it happen?</h2>
+        <p class="content-text">Raynaud's is usually triggered by cold temperatures, anxiety or stress. The condition occurs because your blood vessels go into a temporary spasm, which blocks the flow of blood.</p>
+
+        <p class="content-text">This causes the affected area to change color to white, then blue and then red, as the blood flow returns. You may also experience numbness, pain, and pins and needles.</p>
+
+        <p class="content-text">Symptoms of Raynaud's can last from a few minutes to several hours.</p>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> It's not a serious threat to your health, but can be painful and difficult to live with. People with Raynaud's often go for long periods without any symptoms, and sometimes the condition goes away altogether.</p>
+        </div>
+
+        <h2 class="content-subtitle">Types of Raynaud's</h2>
+        <p class="content-text">There are two types of Raynaud's:</p>
+        <ul class="content-list">
+          <li><strong>Primary Raynaud's</strong> – when the condition develops by itself (this is the most common type)</li>
+          <li><strong>Secondary Raynaud's</strong> – when it's caused by another health condition</li>
+        </ul>
+
+        <p class="content-text">Most cases of secondary Raynaud's are associated with autoimmune conditions, such as scleroderma and lupus.</p>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of Raynaud's Phenomenon</h1>
+        <p class="content-text">Raynaud's phenomenon is the result of over-sensitive blood vessels in the body's extremities. In many cases, no cause is identified, although it's sometimes linked to other health conditions.</p>
+
+        <h2 class="content-subtitle">Primary Raynaud's</h2>
+        <p class="content-text">The most common form of Raynaud's is primary Raynaud's phenomenon. This means the condition occurs by itself, without being associated with another health condition.</p>
+
+        <p class="content-text">It seems that primary Raynaud's is caused by disruptions in how the nervous system controls blood vessels. There's some evidence that primary Raynaud's may be an inherited condition.</p>
+
+        <h2 class="content-subtitle">Secondary Raynaud's</h2>
+        <p class="content-text">In some cases, an underlying health condition could be causing the blood vessels to overreact. This is called secondary Raynaud's.</p>
+
+        <h3 class="content-subtitle">Common Causes of Secondary Raynaud's:</h3>
+        <ul class="content-list">
+          <li><strong>Autoimmune conditions</strong> – scleroderma, rheumatoid arthritis, Sjogren's syndrome, lupus</li>
+          <li><strong>Infections</strong> – hepatitis B and C</li>
+          <li><strong>Medications</strong> – beta-blockers, migraine medications, some chemotherapy drugs</li>
+          <li><strong>Injury and overuse</strong> – physical injury, vibration white finger from tool use</li>
+          <li><strong>Smoking</strong> – increases risk of developing Raynaud's</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Vibration White Finger:</strong> This occurs when secondary Raynaud's is caused by vibration from regular use of tools like sanders, chainsaws, or hammer drills. Employers have a responsibility to protect workers from this condition.</p>
+        </div>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosing Raynaud's Phenomenon</h1>
+        <p class="content-text">Raynaud's phenomenon can usually be diagnosed after an examination of your symptoms and some blood tests.</p>
+
+        <p class="content-text">Your GP may place your hands in cold water or cool air to see if you show symptoms of Raynaud's.</p>
+
+        <h2 class="content-subtitle">Identifying Secondary Raynaud's</h2>
+        <p class="content-text">Secondary Raynaud's may be suspected if:</p>
+        <ul class="content-list">
+          <li>Your symptoms started when you were over 30 years of age</li>
+          <li>You're experiencing severe pain during an attack</li>
+          <li>Only one side of your body is affected</li>
+        </ul>
+
+        <h2 class="content-subtitle">Blood Tests</h2>
+        <p class="content-text">Your GP may refer you for blood tests to check for underlying conditions:</p>
+        <ul class="content-list">
+          <li><strong>Full blood count</strong> – to check for infection or blood disorders</li>
+          <li><strong>Antinuclear antibodies (ANA) test</strong> – to check for autoimmune conditions</li>
+          <li><strong>Erythrocyte sedimentation rate</strong> – to check for inflammation</li>
+        </ul>
+
+        <div class="care-card">
+          <h3 class="content-subtitle">Support Organization</h3>
+          <p class="content-text">If you've been diagnosed with Raynaud's, <strong>Scleroderma & Raynaud's UK (SRUK)</strong> may be helpful. It is the UK's leading charity for people affected by the condition.</p>
+        </div>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treating Raynaud's Phenomenon</h1>
+        <p class="content-text">You can usually treat Raynaud's phenomenon yourself, although medication is sometimes necessary.</p>
+
+        <h2 class="content-subtitle">Medication</h2>
+        <h3 class="content-subtitle">Nifedipine</h3>
+        <p class="content-text">This is the only medicine licensed to treat Raynaud's phenomenon in the UK. It doesn't cure Raynaud's, but can help to relieve the symptoms by encouraging blood vessels to widen.</p>
+
+        <p class="content-text">Common side effects include:</p>
+        <ul class="content-list">
+          <li>Swelling of hands and feet</li>
+          <li>Headaches</li>
+          <li>Heart palpitations</li>
+          <li>Dizziness</li>
+          <li>Constipation</li>
+        </ul>
+
+        <h3 class="content-subtitle">Other Medications</h3>
+        <p class="content-text">Other medications have been used to treat Raynaud's, though evidence is limited:</p>
+        <ul class="content-list">
+          <li>Fluoxetine – originally used for depression</li>
+          <li>Sildenafil – used for erectile dysfunction</li>
+        </ul>
+
+        <h2 class="content-subtitle">Surgery</h2>
+        <p class="content-text">Surgery for Raynaud's is rare and usually only recommended if symptoms are so severe that there's risk of tissue damage. A procedure called sympathectomy involves cutting the nerves causing blood vessels to spasm.</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> The results of sympathectomy are often temporary, and further treatment may be required after a few years.</p>
+        </div>
+      </div>
+
+      <div id="complications" class="content-section">
+        <h1 class="content-title">Complications of Raynaud's Phenomenon</h1>
+        <p class="content-text">People with Raynaud's phenomenon have an increased risk of developing other problems, particularly those with secondary Raynaud's.</p>
+
+        <h2 class="content-subtitle">Scleroderma</h2>
+        <p class="content-text">Around 1 in 16 women and 1 in 50 men with Raynaud's develop scleroderma, usually between ages 25 and 55.</p>
+
+        <p class="content-text">Scleroderma involves excessive collagen production and can affect skin, joints, and internal organs. Symptoms include:</p>
+        <ul class="content-list">
+          <li>Puffy and itchy skin</li>
+          <li>Tight and uncomfortable joints</li>
+          <li>Calcium spots under the skin</li>
+          <li>Swallowing difficulties</li>
+          <li>Digestive problems</li>
+        </ul>
+
+        <h2 class="content-subtitle">Ulcers and Gangrene</h2>
+        <p class="content-text">In severe cases of secondary Raynaud's, the blood supply can become severely diminished, leading to:</p>
+        <ul class="content-list">
+          <li><strong>Ulcers</strong> – open sores on affected body parts</li>
+          <li><strong>Gangrene</strong> – tissue death due to lack of blood supply</li>
+        </ul>
+
+        <div class="danger-box">
+          <p><strong>Emergency:</strong> These complications require immediate medical attention and may involve hospital admission for blood-thinning medication or surgery to restore blood flow.</p>
+        </div>
+      </div>
+
+      <div id="self-help" class="content-section">
+        <h1 class="content-title">Self-Help and Prevention</h1>
+        <p class="content-text">The following advice is recommended for both primary and secondary Raynaud's:</p>
+
+        <h2 class="content-subtitle">Practical Tips</h2>
+        <ul class="content-list">
+          <li><strong>Keep warm</strong> – Wear gloves and warm footwear in cold weather</li>
+          <li><strong>Stop smoking</strong> – Improves circulation and reduces symptoms</li>
+          <li><strong>Exercise regularly</strong> – Improves circulation and reduces stress</li>
+          <li><strong>Manage stress</strong> – Use relaxation techniques like deep breathing or yoga</li>
+          <li><strong>Avoid triggers</strong> – Stay away from cold environments and sudden temperature changes</li>
+        </ul>
+
+        <h2 class="content-subtitle">For Vibration White Finger</h2>
+        <p class="content-text">If your work involves vibrating tools:</p>
+        <ul class="content-list">
+          <li>Use low-vibration tools when possible</li>
+          <li>Take regular breaks from tool use</li>
+          <li>Wear anti-vibration gloves</li>
+          <li>Keep tools stored indoors</li>
+          <li>Massage and exercise fingers during breaks</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Remember:</strong> If diagnosed early and you stop using vibrating tools, you may recover fully from vibration white finger. Report your condition to your employer as they have legal responsibilities to protect your health.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

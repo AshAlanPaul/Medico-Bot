@@ -1,0 +1,639 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Hypoglycaemia (Low Blood Sugar)</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">Hypoglycaemia</h2>
+      <div class="nav-points">
+        <a href="#introduction" class="nav-point active">Introduction</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#prevention" class="nav-point">Prevention</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="introduction" class="content-section">
+        <h1 class="content-title">Hypoglycaemia (Low Blood Sugar)</h1>
+        <p class="content-text">Hypoglycaemia, or a "hypo", is an abnormally low level of glucose in your blood (less than four millimoles per litre).</p>
+
+        <p class="content-text">When your glucose (sugar) level is too low, your body doesn't have enough energy to carry out its activities.</p>
+
+        <p class="content-text">Hypoglycaemia is most commonly associated with diabetes, and mainly occurs if someone with diabetes takes too much insulin, misses a meal or exercises too hard.</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> In rare cases, it's possible for a person who doesn't have diabetes to experience hypoglycaemia. It can be triggered by malnutrition, binge drinking or certain conditions.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of Hypoglycaemia</h1>
+        <p class="content-text">Most people will have some warning that their blood glucose levels are too low, which gives them time to correct them. Symptoms usually occur when blood sugar levels fall below four millimoles (mmol) per litre.</p>
+
+        <h2 class="content-subtitle">Early Warning Signs Include:</h2>
+        <ul class="content-list">
+          <li>Feeling hungry</li>
+          <li>Trembling or shakiness</li>
+          <li>Sweating</li>
+          <li>Dizziness</li>
+          <li>Tiredness (fatigue)</li>
+          <li>Blurred vision</li>
+          <li>Going pale</li>
+          <li>Fast pulse or palpitations</li>
+          <li>Tingling lips</li>
+          <li>Irritability</li>
+          <li>Difficulty concentrating</li>
+          <li>Confusion</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> If hypoglycaemia isn't treated promptly and your blood glucose levels drop low enough, you may become drowsy or even lose consciousness.</p>
+        </div>
+
+        <h2 class="content-subtitle">Nocturnal Hypoglycaemia</h2>
+        <p class="content-text">Having a hypo while you're asleep is known as nocturnal hypoglycaemia. It's more common in people who treat diabetes with insulin.</p>
+
+        <p class="content-text">Symptoms of nocturnal hypoglycaemia can include:</p>
+        <ul class="content-list">
+          <li>Headaches – often likened to having a hangover</li>
+          <li>Feeling unusually tired in the morning</li>
+          <li>Damp sheets or clothing from sweating</li>
+        </ul>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of Hypoglycaemia</h1>
+        <p class="content-text">In most cases, hypoglycaemia affects people with diabetes, although more rarely it can also occur as a result of other underlying conditions.</p>
+
+        <h2 class="content-subtitle">Hypoglycaemia in People with Diabetes</h2>
+        <h3 class="content-subtitle">Overdose of Diabetes Medication</h3>
+        <p class="content-text">A common cause of hypoglycaemia is taking too much insulin for your current needs. A fall in blood glucose levels can also occur after taking too much oral hypoglycaemia medication.</p>
+
+        <h3 class="content-subtitle">Exercise, Food and Alcohol</h3>
+        <p class="content-text">Hypoglycaemia may occur if you've taken your dose of insulin as usual, but your carbohydrate intake is lower than normal or has been used up more quickly. This may happen if you:</p>
+        <ul class="content-list">
+          <li>Delay or miss a meal or snack</li>
+          <li>Don't eat enough carbohydrate</li>
+          <li>Exercise more than usual</li>
+          <li>Drink too much alcohol, or drink alcohol on an empty stomach</li>
+        </ul>
+
+        <h2 class="content-subtitle">Hypoglycaemia in People Without Diabetes</h2>
+        <p class="content-text">Hypoglycaemia – even mild cases – is very rare in people who don't have diabetes.</p>
+
+        <h3 class="content-subtitle">Reactive Hypoglycaemia</h3>
+        <p class="content-text">People without diabetes can sometimes experience hypoglycaemia if their pancreas produces too much insulin after a large carbohydrate-based meal. This is known as reactive hypoglycaemia.</p>
+
+        <h3 class="content-subtitle">Other Possible Causes</h3>
+        <ul class="content-list">
+          <li>Fasting or malnutrition</li>
+          <li>Binge drinking or heavy drinking of alcohol</li>
+          <li>Addison's disease</li>
+          <li>Certain medications</li>
+          <li>Severe illnesses affecting the liver, kidneys or thyroid gland</li>
+        </ul>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treating Hypoglycaemia</h1>
+        <p class="content-text">In most cases, you can treat hypoglycaemia yourself when you recognise the symptoms.</p>
+
+        <h2 class="content-subtitle">Treating an Episode of Hypoglycaemia</h2>
+        <p class="content-text">The immediate treatment for hypoglycaemia is to have some sugary food or drink (about 15 to 20g of rapidly acting carbohydrate) to end the attack.</p>
+
+        <p class="content-text">For example, this could be:</p>
+        <ul class="content-list">
+          <li>A glass of fruit juice or non-diet soft drink</li>
+          <li>Between three and five dextrose tablets</li>
+          <li>A handful of sweets</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> After having something sugary, you should have a longer-acting carbohydrate food, such as a few biscuits, a cereal bar, a piece of fruit or a sandwich.</p>
+        </div>
+
+        <p class="content-text">It will usually take around 15 minutes to recover from a mild episode of hypoglycaemia.</p>
+
+        <h2 class="content-subtitle">If a Person is Unconscious</h2>
+        <p class="content-text">If a person loses consciousness because of severe hypoglycaemia:</p>
+        <ul class="content-list">
+          <li>Put them into the recovery position</li>
+          <li>Give an injection of glucagon (if available and you know how to use it)</li>
+          <li>Dial 999 to request an ambulance if glucagon isn't available or ineffective</li>
+        </ul>
+
+        <div class="danger-box">
+          <p><strong>Warning:</strong> Never try to put food or drink into the mouth of someone who's unconscious as they could choke.</p>
+        </div>
+      </div>
+
+      <div id="prevention" class="content-section">
+        <h1 class="content-title">Preventing Hypoglycaemia</h1>
+        <p class="content-text">If you have diabetes, sticking to your medication plan and eating regular meals can help prevent hypoglycaemia.</p>
+
+        <h2 class="content-subtitle">Monitoring Blood Glucose</h2>
+        <p class="content-text">Regularly monitoring your blood glucose levels can help you keep your blood glucose as normal and stable as possible, and will help you spot the signs and symptoms of hypoglycaemia quickly.</p>
+
+        <h2 class="content-subtitle">Food and Alcohol</h2>
+        <p class="content-text">Eating extra carbohydrate-based foods before and during exercise can help reduce the chances of hypoglycaemia. If you're taking insulin, your doctor may advise you to lower your dose before strenuous physical activity.</p>
+
+        <h2 class="content-subtitle">Be Prepared</h2>
+        <ul class="content-list">
+          <li>Carry sugary food and drink with you at all times</li>
+          <li>Tell your family and friends about the signs to look out for</li>
+          <li>Carry a form of identification that states your condition</li>
+          <li>If you have type 1 diabetes, consider carrying glucose gel or a glucagon injection kit</li>
+        </ul>
+
+        <h2 class="content-subtitle">Hypoglycaemia and Driving</h2>
+        <p class="content-text">As hypoglycaemia can cause confusion, drowsiness, or even unconsciousness, this can present a significant risk to you or other road users.</p>
+
+        <div class="warning-box">
+          <p><strong>Legal Requirements:</strong> If you have diabetes that requires treatment with insulin, you must inform the DVLA and your insurance company, test your blood sugar before driving, and avoid driving if your blood glucose is low.</p>
+        </div>
+
+        <h2 class="content-subtitle">Preventing Nocturnal Hypoglycaemia</h2>
+        <ul class="content-list">
+          <li>Keep something sugary by your bedside</li>
+          <li>Have a snack before bedtime, such as biscuits and milk</li>
+          <li>Check your blood glucose levels between 3am and 4am</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

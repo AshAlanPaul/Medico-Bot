@@ -1,0 +1,663 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Acute Lymphoblastic Leukaemia Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #3b82f6;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">ALL Information</h2>
+      <div class="nav-points">
+        <a href="#introduction" class="nav-point active">Introduction</a>
+        <a href="#leukaemia-blood-tests" class="nav-point">Leukaemia & Blood Tests</a>
+        <a href="#tests-for-all" class="nav-point">Tests for ALL</a>
+        <a href="#treating-all" class="nav-point">Treating ALL</a>
+        <a href="#treatment-phases" class="nav-point">Treatment Phases</a>
+        <a href="#side-effects" class="nav-point">Side Effects</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="introduction" class="content-section">
+        <h1 class="content-title">Acute Lymphoblastic Leukaemia: Teenagers and Young Adults</h1>
+
+        <p class="content-text">This section is for teenagers and young adults and is about a type of cancer called
+          acute lymphoblastic leukaemia (ALL). The other main type of leukaemia that can affect teenagers and young
+          adults is acute myeloid leukaemia.</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> If you're looking for information about ALL in people of all ages, please see our
+            general ALL section.</p>
+        </div>
+
+        <h2 class="content-subtitle">What is Leukaemia?</h2>
+        <p class="content-text">Leukaemia is a cancer of the white blood cells. In leukaemia, the process for making new
+          white blood cells gets out of control. Immature white blood cells (called blasts) keep being made and build up
+          in the bone marrow until there isn't enough room for the bone marrow to make healthy blood cells.</p>
+
+        <h2 class="content-subtitle">Symptoms</h2>
+        <p class="content-text">Many of the symptoms of ALL are caused by having fewer than normal healthy blood cells
+          in the body. Symptoms can include:</p>
+
+        <ul class="content-list">
+          <li>Looking paler than usual and feeling tired - because of too few red blood cells (anaemia)</li>
+          <li>Bruises - you may bruise more easily and it could take longer for bleeding to stop</li>
+          <li>Infections - because there are too few mature white blood cells to fight infection</li>
+          <li>Aches and pains in your bones</li>
+          <li>Swollen glands (lymph nodes) in your neck, under your arm or in your groin</li>
+          <li>Feeling unwell and run down</li>
+          <li>Fever and sweats</li>
+          <li>Headaches and visual disturbance</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> There can be other reasons you may have these symptoms. But if you are worried
+            that you may have ALL, you should speak to your GP.</p>
+        </div>
+
+        <h2 class="content-subtitle">Causes</h2>
+        <p class="content-text">It's not known exactly what causes ALL. Research is going on to try to find out.</p>
+        <p class="content-text">Young people with some genetic conditions, such as Down's syndrome or Li-Fraumeni
+          syndrome, are at an increased risk of developing ALL.</p>
+      </div>
+
+      <div id="leukaemia-blood-tests" class="content-section">
+        <h1 class="content-title">Leukaemia, Blood Tests and Bone Marrow</h1>
+
+        <p class="content-text">To understand leukaemia, it can help to know a little about the blood and bone marrow.
+        </p>
+
+        <p class="content-text">All blood cells are made in the bone marrow, which is like a blood cell factory inside
+          bones. A type of cell in the bone marrow, called a stem cell, can make any kind of blood cell your body needs.
+        </p>
+
+        <h2 class="content-subtitle">Types of Blood Cells</h2>
+        <ul class="content-list">
+          <li><strong>White blood cells</strong> - which help fight infection</li>
+          <li><strong>Red blood cells</strong> - which carry oxygen from the lungs around the body</li>
+          <li><strong>Platelets</strong> - which clot blood to stop cuts bleeding</li>
+        </ul>
+
+        <h2 class="content-subtitle">How Leukaemia Develops</h2>
+        <p class="content-text">In leukaemia, the process for making new white blood cells gets out of control and
+          immature white blood cells (blasts) keep being made.</p>
+        <p class="content-text">They build up in the bone marrow until there isn't enough room for the bone marrow to
+          make healthy white cells, red cells and platelets.</p>
+
+        <h2 class="content-subtitle">Types of Leukaemia</h2>
+        <p class="content-text">Leukaemias are named after the type of white blood cell that has become abnormal and
+          started growing out of control:</p>
+        <ul class="content-list">
+          <li><strong>Acute myeloid leukaemia (AML)</strong> - leukaemia that starts from abnormal myeloid cells</li>
+          <li><strong>Acute lymphoblastic leukaemia (ALL)</strong> - leukaemia that starts from abnormal lymphoblasts
+          </li>
+        </ul>
+      </div>
+
+      <div id="tests-for-all" class="content-section">
+        <h1 class="content-title">Tests for ALL</h1>
+
+        <p class="content-text">It's important to remember that the symptoms of ALL can be caused by lots of different
+          things. But you should go to your GP if you're worried.</p>
+
+        <h2 class="content-subtitle">Visiting Your GP</h2>
+        <p class="content-text">Your GP will examine you and arrange for you to have blood tests. If you have ALL, a
+          blood test will usually find leukaemia cells and you'll be referred to a specialist at the hospital.</p>
+
+        <h2 class="content-subtitle">At the Hospital</h2>
+        <p class="content-text">The haematologist will examine you and arrange for you to have some more tests. These
+          may include:</p>
+
+        <ul class="content-list">
+          <li><strong>Blood tests</strong> - to look at the changes in the leukaemia cells</li>
+          <li><strong>Bone marrow test</strong> - to count the numbers of leukaemia cells in the bone marrow</li>
+          <li><strong>Lumbar puncture</strong> - a small sample of the fluid that surrounds your brain and spinal cord
+          </li>
+          <li><strong>Chest X-ray</strong> - to see if there are any swollen lymph nodes in your chest</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Support:</strong> Waiting for test results can be a scary time, but understanding a little about
+            them can help you cope. Thinking about how you feel and getting support from family, friends or your
+            specialist nurse and doctor can also make it a bit easier.</p>
+        </div>
+      </div>
+
+      <div id="treating-all" class="content-section">
+        <h1 class="content-title">Treating ALL</h1>
+
+        <p class="content-text">The main treatment for acute lymphoblastic leukaemia (ALL) is chemotherapy. This means
+          having anti-cancer drugs to destroy the leukaemia cells. You'll also have drugs called steroids, which help
+          the chemotherapy to work.</p>
+
+        <div class="warning-box">
+          <p><strong>Treatment intensity:</strong> The treatment for ALL is pretty intensive at times and can cause
+            unpleasant side effects. But you'll be in close contact with the hospital when you're most likely to feel
+            unwell and the staff will be able to help if things get tough.</p>
+        </div>
+
+        <p class="content-text">ALL is treated in 3 phases:</p>
+        <ul class="content-list">
+          <li><strong>Getting rid of the leukaemia</strong> - remission induction</li>
+          <li><strong>Keeping the leukaemia away</strong> - consolidation and delayed intensification therapy</li>
+          <li><strong>Keeping the leukaemia away long-term</strong> - continuing or maintenance therapy</li>
+        </ul>
+
+        <h2 class="content-subtitle">Treatment Locations</h2>
+        <p class="content-text">You'll be in hospital for your treatment to begin with:</p>
+        <ul class="content-list">
+          <li>If you're 18 or younger, you'll be treated in a specialist Principal Treatment Centre (PTC)</li>
+          <li>If you're 19 or older, you'll be offered the choice of having treatment at the PTC or another hospital
+            closer to home</li>
+        </ul>
+      </div>
+
+      <div id="treatment-phases" class="content-section">
+        <h1 class="content-title">Treatment Phases</h1>
+
+        <h2 class="content-subtitle">Remission Induction</h2>
+        <p class="content-text">The first phase of your treatment is about getting rid of the leukaemia. You'll be given
+          chemotherapy to kill as many leukaemia cells as possible.</p>
+        <p class="content-text">Treatment to get you into remission takes about 5 weeks, sometimes a bit longer.</p>
+
+        <h2 class="content-subtitle">Central Nervous System Therapy</h2>
+        <p class="content-text">Chemotherapy given as tablets or into the blood isn't good at getting into the brain or
+          spinal cord. So you'll be given treatment into the fluid that goes around the CNS to target any leukaemia
+          cells that might be hiding there.</p>
+
+        <h2 class="content-subtitle">Consolidation and Delayed Intensification</h2>
+        <p class="content-text">This phase takes about 5 to 6 months. Most of the treatment can be given as an
+          outpatient but you might need to stay in hospital for some parts.</p>
+
+        <h2 class="content-subtitle">Maintenance Therapy</h2>
+        <p class="content-text">This treatment is given to prevent the leukaemia from returning. The chemotherapy is
+          given in low doses.</p>
+        <p class="content-text">Currently, boys have just over 3 years of maintenance therapy and girls have just over 2
+          years.</p>
+      </div>
+
+      <div id="side-effects" class="content-section">
+        <h1 class="content-title">Side Effects</h1>
+
+        <p class="content-text">Different chemotherapy can cause different side effects. Most people don't have side
+          effects after having intrathecal methotrexate, but occasionally it can cause:</p>
+
+        <ul class="content-list">
+          <li>Headaches</li>
+          <li>Dizziness</li>
+          <li>Tiredness</li>
+          <li>Blurry vision</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Management:</strong> The staff looking after you will give you medicines to help you cope with any
+            side effects so you can stay strong enough to have treatment. And you'll be given medicines to stop you
+            feeling sick and antibiotics to help prevent infections.</p>
+        </div>
+
+        <p class="content-text">There will probably be times when you feel rough and other times when you'll feel
+          better. You might also feel upset, down or irritable. Talking to someone you trust can help you cope with
+          these feelings.</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

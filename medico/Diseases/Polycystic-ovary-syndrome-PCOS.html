@@ -1,0 +1,611 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - PCOS Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card {
+      background: rgba(14, 165, 233, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .care-card h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">PCOS Information</h2>
+      <div class="nav-points">
+        <a href="#about-pcos" class="nav-point active">About PCOS</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#lifestyle" class="nav-point">Lifestyle Management</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-pcos" class="content-section">
+        <h1 class="content-title">Polycystic Ovary Syndrome (PCOS)</h1>
+        <p class="content-text">Polycystic ovary syndrome (PCOS) is a condition that affects how your ovaries work. Despite the name, there are no cysts on the ovaries. During ovulation, an egg is released once a month. PCOS can have an impact on this and cause irregular ovulation, or no ovulation at all.</p>
+
+        <p class="content-text">If you want to have a family, PCOS can make it difficult to get pregnant.</p>
+
+        <p class="content-text">PCOS can also affect your metabolism (the chemical reactions in the body's cells that change food into energy) making it easier to gain weight and more difficult to lose weight.</p>
+
+        <div class="info-box">
+          <p><strong>Important:</strong> You are born with PCOS, but symptoms often start during puberty although for some people this can be later, up to their early twenties.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Symptoms of PCOS</h1>
+        <p class="content-text">There are lots of different symptoms that can be caused by PCOS. The main symptoms are:</p>
+
+        <h2 class="content-subtitle">Primary Symptoms</h2>
+        <ul class="content-list">
+          <li><strong>Irregular periods</strong> – you should have at least 3 or 4 periods a year to keep the womb healthy if you're not using hormonal contraception</li>
+          <li><strong>Excess facial or body hair</strong> which is caused by slightly higher levels of 'male' hormones in your body (androgen)</li>
+        </ul>
+
+        <h2 class="content-subtitle">Other Common Symptoms</h2>
+        <ul class="content-list">
+          <li>Weight gain</li>
+          <li>Hair loss or hair thinning</li>
+          <li>Oily skin or acne</li>
+          <li>Difficulty or delays getting pregnant</li>
+          <li>Mood changes and depression</li>
+          <li>Sleep problems</li>
+          <li>Fatigue</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Mental Health Note:</strong> People who have PCOS can also struggle with depression and with their mental health as a result of the condition.</p>
+        </div>
+
+        <p class="content-text">PCOS can increase your risk of certain health conditions, including type 2 diabetes and high cholesterol.</p>
+
+        <p class="content-text">You should speak to your doctor if you are experiencing these symptoms and you are not pregnant or on hormone treatment.</p>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes of PCOS</h1>
+        <p class="content-text">The exact cause of PCOS isn't known but it's thought to be caused by a hormone and metabolic (the chemical reactions in the body's cells that change food into energy) imbalance in the body.</p>
+
+        <h2 class="content-subtitle">Genetic Factors</h2>
+        <p class="content-text">PCOS can run in families so if someone in your family has the condition, it's more likely you may have it too. You should let your doctor know if this is the case for you.</p>
+
+        <h2 class="content-subtitle">Long-term Health Risks</h2>
+        <p class="content-text">People with PCOS have a higher risk of developing health problems in later life, such as type 2 diabetes and high cholesterol levels, as PCOS can make it easier to gain weight and more difficult to lose weight.</p>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">Diagnosing PCOS</h1>
+        <p class="content-text">Your doctor will talk to you about your symptoms to help rule out any other health conditions.</p>
+
+        <h2 class="content-subtitle">Tracking Symptoms</h2>
+        <p class="content-text">It can be helpful to keep a note of your period dates and symptoms using a calendar, a diary or an app. This can help you track how the symptoms are affecting your life, and will give your doctor more of an insight.</p>
+
+        <h2 class="content-subtitle">Medical Tests</h2>
+        <ul class="content-list">
+          <li><strong>Hormone and blood tests</strong> to rule out any other hormone-related conditions</li>
+          <li><strong>Ultrasound scan</strong> to help diagnose PCOS</li>
+        </ul>
+
+        <p class="content-text">If you're diagnosed with PCOS, you may be referred to a specialist.</p>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment Options</h1>
+        <p class="content-text">Treatment can vary depending on your symptoms. Although there's no cure, there are lots of treatment options available to help manage your symptoms. Treatments can also help prevent complications and, if you want to have a family, improve your chances of getting pregnant.</p>
+
+        <div class="care-card">
+          <h3>Important Note:</h3>
+          <p>If you don't want to become pregnant you should still use contraception as you may still ovulate sometimes.</p>
+        </div>
+
+        <h2 class="content-subtitle">Medical Treatments</h2>
+        <ul class="content-list">
+          <li><strong>Hormonal birth control</strong> to regulate periods and reduce androgen levels</li>
+          <li><strong>Metformin</strong> to improve insulin sensitivity</li>
+          <li><strong>Clomiphene</strong> or <strong>letrozole</strong> to induce ovulation for those trying to conceive</li>
+          <li><strong>Anti-androgen medications</strong> to reduce hair growth and acne</li>
+        </ul>
+
+        <p class="content-text">Your doctor can discuss the options so that you can decide what's best for you, and you can ask any questions that you might have.</p>
+      </div>
+
+      <div id="lifestyle" class="content-section">
+        <h1 class="content-title">Lifestyle Management</h1>
+        <p class="content-text">Having a healthy diet and exercising regularly can significantly help your PCOS symptoms. It can also reduce your chances of developing other health conditions, including type 2 diabetes and high cholesterol.</p>
+
+        <h2 class="content-subtitle">Dietary Recommendations</h2>
+        <ul class="content-list">
+          <li>Eat lots of fruit and vegetables</li>
+          <li>Eat more fiber</li>
+          <li>Drink plenty of water</li>
+          <li>Eat oily fish</li>
+          <li>Reduce meat and dairy products</li>
+          <li>Avoid sugary food and drink</li>
+          <li>Avoid or limit alcohol</li>
+        </ul>
+
+        <h2 class="content-subtitle">Exercise Recommendations</h2>
+        <ul class="content-list">
+          <li>Go for regular walks</li>
+          <li>Keep active, in particular aerobic exercise</li>
+          <li>Strength training to improve insulin sensitivity</li>
+          <li>Yoga or other stress-reducing activities</li>
+        </ul>
+
+        <div class="success-box">
+          <p><strong>Remember:</strong> If you're struggling with managing your symptoms, your doctor can provide further support. Small, consistent lifestyle changes can make a big difference in managing PCOS symptoms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

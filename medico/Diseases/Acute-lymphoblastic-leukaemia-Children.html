@@ -1,0 +1,610 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medico-Bot - Acute Lymphoblastic Leukaemia Information</title>
+    <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #3b82f6;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+     </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">ALL Information</h2>
+      <div class="nav-points">
+        <a href="#about-all" class="nav-point active">About ALL</a>
+        <a href="#causes" class="nav-point">Causes</a>
+        <a href="#symptoms" class="nav-point">Symptoms</a>
+        <a href="#diagnosis" class="nav-point">Diagnosis</a>
+        <a href="#treatment" class="nav-point">Treatment</a>
+        <a href="#side-effects" class="nav-point">Side Effects</a>
+        <a href="#follow-up" class="nav-point">Follow-up Care</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-all" class="content-section">
+        <h1 class="content-title">Acute Lymphoblastic Leukaemia: Children</h1>
+
+        <p class="content-text">Acute lymphoblastic leukaemia (ALL) is a type of blood cancer. One third of all childhood cancers are leukaemia. Approximately, 3 out of 4 of these are acute lymphoblastic (ALL). ALL can affect children of any age but is more common in children aged 1 to 4 years old.</p>
+
+        <p class="content-text">More children than ever are surviving childhood cancer. There are new and better drugs and treatments, and we can now also work to reduce the after-effects of having had cancer in the past.</p>
+
+        <p class="content-text">It's devastating to hear that your child has cancer. At times it can feel overwhelming but there are many healthcare professionals and support organisations to help you through this difficult time.</p>
+
+        <div class="info-box">
+          <p><strong>Understanding more</strong> about the cancer your child has and the treatments that may be used can often help parents to cope. Your child's specialist will give you more detailed information, and if you have any questions it's important to ask the specialist doctor or nurse who knows your child's individual situation.</p>
+        </div>
+
+        <h2 class="content-subtitle">Leukaemia</h2>
+
+        <p class="content-text">Leukaemia is a cancer of the white blood cells. All blood cells are made in the bone marrow, the spongy substance at the core of some bones in the body.</p>
+
+        <p class="content-text">Bone marrow contains:</p>
+
+        <ul class="content-list">
+          <li><strong>Red blood cells</strong> - which carry oxygen around the body</li>
+          <li><strong>Platelets</strong> - which help the blood to clot and control bleeding</li>
+          <li><strong>White blood cells</strong> - which help fight infection</li>
+        </ul>
+
+        <p class="content-text">There are 2 different types of white blood cells: lymphocytes and myeloid cells (including neutrophils). These white blood cells work together to fight infection. Normally, white blood cells develop, repair and reproduce themselves in an orderly and controlled way. In leukaemia, however, the process gets out of control and the cells continue to divide in the bone marrow, but do not mature.</p>
+
+        <p class="content-text">These immature dividing cells fill up the bone marrow and stop it from making healthy blood cells. As the leukaemia cells are not mature, they cannot work properly. This leads to an increased risk of infection.</p>
+      </div>
+
+      <div id="causes" class="content-section">
+        <h1 class="content-title">Causes</h1>
+
+        <p class="content-text">The exact cause of ALL is unknown. Research is going on all the time into possible causes of this disease. Children with certain genetic disorders, such as Down's syndrome, are known to have a higher risk of developing leukaemia.</p>
+
+        <p class="content-text">Brothers and sisters of a child with ALL (particularly identical twins) have a slightly increased risk of developing ALL themselves, although this risk is still small.</p>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> Like all cancers, ALL is not infectious and cannot be passed on to other people.</p>
+        </div>
+      </div>
+
+      <div id="symptoms" class="content-section">
+        <h1 class="content-title">Signs and Symptoms</h1>
+
+        <p class="content-text">As the leukaemia cells multiply in the bone marrow, the production of normal blood cells is reduced. Children may therefore become tired and lethargic because of anaemia, which is caused by a lack of red blood cells.</p>
+
+        <p class="content-text">Children may develop bruises, and bleeding may take longer to stop because of the low number of platelets present in their blood (which help blood to clot). Sometimes, children suffer from infections because of low numbers of normal white blood cells.</p>
+
+        <p class="content-text">A child is likely to feel generally unwell and may complain of aches and pains in the limbs or may have swollen lymph glands.</p>
+
+        <div class="info-box">
+          <p><strong>Note:</strong> At first, the symptoms are just like those of a viral infection, but when they continue for more than a week or two, the diagnosis usually becomes clear.</p>
+        </div>
+      </div>
+
+      <div id="diagnosis" class="content-section">
+        <h1 class="content-title">How ALL is Diagnosed</h1>
+
+        <p class="content-text">A blood test usually shows low numbers of normal white blood cells and the presence of the abnormal leukaemia cells. A sample of bone marrow is usually needed to confirm the diagnosis.</p>
+
+        <p class="content-text">A sample is also sent to the genetics department to look for any abnormal chromosomes, and for a test called MRD (minimal residual disease) analysis.</p>
+
+        <p class="content-text">A test called a lumbar puncture is done to see if the spinal fluid contains any leukaemia cells. A chest X-ray is also done, which will show if there are any enlarged glands in the chest. Other tests may be necessary, depending on your child's symptoms.</p>
+
+        <div class="info-box">
+          <p><strong>Diagnostic purpose:</strong> These tests will help to identify the precise type of leukaemia and help doctors decide on the best treatment.</p>
+        </div>
+      </div>
+
+      <div id="treatment" class="content-section">
+        <h1 class="content-title">Treatment</h1>
+
+        <p class="content-text">The aim of treatment for ALL is to destroy the leukaemia cells and enable the bone marrow to work normally again. Chemotherapy is the main treatment for ALL and is given according to a treatment plan (often called a protocol or regimen).</p>
+
+        <p class="content-text">The treatment is given in several phases, or 'blocks'.</p>
+
+        <h2 class="content-subtitle">Induction</h2>
+        <p class="content-text">This phase involves intensive treatment, aimed at destroying as many leukaemia cells as possible and is usually started within days of being diagnosed. The induction phase lasts 4 to 6 weeks.</p>
+
+        <h2 class="content-subtitle">Consolidation and CNS Treatment</h2>
+        <p class="content-text">The next phase of treatment is aimed at maintaining the remission and preventing the spread of leukaemia cells into the brain and spinal cord (the central nervous system, or CNS).</p>
+
+        <h2 class="content-subtitle">Maintenance Treatment</h2>
+        <p class="content-text">This phase of treatment lasts for 2 years from the start of interim maintenance for girls and 3 years from the start of interim maintenance for boys.</p>
+
+        <div class="danger-box">
+          <p><strong>Special cases:</strong> Bone marrow transplantation is only needed by a minority of patients and is used for children with ALL that is likely to come back following standard chemotherapy.</p>
+        </div>
+      </div>
+
+      <div id="side-effects" class="content-section">
+        <h1 class="content-title">Side Effects of Treatment</h1>
+
+        <p class="content-text">Many cancer treatments will cause side effects. This is because while the treatments are killing the cancer cells, they can also damage some normal cells.</p>
+
+        <p class="content-text">Some of the main side effects of chemotherapy are:</p>
+
+        <ul class="content-list">
+          <li>Hair loss</li>
+          <li>Reduction in blood cell production</li>
+          <li>Loss of appetite</li>
+          <li>Nausea and vomiting</li>
+        </ul>
+
+        <p class="content-text">Steroid medicines can also cause side effects such as:</p>
+
+        <ul class="content-list">
+          <li>Increased appetite</li>
+          <li>Mood changes and irritability</li>
+          <li>Weight gain</li>
+          <li>Muscle weakness</li>
+        </ul>
+
+        <div class="info-box">
+          <p><strong>Management:</strong> Most side effects are temporary, and there are ways of reducing them and supporting your child through them.</p>
+        </div>
+      </div>
+
+      <div id="follow-up" class="content-section">
+        <h1 class="content-title">Follow-up Care</h1>
+
+        <p class="content-text">Most children with ALL are cured. If the leukaemia recurs after initial treatment, it usually does so within the first three years. Further treatment can then be given.</p>
+
+        <p class="content-text">Long-term side effects (late side effects) are rare, and most children with ALL grow and develop normally.</p>
+
+        <div class="success-box">
+          <p><strong>Support:</strong> If you have specific concerns about your child's condition and treatment, it's best to discuss them with your child's doctor, who knows the situation in detail.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

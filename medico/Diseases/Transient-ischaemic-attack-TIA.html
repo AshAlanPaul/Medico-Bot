@@ -1,0 +1,718 @@
+<!--Have Been Updated (Must Add This to Every Updated File )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="x-icon" href="../images/medico-bot.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medico-Bot - Transient Ischaemic Attack (TIA) Information</title>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --secondary: #0ea5e9;
+      --dark-bg: #0f172a;
+      --darker-bg: #0a0f1c;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --accent: #8b5cf6;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 0.2rem;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem;
+      height: fit-content;
+      position: sticky;
+      top: 120px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .nav-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-point {
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .nav-point:hover {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .nav-point.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .content-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 120px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--primary);
+      color: var(--text-primary);
+    }
+
+    .content-subtitle {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .content-text {
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .content-list {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .content-list li strong {
+      color: var(--text-primary);
+    }
+
+    .warning-box {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid var(--warning);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .info-box {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .danger-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .success-box {
+      background: rgba(139, 92, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .emergency-box {
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px solid var(--danger);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background: var(--darker-bg);
+      transition: left 0.3s ease;
+      z-index: 200;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-open {
+      left: 0;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 25px;
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background: var(--text-primary);
+      margin-bottom: 6px;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+      margin: 80px 0 0;
+    }
+
+    .menu-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: rgba(16, 185, 129, 0.1);
+      padding-left: 2rem;
+    }
+
+    .menu-item a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+    }
+
+    .accordion {
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .accordion-header {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(30, 41, 59, 1);
+    }
+
+    .accordion-content {
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-content.open {
+      padding: 1rem 1.5rem;
+      max-height: 500px;
+    }
+
+    @media (max-width: 968px) {
+      .main-container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: static;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-container">
+        <div class="logo-icon">M</div>
+        <div>
+          <div class="logo-text">Medico-Bot</div>
+          <div class="tagline">Your AI-powered medical assistant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <div class="menu">
+    <ul class="menu-items">
+      <li class="menu-item"><a href="http://127.0.0.1:7000">Identify Disease</a></li>
+
+      <li class="menu-item"><a href="../medico.html">Home</a></li>
+    </ul>
+  </div>
+
+  <div class="main-container">
+    <div class="sidebar">
+      <h2 class="sidebar-title">TIA Information</h2>
+      <div class="nav-points">
+        <a href="#about-tia" class="nav-point active">About TIA</a>
+        <a href="#symptoms-of-tia" class="nav-point">Symptoms of TIA</a>
+        <a href="#causes-of-tia" class="nav-point">Causes of TIA</a>
+        <a href="#diagnosing-tia" class="nav-point">Diagnosing TIA</a>
+        <a href="#treating-tia" class="nav-point">Treating TIA</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div id="about-tia" class="content-section">
+        <h1 class="content-title">Transient Ischaemic Attack (TIA)</h1>
+        <p class="content-text">A transient ischaemic attack (TIA), or mini stroke, happens when there is a temporary disruption in the blood supply to part of the brain.</p>
+
+        <p class="content-text">The disruption in blood supply results in a lack of oxygen to the brain. This can cause sudden symptoms like those of a stroke.</p>
+
+        <p class="content-text">However, a TIA does not last as long as a stroke. The effects only last for a few minutes or hours and fully resolve within 24 hours.</p>
+
+        <div class="emergency-box">
+          <h3 class="content-subtitle" style="color: var(--danger); margin-top: 0;">🚨 Emergency Action Required</h3>
+          <p class="content-text" style="color: var(--text-primary); font-weight: 600;">
+            Phone 999 immediately if you suspect you or someone else is having a TIA or stroke.
+          </p>
+          <p class="content-text" style="color: var(--text-primary);">
+            Do not drive if you suspect you have had a stroke or TIA.
+          </p>
+        </div>
+      </div>
+
+      <div id="symptoms-of-tia" class="content-section">
+        <h1 class="content-title">Symptoms of a TIA</h1>
+        <p class="content-text">Like a stroke, the signs and symptoms of a TIA usually begin suddenly.</p>
+
+        <p class="content-text">The main symptoms of stroke can be remembered with the word FAST:</p>
+
+        <div class="info-box">
+          <p><strong>F</strong>ace – the face might drop on one side, the person may not be able to smile or their mouth may have dropped, and their eyelid may droop</p>
+          <p><strong>A</strong>rms – the person may not be able to lift both arms and keep them there because of arm weakness or numbness in one arm</p>
+          <p><strong>S</strong>peech – they might slur their speech or it might be garbled, or the person may not be able to talk at all despite appearing to be awake</p>
+          <p><strong>T</strong>ime – it's time to phone 999 immediately if you see any of these signs or symptoms</p>
+        </div>
+
+        <p class="content-text">Other signs and symptoms may include:</p>
+        <ul class="content-list">
+          <li>Complete paralysis of one side of the body</li>
+          <li>Sudden loss or blurring of vision</li>
+          <li>Dizziness</li>
+          <li>Confusion</li>
+          <li>Difficulty understanding what others are saying</li>
+          <li>Problems with balance and co-ordination</li>
+        </ul>
+
+        <div class="warning-box">
+          <p><strong>Important:</strong> During a TIA, it's not possible to tell whether you're having a TIA or a full stroke, so it's important to phone 999 immediately. Even if the symptoms disappear, you should still have an assessment at hospital.</p>
+        </div>
+      </div>
+
+      <div id="causes-of-tia" class="content-section">
+        <h1 class="content-title">Causes of a TIA</h1>
+        <p class="content-text">TIAs happen when there is a temporary disruption in the blood supply to part of the brain.</p>
+
+        <p class="content-text">In TIAs, the blockage resolves before any significant damage. A full stroke disrupts the blood flow to your brain for much longer, leading to more severe damage.</p>
+
+        <h2 class="content-subtitle">Risk Factors</h2>
+        <p class="content-text">There are some things that can make you more likely to have a stroke or TIA:</p>
+        <ul class="content-list">
+          <li>Poor diet</li>
+          <li>Lack of exercise</li>
+          <li>Obesity</li>
+          <li>Smoking</li>
+          <li>An excessive alcohol intake</li>
+          <li>High cholesterol</li>
+          <li>High blood pressure (hypertension)</li>
+          <li>Diabetes</li>
+          <li>Atrial fibrillation</li>
+        </ul>
+
+        <h2 class="content-subtitle">Unchangeable Risk Factors</h2>
+        <p class="content-text">There are some risk factors you can't change:</p>
+        <ul class="content-list">
+          <li><strong>Age</strong> – people over 65 are most at risk, although strokes can happen at any age</li>
+          <li><strong>Family history</strong> – if a close relative has had a stroke, your risk is higher</li>
+          <li><strong>Ethnicity</strong> – south Asian, African or Caribbean people have higher risk</li>
+          <li><strong>Medical history</strong> – previous stroke, TIA or heart attack increases risk</li>
+        </ul>
+      </div>
+
+      <div id="diagnosing-tia" class="content-section">
+        <h1 class="content-title">Diagnosing TIAs</h1>
+        <p class="content-text">You should have an assessment in hospital as soon as possible if you think you've had a TIA.</p>
+
+        <h2 class="content-subtitle">Diagnostic Tests</h2>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Blood Tests</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">You might need blood tests to determine whether you have high cholesterol, and to check if you have diabetes.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Electrocardiogram (ECG)</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">An electrocardiogram (ECG) measures your heart's electrical activity using electrodes on your skin. An ECG can detect abnormal heart rhythms, which may be a sign of conditions like atrial fibrillation.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Carotid Ultrasound</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">A carotid ultrasound scan can show if there's narrowing or blockages in the neck arteries leading to your brain. A small probe sends high-frequency sound waves into your body to create an image.</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Brain Scans</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">Brain scans are not always necessary if you've had a TIA. You might have an MRI scan or CT scan if an MRI is not suitable for you.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="treating-tia" class="content-section">
+        <h1 class="content-title">Treating TIAs</h1>
+        <p class="content-text">Although the symptoms of a TIA stop on their own, you'll need treatment to help reduce the risk of another TIA or a full stroke.</p>
+
+        <h2 class="content-subtitle">Treatment Options</h2>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Lifestyle Changes</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">There are lifestyle changes you can make that may help reduce your chances of having a stroke after a TIA:</p>
+            <ul class="content-list">
+              <li>Eating a healthy diet – a low-fat, low-salt, high-fibre diet is recommended</li>
+              <li>Exercising regularly – helps lower cholesterol and maintain healthy blood pressure</li>
+              <li>Stopping smoking</li>
+              <li>Cutting down on alcohol</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Medication</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">Most people who've had a TIA will take medication to reduce their chances of having a stroke or another TIA:</p>
+            <ul class="content-list">
+              <li>Antiplatelets like aspirin and clopidogrel</li>
+              <li>Anticoagulants like apixaban, edoxaban, rivaroxaban, dabigatran or warfarin</li>
+              <li>Medication to lower your blood pressure (antihypertensives)</li>
+              <li>Statins to lower your cholesterol</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>Carotid Endarterectomy</span>
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <p class="content-text">A carotid endarterectomy is an operation to remove part of the lining of the carotid artery and any blockage in the artery. By unblocking the carotid arteries, this procedure can reduce the risk of having a stroke or another TIA.</p>
+          </div>
+        </div>
+
+        <div class="success-box">
+          <p><strong>Prevention is key:</strong> A TIA is a warning that you're at risk of having a full stroke. Proper assessment and treatment can help doctors decide the best way to reduce the chances of this happening.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-to-top" id="scrollToTop">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('menu-open');
+      hamburger.classList.toggle('active');
+    }
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Update active nav point on scroll
+    const sections = document.querySelectorAll('.content-section');
+    const navPoints = document.querySelectorAll('.nav-point');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navPoints.forEach(navPoint => {
+        navPoint.classList.remove('active');
+        if (navPoint.getAttribute('href') === `#${current}`) {
+          navPoint.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling for nav points
+    navPoints.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = point.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth'
+        });
+
+        // Update active class
+        navPoints.forEach(p => p.classList.remove('active'));
+        point.classList.add('active');
+
+        // Close mobile menu if open
+        if (window.innerWidth <= 968) {
+          const menu = document.querySelector('.menu');
+          const hamburger = document.querySelector('.hamburger');
+          menu.classList.remove('menu-open');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+
+    // Accordion functionality
+    function toggleAccordion(header) {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+
+      // Close all accordions
+      document.querySelectorAll('.accordion-content').forEach(item => {
+        item.classList.remove('open');
+      });
+      document.querySelectorAll('.accordion-header span:last-child').forEach(icon => {
+        icon.textContent = '+';
+      });
+
+      // Open clicked accordion if it was closed
+      if (!isOpen) {
+        content.classList.add('open');
+        header.querySelector('span:last-child').textContent = '-';
+      }
+    }
+  </script>
+</body>
+</html>
